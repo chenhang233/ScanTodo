@@ -11,6 +11,7 @@ import (
 )
 
 const (
+	NormalCode      = 0
 	NoMessageCode   = 10 // 没有这个功能
 	NoMessageMsg    = "你干嘛 哎呦~"
 	ParamsErrorCode = 11 // 参数错误
@@ -18,9 +19,9 @@ const (
 )
 
 type JsonResponse struct {
-	code    int
-	message string
-	data    interface{}
+	Code    int
+	Message string
+	Data    interface{}
 }
 
 type WebHttp struct {
@@ -36,7 +37,7 @@ func (h *WebHttp) Index(writer http.ResponseWriter, request *http.Request) {
 	case "GET":
 		writer.Write(file)
 	case "POST":
-		jr := &JsonResponse{code: NoMessageCode, message: NoMessageMsg, data: nil}
+		jr := &JsonResponse{Code: NoMessageCode, Message: NoMessageMsg, Data: nil}
 		js, _ := json.Marshal(jr)
 		writer.Write(js)
 	}
@@ -56,13 +57,14 @@ func (h *WebHttp) Tcp(writer http.ResponseWriter, request *http.Request) {
 		sc, _ := scan.NewScanCase()
 		ctx := context.WithValue(context.Background(), "body", all)
 		err = sc.Repo.Start(ctx)
-
-		jr := &JsonResponse{code: ParamsErrorCode, message: ParamsErrorMsg, data: nil}
+		jr := JsonResponse{Code: NormalCode}
+		if err != nil {
+			sc.Log.Error.Println("start error", err)
+			jr.Message = err.Error()
+			jr.Code = ParamsErrorCode
+		}
 		js, _ := json.Marshal(jr)
 		writer.Write(js)
-		if err != nil {
-			sc.Log.LogError(ctx, "start error", err)
-			return
-		}
+		sc.Repo.End(ctx)
 	}
 }
