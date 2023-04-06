@@ -1,11 +1,16 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"regexp"
 	"strconv"
 	"strings"
+)
+
+const (
+	LoopbackAddress = "127.0.0.1"
 )
 
 type Methods string
@@ -40,6 +45,46 @@ func CheckIpv4(ip string) bool {
 	reqExp := "^(1\\d{2}|2[0-5]\\d|25[0-5]|\\d\\d|[1-9])\\.(1\\d{2}|2[0-5]\\d|25[0-5]|\\d\\d|[0-9])\\.(1\\d{2}|2[0-5]\\d|25[0-5]|\\d\\d|[0-9])\\.(1\\d{2}|2[0-5]\\d|25[0-5]|\\d\\d|[0-9])$"
 	cp, _ := regexp.Compile(reqExp)
 	return cp.MatchString(ip)
+}
+
+func ReadIps(ips string) ([]string, error) {
+	var ipsArr []string
+	if !strings.Contains(ips, "-") {
+		flag := CheckIpv4(ips)
+		if !flag {
+			return nil, fmt.Errorf("ip错误")
+		}
+		ipsArr = append(ipsArr, ips)
+		return ipsArr, nil
+	}
+	sp := strings.Split(ips, "-")
+	start := sp[0]
+	end := sp[1]
+	flag1 := CheckIpv4(start)
+	flag2 := CheckIpv4(end)
+	if !flag1 || !flag2 {
+		return nil, errors.New("开始或结束端口错误")
+	}
+	starts := strings.Split(start, ".")
+	ends := strings.Split(end, ".")
+	var index, i int
+	for {
+		if starts[i] < ends[i] {
+			break
+		} else if starts[i] > ends[i] {
+			return nil, errors.New("开始端口大于结束端口")
+		} else {
+			if i == 3 {
+				ipsArr = append(ipsArr, start)
+				return ipsArr, nil
+			}
+			i++
+		}
+	}
+	fmt.Println(starts, "starts")
+	fmt.Println(ends, "end")
+	fmt.Println(index, "index")
+	return starts, nil
 }
 
 func ReadPorts(ports string) ([]uint16, error) {

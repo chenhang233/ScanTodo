@@ -54,8 +54,8 @@ func (h *WebHttp) Tcp(writer http.ResponseWriter, request *http.Request) {
 			log.Panicln("json Unmarshal", err)
 		}
 
-		sc, _ := scan.NewScanCase()
-		ctx := context.WithValue(context.Background(), "body", all)
+		sc, _ := scan.NewScanCase("TCP", all)
+		ctx := context.WithValue(context.Background(), "token", "ok!")
 		err = sc.Repo.Start(ctx)
 		jr := JsonResponse{Code: NormalCode}
 		if err != nil {
