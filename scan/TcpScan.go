@@ -33,7 +33,7 @@ func (t *TcpScan) Start(ctx context.Context) error {
 	if err != nil {
 		err = fmt.Errorf("port参数错误")
 	}
-	fmt.Println(ips)
+	fmt.Println(":ips", ips)
 	fmt.Sprintf("dd %s %v", ips, ports)
 	return nil
 }

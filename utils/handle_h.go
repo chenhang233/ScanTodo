@@ -67,7 +67,7 @@ func ReadIps(ips string) ([]string, error) {
 	}
 	starts := strings.Split(start, ".")
 	ends := strings.Split(end, ".")
-	var index, i int
+	var count, i int
 	for {
 		if starts[i] < ends[i] {
 			break
@@ -81,10 +81,50 @@ func ReadIps(ips string) ([]string, error) {
 			i++
 		}
 	}
-	fmt.Println(starts, "starts")
-	fmt.Println(ends, "end")
-	fmt.Println(index, "index")
-	return starts, nil
+
+	//startInts := make([]uint8, 0, 4)
+	//endInts := make([]uint8, 0, 4)
+	ipsArr = make([]string, 0)
+
+	//for i, v := range starts {
+	//	v2, _ := strconv.ParseUint(v, 10, 16)
+	//	v3, _ := strconv.ParseUint(ends[i], 10, 16)
+	//	startInts = append(startInts, uint8(v2))
+	//	endInts = append(endInts, uint8(v3))
+	//}
+	//fmt.Println(startInts, "startInts")
+	//fmt.Println(endInts, "endInts")
+	fmt.Println(i, "i 需要加数的 最大位")
+	endI, _ := strconv.ParseUint(ends[i], 10, 16)
+	fmt.Println(endI, "endI")
+	f := 3
+	ipsArr = append(ipsArr, strings.Join(starts, "."))
+A:
+	for {
+		pu, _ := strconv.ParseUint(starts[f], 10, 16)
+		pu++
+		for pu > 255 {
+			starts[f] = "0"
+			f--
+			pu2, _ := strconv.ParseUint(starts[f], 10, 16)
+			pu = pu2 + 1
+		}
+		starts[f] = strconv.FormatUint(pu, 10)
+		ipsArr = append(ipsArr, strings.Join(starts, "."))
+		count++
+		if f == i && pu == endI {
+			break A
+		}
+	}
+	f++ // 正向走--
+	for {
+		pu, _ := strconv.ParseUint(starts[f], 10, 16)
+		pu++
+
+	}
+
+	fmt.Println("ip总数 count", count)
+	return ipsArr, nil
 }
 
 func ReadPorts(ports string) ([]uint16, error) {
