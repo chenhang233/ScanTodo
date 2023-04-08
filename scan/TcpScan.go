@@ -4,6 +4,7 @@ import (
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"context"
+	"encoding/json"
 	"fmt"
 	"net"
 	"sync"
@@ -35,8 +36,10 @@ func (t *TcpScan) Start(ctx context.Context) error {
 	if err != nil {
 		err = fmt.Errorf("port参数错误")
 	}
+	t.Log.Info.Println("----------------------")
 	t.Log.Info.Println("准备扫描的ip数量: ", count)
 	t.scanIps(ips, ports)
+	t.Log.Info.Println("----------------------")
 	return nil
 }
 
@@ -64,30 +67,47 @@ func (t *TcpScan) scanIps(ip []string, ports []uint16) {
 		}
 		group.Add(1)
 		go func(ips []string, ports []uint16) {
-			fmt.Println(len(ips), "ips")
 			for _, ip := range ips {
 				t.scanIp(ip, ports, portPageGroupLen)
 			}
 			group.Done()
 		}(ips, ports)
 	}
-
+	group.Wait()
+	fmt.Println("扫描结束")
 }
 
 func (t *TcpScan) scanIp(ip string, ports []uint16, portPageGroupLen int) {
-	//group := sync.WaitGroup{}
-	//for i := 0; i < portPageGroupLen; i++ {
-	//	group.Add(1)
-	//	go func() {
-	//
-	//	}()
-	//}
+	group := sync.WaitGroup{}
+	start := 0
+	for i := 0; i < portPageGroupLen; i++ {
+		portSlice := make([]uint16, 0, t.portPage)
+		if i == portPageGroupLen-1 {
+			portSlice = append(portSlice, ports[start:]...)
+		} else {
+			portSlice = append(portSlice, ports[start:start+t.portPage]...)
+			start += t.portPage
+		}
+		group.Add(1)
+		go func(ip string, portSlice []uint16) {
+			for _, port := range portSlice {
+				t.isOpen(ip, port, time.Duration(t.body.Timeout))
+			}
+			group.Done()
+		}(ip, portSlice)
+	}
 }
 
-func (t *TcpScan) isOpen(ip string, port uint16, timeout time.Duration) {
+func (t *TcpScan) isOpen(ip string, port uint16, timeout time.Duration) bool {
 	dt, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", ip, port), timeout)
 	if err != nil {
-		fmt.Println("错误:", err)
+		sf := fmt.Sprintf("失败: %v", err)
+		js, _ := json.Marshal(sf)
+		utils.HubInstance.PrivateClient.Send <- js
+		return false
 	}
-	fmt.Println(dt, "dt")
+	sf := fmt.Sprintf("成功: %v, ip: %s , 端口: %d", dt, ip, port)
+	js, _ := json.Marshal(sf)
+	utils.HubInstance.PrivateClient.Send <- js
+	return true
 }

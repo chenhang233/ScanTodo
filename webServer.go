@@ -57,7 +57,7 @@ func (h *WebHttp) Tcp(writer http.ResponseWriter, request *http.Request) {
 		sc, _ := scan.NewScanCase("TCP", all)
 		ctx := context.WithValue(context.Background(), "token", "ok!")
 		err = sc.Repo.Start(ctx)
-		jr := JsonResponse{Code: NormalCode}
+		jr := JsonResponse{Code: NormalCode, Message: "无"}
 		if err != nil {
 			sc.Log.Error.Println("start error", err)
 			jr.Message = err.Error()

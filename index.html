@@ -93,7 +93,7 @@
           }
         }).then(function (response) {
           console.log(response)
-          _this.httpStatus = response.data.msg;
+          _this.httpStatus = response.data.Message;
         });
       },
       webSocketTest: function () {
@@ -102,6 +102,7 @@
         ws.onopen = function () {
           console.log("建立连接")
           _this.message = "建立连接"
+          ws.send("-------准备--------")
         };
         ws.onmessage = function (evt) {
           console.log("=============")

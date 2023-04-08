@@ -18,13 +18,12 @@ func main() {
 	var sever WebService
 	sever = &WebHttp{}
 	flag.Parse()
-	hub := utils.NewHub()
-	go hub.Run()
+	utils.HubInstance = utils.NewHub()
+	go utils.HubInstance.Run()
 	http.HandleFunc("/", sever.Index)
 	http.HandleFunc("/tcp", sever.Tcp)
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println(r.URL, "r.URL")
-		utils.ServeWs(hub, w, r)
+		utils.ServeWs(utils.HubInstance, w, r)
 	})
 	fmt.Println("服务器启动完成...")
 	if err := http.ListenAndServe(*addr, nil); err != nil {
