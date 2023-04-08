@@ -47,15 +47,15 @@ func CheckIpv4(ip string) bool {
 	return cp.MatchString(ip)
 }
 
-func ReadIps(ips string) ([]string, error) {
+func ReadIps(ips string) ([]string, int, error) {
 	var ipsArr []string
 	if !strings.Contains(ips, "-") {
 		flag := CheckIpv4(ips)
 		if !flag {
-			return nil, fmt.Errorf("ip错误")
+			return nil, 0, fmt.Errorf("ip错误")
 		}
 		ipsArr = append(ipsArr, ips)
-		return ipsArr, nil
+		return ipsArr, 1, nil
 	}
 	sp := strings.Split(ips, "-")
 	start := sp[0]
@@ -63,7 +63,7 @@ func ReadIps(ips string) ([]string, error) {
 	flag1 := CheckIpv4(start)
 	flag2 := CheckIpv4(end)
 	if !flag1 || !flag2 {
-		return nil, errors.New("开始或结束端口错误")
+		return nil, 0, errors.New("开始或结束端口错误")
 	}
 	starts := strings.Split(start, ".")
 	ends := strings.Split(end, ".")
@@ -72,59 +72,47 @@ func ReadIps(ips string) ([]string, error) {
 		if starts[i] < ends[i] {
 			break
 		} else if starts[i] > ends[i] {
-			return nil, errors.New("开始端口大于结束端口")
+			return nil, 0, errors.New("开始端口大于结束端口")
 		} else {
 			if i == 3 {
 				ipsArr = append(ipsArr, start)
-				return ipsArr, nil
+				return ipsArr, 1, nil
 			}
 			i++
 		}
 	}
-
-	//startInts := make([]uint8, 0, 4)
-	//endInts := make([]uint8, 0, 4)
+	// --------------开始处理ip范围-------------------------------------------------
 	ipsArr = make([]string, 0)
-
-	//for i, v := range starts {
-	//	v2, _ := strconv.ParseUint(v, 10, 16)
-	//	v3, _ := strconv.ParseUint(ends[i], 10, 16)
-	//	startInts = append(startInts, uint8(v2))
-	//	endInts = append(endInts, uint8(v3))
-	//}
-	//fmt.Println(startInts, "startInts")
-	//fmt.Println(endInts, "endInts")
-	fmt.Println(i, "i 需要加数的 最大位")
 	endI, _ := strconv.ParseUint(ends[i], 10, 16)
 	fmt.Println(endI, "endI")
-	f := 3
-	ipsArr = append(ipsArr, strings.Join(starts, "."))
+	fmt.Println(starts, "starts")
+	f := 3 // 分4组的标志位
 A:
 	for {
+		ipsArr = append(ipsArr, strings.Join(starts, "."))
+		count++
 		pu, _ := strconv.ParseUint(starts[f], 10, 16)
-		pu++
-		for pu > 255 {
+		starts[f] = strconv.FormatUint(pu+1, 10)
+		for pu == 255 {
 			starts[f] = "0"
 			f--
 			pu2, _ := strconv.ParseUint(starts[f], 10, 16)
 			pu = pu2 + 1
+			starts[f] = strconv.FormatUint(pu, 10)
+			if f == i && pu == endI {
+				if f == 3 {
+					break A
+				}
+				i++                                          // 最左边边界加一
+				endI, _ = strconv.ParseUint(ends[i], 10, 16) // 加一后 最大数字需要
+			}
 		}
-		starts[f] = strconv.FormatUint(pu, 10)
-		ipsArr = append(ipsArr, strings.Join(starts, "."))
-		count++
-		if f == i && pu == endI {
+		if i == 3 && f == i && pu == endI {
 			break A
 		}
+		f = 3
 	}
-	f++ // 正向走--
-	for {
-		pu, _ := strconv.ParseUint(starts[f], 10, 16)
-		pu++
-
-	}
-
-	fmt.Println("ip总数 count", count)
-	return ipsArr, nil
+	return ipsArr, count, nil
 }
 
 func ReadPorts(ports string) ([]uint16, error) {
@@ -150,4 +138,12 @@ func ReadPorts(ports string) ([]uint16, error) {
 		portList = append(portList, uint16(port))
 	}
 	return portList, nil
+}
+
+func ComputedGroupCount(res *int, count int, pageSize int) {
+	if count < pageSize {
+		*res = 1
+	} else {
+		*res = count/pageSize + 1
+	}
 }

@@ -17,14 +17,16 @@ type TcpReq struct {
 }
 
 type TcpScan struct {
-	Log  *scanLog.LogConf
-	body *TcpReq
+	Log      *scanLog.LogConf
+	body     *TcpReq
+	ipPage   int
+	portPage int
 }
 
 func (t *TcpScan) Start(ctx context.Context) error {
 	var err error
 	body := t.body
-	ips, err := utils.ReadIps(body.Ip)
+	ips, count, err := utils.ReadIps(body.Ip)
 	if err != nil {
 		err = fmt.Errorf(err.Error())
 		return err
@@ -33,8 +35,8 @@ func (t *TcpScan) Start(ctx context.Context) error {
 	if err != nil {
 		err = fmt.Errorf("port参数错误")
 	}
-	fmt.Println(":ips", ips)
-	fmt.Sprintf("dd %s %v", ips, ports)
+	t.Log.Info.Println("准备扫描的ip数量: ", count)
+	t.scanIps(ips, ports)
 	return nil
 }
 
@@ -43,10 +45,43 @@ func (t *TcpScan) End(ctx context.Context) error {
 	return nil
 }
 
-func (t *TcpScan) scanIp(ip string, post []uint16) {
-	//fmt.Sprintf("【%v】需要扫描端口总数:%v 个，总协程:%v 个，并发:%v 个，超时:%d 毫秒", ip, total, pageCount, num, s.timeout)
+func (t *TcpScan) scanIps(ip []string, ports []uint16) {
+	//fmt.Sprintf("需要扫描ip总数:%v 个，总协程:%v 个，并发:%v 个，超时:%d 毫秒", count, total, pageCount, num, s.timeout)
+	var ipPageGroupLen int
+	var portPageGroupLen int
+	utils.ComputedGroupCount(&ipPageGroupLen, len(ip), t.ipPage)
+	utils.ComputedGroupCount(&portPageGroupLen, len(ports), t.portPage)
+
 	group := sync.WaitGroup{}
-	group.Add(1)
+	start := 0
+	for i := 0; i < ipPageGroupLen; i++ {
+		ips := make([]string, 0, t.ipPage)
+		if i == ipPageGroupLen-1 {
+			ips = append(ips, ip[start:]...)
+		} else {
+			ips = append(ips, ip[start:start+t.ipPage]...)
+			start += t.ipPage
+		}
+		group.Add(1)
+		go func(ips []string, ports []uint16) {
+			fmt.Println(len(ips), "ips")
+			for _, ip := range ips {
+				t.scanIp(ip, ports, portPageGroupLen)
+			}
+			group.Done()
+		}(ips, ports)
+	}
+
+}
+
+func (t *TcpScan) scanIp(ip string, ports []uint16, portPageGroupLen int) {
+	//group := sync.WaitGroup{}
+	//for i := 0; i < portPageGroupLen; i++ {
+	//	group.Add(1)
+	//	go func() {
+	//
+	//	}()
+	//}
 }
 
 func (t *TcpScan) isOpen(ip string, port uint16, timeout time.Duration) {

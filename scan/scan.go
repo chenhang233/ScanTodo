@@ -38,8 +38,10 @@ func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
 		req := &TcpReq{}
 		err = json.Unmarshal(body, req)
 		tc = &TcpScan{
-			Log:  loadLog,
-			body: req,
+			Log:      loadLog,
+			body:     req,
+			ipPage:   100,
+			portPage: 100,
 		}
 	case "UDP":
 		tc = &UdpScan{
