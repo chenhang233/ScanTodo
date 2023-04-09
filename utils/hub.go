@@ -1,6 +1,10 @@
 package utils
 
-import "github.com/gorilla/websocket"
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/gorilla/websocket"
+)
 
 var HubInstance *Hub
 
@@ -49,4 +53,35 @@ func (h *Hub) Run() {
 			}
 		}
 	}
+}
+
+func SendToThePrivateClientMsgSuccess(ip string, port uint16, protocol string) string {
+	sf := fmt.Sprintf("[成功]:, ip: %s , 端口: %d, 协议: %s, ", ip, port, protocol)
+	if HubInstance.PrivateClient == nil {
+		fmt.Println("PrivateClient 不存在")
+		return sf
+	}
+	js, _ := json.Marshal(sf)
+	HubInstance.PrivateClient.Send <- js
+	return sf
+}
+
+func SendToThePrivateClientMsgError(ip string, port uint16, protocol string, error string) {
+	if HubInstance.PrivateClient == nil {
+		fmt.Println("PrivateClient 不存在")
+		return
+	}
+	sf := fmt.Sprintf("[失败]:, ip: %s , 端口: %d, 协议: %s, 失败原因: %s", ip, port, protocol, error)
+	js, _ := json.Marshal(sf)
+	HubInstance.PrivateClient.Send <- js
+}
+
+func SendToThePrivateClientCustom(str string) {
+	if HubInstance.PrivateClient == nil {
+		fmt.Println("PrivateClient 不存在")
+		return
+	}
+	sf := fmt.Sprintf("%s", str)
+	js, _ := json.Marshal(sf)
+	HubInstance.PrivateClient.Send <- js
 }

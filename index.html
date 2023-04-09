@@ -64,7 +64,7 @@
       message: '等待中',
       httpStatus: '',
       runText: '',
-      timeout: '',
+      timeout: 1000,
       debug: '',
       ip: "127.0.0.1",
       port: "21,22,23,25,53,80,110,443,3000-4000",
@@ -89,7 +89,7 @@
           data: {
             ip: this.ip,
             port: this.port,
-            Timeout: 1000
+            Timeout: this.timeout
           }
         }).then(function (response) {
           console.log(response)
@@ -102,7 +102,7 @@
         ws.onopen = function () {
           console.log("建立连接")
           _this.message = "建立连接"
-          ws.send("-------准备--------")
+          ws.send("-------建立连接--------")
         };
         ws.onmessage = function (evt) {
           console.log("=============")

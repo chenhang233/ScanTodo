@@ -8,12 +8,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/go_build_ScanTodo.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/go_build_ScanTodo.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scan/TcpScan.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/TcpScan.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scanLog/日志_2023_04_08.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scanLog/日志_2023_04_08.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scanLog/log_h.go" beforeDir="false" afterPath="$PROJECT_DIR$/scanLog/log_h.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scanLog/日志_2023_04_05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scanLog/日志_2023_04_06.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scanLog/日志_2023_04_07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scanLog/日志_2023_04_08.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/handle_h.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handle_h.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/hub.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/hub.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/webSocket.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/webSocket.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/webServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +53,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/chenhang/Desktop/code/05.go/demo-1",
+    "last_opened_file_path": "C:/Users/chenhang/Desktop/code/05.go/ScanTodo",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"

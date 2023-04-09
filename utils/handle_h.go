@@ -94,6 +94,9 @@ A:
 		pu, _ := strconv.ParseUint(starts[f], 10, 16)
 		starts[f] = strconv.FormatUint(pu+1, 10)
 		for pu == 255 {
+			if i == 3 && f == i && pu == endI {
+				break A
+			}
 			starts[f] = "0"
 			f--
 			pu2, _ := strconv.ParseUint(starts[f], 10, 16)
