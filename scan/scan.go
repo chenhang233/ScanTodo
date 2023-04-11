@@ -28,7 +28,7 @@ type ScanCase struct {
 }
 
 func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
-	loadLog, err := scanLog.LoadLog("日志")
+	loadLog, err := scanLog.LoadLog("扫描日志")
 	if err != nil {
 		panic(err)
 	}
@@ -47,9 +47,19 @@ func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
 		tc = &UdpScan{
 			Log: loadLog,
 		}
+	case "ICMP":
+		req := &IcmpReq{}
+		err = json.Unmarshal(body, req)
+		tc = &IcmpScan{
+			Log:  loadLog,
+			body: req,
+		}
 	default:
 		loadLog.Error.Println("无法实现 " + scanUseCase + " 这个类型!!!!!!!!!")
 		os.Exit(-1)
+	}
+	if err != nil {
+		loadLog.Error.Println("NewScanCase error: ", err)
 	}
 
 	scan := &ScanCase{Log: loadLog, Repo: tc}
