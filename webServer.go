@@ -74,7 +74,7 @@ func (h *WebHttp) Icmp(writer http.ResponseWriter, request *http.Request) {
 			log.Panicln("body Read", err)
 		}
 
-		sc, _ := scan.NewScanCase("Icmp", all)
+		sc, _ := scan.NewScanCase("ICMP", all)
 		ctx := context.WithValue(context.Background(), "icmp", "1")
 		err = sc.Repo.Start(ctx)
 		jr := JsonResponse{Code: NormalCode, Message: "等待消息"}

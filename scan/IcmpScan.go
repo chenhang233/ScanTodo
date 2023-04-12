@@ -2,9 +2,11 @@ package scan
 
 import (
 	"ScanTodo/scanLog"
+	"ScanTodo/utils"
 	"bytes"
 	"context"
 	"encoding/binary"
+	"errors"
 	"fmt"
 	"net"
 )
@@ -21,9 +23,9 @@ type ICMP struct {
 }
 
 type IcmpReq struct {
-	Ip      string `json:"ip"`
-	Port    string `json:"port"`
-	Timeout int    `json:"timeout"`
+	SourceIp string `json:"sourceIp"`
+	TargetIp string `json:"targetIp"`
+	Timeout  int    `json:"timeout"`
 }
 
 type IcmpScan struct {
@@ -32,10 +34,18 @@ type IcmpScan struct {
 }
 
 func (t *IcmpScan) Start(ctx context.Context) error {
+	body := t.body
+	if !utils.CheckIpv4(body.SourceIp) {
+		return errors.New(fmt.Sprintf("源ip: %s 格式错误", body.SourceIp))
+	}
+	if !utils.CheckIpv4(body.TargetIp) {
+		return errors.New(fmt.Sprintf("目标ip: %s 格式错误", body.TargetIp))
+	}
+
 	var (
 		icmp  ICMP
-		lAddr = net.IPAddr{IP: net.ParseIP("192.168.1.105")}
-		rAddr = net.IPAddr{IP: net.ParseIP("192.168.1.1")}
+		lAddr = net.IPAddr{IP: net.ParseIP(body.SourceIp)}
+		rAddr = net.IPAddr{IP: net.ParseIP(body.TargetIp)}
 	)
 	conn, err := net.DialIP("ip4:icmp", &lAddr, &rAddr)
 	if err != nil {
@@ -58,12 +68,17 @@ func (t *IcmpScan) Start(ctx context.Context) error {
 	icmp.Checksum = t.CheckSum(buffer.Bytes())
 	buffer.Reset()
 	err = binary.Write(&buffer, binary.BigEndian, icmp)
-	fmt.Println("字节数组", buffer.Bytes())
 	if _, err := conn.Write(buffer.Bytes()); err != nil {
 		fmt.Println(err.Error())
 		return err
 	}
 	t.Log.Info.Println("send icmp packet success")
+	bys := make([]byte, 0, 1024)
+	read, err := conn.Read(bys)
+	if err != nil {
+		t.Log.Error.Println("读取错误:", err)
+	}
+	t.Log.Info.Println("响应", read)
 	err = conn.Close()
 	return nil
 }
