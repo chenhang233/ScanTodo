@@ -7,6 +7,8 @@
     <list default="true" id="a6eb86d6-daaf-400b-b6fb-d0f01e68712a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +66,7 @@
     <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ScanTodo" />
       <working_directory value="$PROJECT_DIR$" />
-      <parameters value="ping -t 50s 192.156.5" />
+      <parameters value="-t 10s -s 100 -privileged=true  ping " />
       <kind value="FILE" />
       <package value="ScanTodo/test" />
       <directory value="$PROJECT_DIR$" />
