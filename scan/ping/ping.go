@@ -110,6 +110,7 @@ func New(host string) *Metadata {
 		isIpV4:       true,
 		protocol:     "icmp",
 		TTL:          64,
+		Source:       "0.0.0.0",
 	}
 }
 
