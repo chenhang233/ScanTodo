@@ -7,6 +7,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync/atomic"
+	"time"
 )
 
 const (
@@ -149,4 +151,9 @@ func ComputedGroupCount(res *int, count int, pageSize int) {
 	} else {
 		*res = count/pageSize + 1
 	}
+}
+
+func GetSeed() int64 {
+	seed := time.Now().Unix()
+	return atomic.AddInt64(&seed, 1)
 }

@@ -2,11 +2,25 @@ package ping
 
 import (
 	"ScanTodo/scanLog"
+	"ScanTodo/utils"
 	"errors"
 	"github.com/google/uuid"
+	"math"
+	"math/rand"
 	"net"
 	"sync"
 	"time"
+)
+
+const (
+	timeSliceLength = 8
+	trackerLength   = len(uuid.UUID{})
+	protocolICMP    = 1
+)
+
+var (
+	ipv4Proto = map[string]string{"icmp": "ip4:icmp", "udp": "udp4"}
+	ipv6Proto = map[string]string{"icmp": "ip6:ipv6-icmp", "udp": "udp6"}
 )
 
 type Packet struct {
@@ -52,10 +66,14 @@ type Metadata struct {
 	OnFinish func(*Statistics)
 	// 发送数据包uuid列表
 	trackerUUIDs []uuid.UUID
+	id           int
+	sequence     int
 	// 记录序列号
 	awaitingSequences map[uuid.UUID]map[int]struct{}
-	// 只有 ipv4
-	network string
+	//  是ipv4协议
+	isIpV4 bool
+	// 协议 icmp udp
+	protocol string
 	// 组装后的目标ip信息
 	ipaddr *net.IPAddr
 	// 输入的目标ip
@@ -70,7 +88,29 @@ type Metadata struct {
 }
 
 func New(host string) *Metadata {
-	return &Metadata{}
+	loadLog, err := scanLog.LoadLog("Ping日志")
+	r := rand.New(rand.NewSource(utils.GetSeed()))
+	firstUUID := uuid.New()
+	var firstSequence = map[uuid.UUID]map[int]struct{}{}
+	firstSequence[firstUUID] = make(map[int]struct{})
+	if err != nil {
+		panic(err)
+	}
+	return &Metadata{
+		Count:        -1,
+		Interval:     time.Second,
+		Size:         timeSliceLength + trackerLength,
+		Timeout:      time.Duration(math.MaxInt64),
+		Log:          loadLog,
+		addr:         host,
+		done:         make(chan interface{}),
+		id:           r.Intn(math.MaxUint16),
+		trackerUUIDs: []uuid.UUID{firstUUID},
+		ipaddr:       nil,
+		isIpV4:       true,
+		protocol:     "icmp",
+		TTL:          64,
+	}
 }
 
 func (p *Metadata) Stop() {
@@ -91,7 +131,7 @@ func (p *Metadata) Resolve() error {
 		p.Log.Error.Println(err)
 		return err
 	}
-	addr, err := net.ResolveIPAddr(p.network, p.addr)
+	addr, err := net.ResolveIPAddr("ip", p.addr)
 	if err != nil {
 		p.Log.Error.Println(err)
 		return err

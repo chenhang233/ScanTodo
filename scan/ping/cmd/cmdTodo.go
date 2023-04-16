@@ -35,7 +35,7 @@ Examples:
 func main() {
 	timeout := flag.Duration("t", time.Second*100, "持续时间")
 	interval := flag.Duration("i", time.Second, "间隔时间")
-	size := flag.Int("s", 24, "数据包大小")
+	size := flag.Int("s", 24, "数据包内容大小")
 	count := flag.Int("c", -1, "ping次数")
 	ttl := flag.Int("l", 64, "包存活时间")
 	flag.Usage = func() {
@@ -44,7 +44,8 @@ func main() {
 	}
 	flag.Parse()
 	if flag.NArg() == 0 {
-		fmt.Println("无效参数")
+		fmt.Println("参数错误-----")
+		flag.Usage()
 		return
 	}
 	host := flag.Arg(0)
