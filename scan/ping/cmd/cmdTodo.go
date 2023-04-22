@@ -68,7 +68,7 @@ func main() {
 	ping.Interval = *interval
 	ping.Timeout = *timeout
 	ping.TTL = *ttl
-
+	ping.Log.Info.Println(fmt.Sprintf("开始ping %s (%s): \n ", ping.Addr, ping.Ipaddr))
 	err = ping.Run()
 	if err != nil {
 		ping.Log.Error.Println("启动错误:", err)

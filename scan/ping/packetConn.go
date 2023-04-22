@@ -3,6 +3,7 @@ package ping
 import (
 	"golang.org/x/net/icmp"
 	"golang.org/x/net/ipv4"
+	"golang.org/x/net/ipv6"
 	"net"
 	"time"
 )
@@ -67,4 +68,18 @@ func (c *icmpV4Conn) ReadFrom(b []byte) (int, int, net.Addr, error) {
 
 type icmpV6Conn struct {
 	icmpConn
+}
+
+func (c *icmpV6Conn) SetFlagTTL() error {
+	return nil
+}
+
+func (c *icmpV6Conn) ICMPRequestType() icmp.Type {
+	return ipv6.ICMPTypeEchoRequest
+}
+
+func (c *icmpV6Conn) ReadFrom(b []byte) (int, int, net.Addr, error) {
+	ttl := -1
+	n, _, src, err := c.c.IPv6PacketConn().ReadFrom(b)
+	return n, ttl, src, err
 }

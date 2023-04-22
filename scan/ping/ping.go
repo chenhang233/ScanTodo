@@ -5,6 +5,8 @@ import (
 	"ScanTodo/utils"
 	"errors"
 	"github.com/google/uuid"
+	"golang.org/x/net/icmp"
+	"golang.org/x/sync/errgroup"
 	"math"
 	"math/rand"
 	"net"
@@ -23,10 +25,50 @@ var (
 	ipv6Proto = map[string]string{"icmp": "ip6:ipv6-icmp", "udp": "udp6"}
 )
 
-type Packet struct {
+// packet 接收到的数据包
+type packet struct {
+	bytes   []byte
+	byteLen int
+	ttl     int
 }
 
-type Statistics struct{}
+type Packet struct {
+	// 所有往返时间统计
+	RTTs []time.Duration
+	// 目标主机
+	IPAddr *net.IPAddr
+	// 目标主机字符串
+	Addr string
+	// 数据包长度
+	ByteLen int
+	// 序列号
+	Sequence int
+	TTL      int
+	// 当前标识符
+	Identifier int
+}
+
+// Statistics 统计
+type Statistics struct {
+	// 已经收到包数量
+	PacketsReceive int
+	// 已经发送包数量
+	PacketsSent int
+	//收到重复包数量
+	PacketsReceiveDuplicates int
+	// 丢包率
+	PacketLoss float64
+	// 目标主机
+	IPAddr *net.IPAddr
+	// 目标主机字符串
+	Addr string
+	// 所有往返时间统计
+	RTTs []time.Duration
+	// 往返时间统计
+	minRoundTripTime     time.Duration
+	maxRoundTripTime     time.Duration
+	averageRoundTripTime time.Duration
+}
 
 // Metadata 数据包元数据结构体
 type Metadata struct {
@@ -73,11 +115,11 @@ type Metadata struct {
 	//  是ipv4协议
 	isIpV4 bool
 	// 协议 icmp udp
-	protocol string
+	Protocol string
 	// 组装后的目标ip信息
-	ipaddr *net.IPAddr
+	Ipaddr *net.IPAddr
 	// 输入的目标ip
-	addr string
+	Addr string
 	// 生存时间
 	TTL int
 	// 日志记录
@@ -102,19 +144,20 @@ func New(host string) *Metadata {
 		Size:         timeSliceLength + trackerLength,
 		Timeout:      time.Duration(math.MaxInt64),
 		Log:          loadLog,
-		addr:         host,
+		Addr:         host,
 		done:         make(chan interface{}),
 		id:           r.Intn(math.MaxUint16),
 		trackerUUIDs: []uuid.UUID{firstUUID},
-		ipaddr:       nil,
+		Ipaddr:       nil,
 		isIpV4:       true,
-		protocol:     "icmp",
+		Protocol:     "icmp",
 		TTL:          64,
 		Source:       "0.0.0.0",
 	}
 }
 
 func (p *Metadata) Stop() {
+	p.Log.Info.Printf("Stop 调用: ")
 	p.lock.Lock()
 	defer p.lock.Unlock()
 	open := true
@@ -124,20 +167,21 @@ func (p *Metadata) Stop() {
 	if open {
 		close(p.done)
 	}
+	p.Log.Info.Printf("ping 结束")
 }
 
 func (p *Metadata) Resolve() error {
-	if len(p.addr) == 0 {
+	if len(p.Addr) == 0 {
 		err := errors.New("目标ip为空")
 		p.Log.Error.Println(err)
 		return err
 	}
-	addr, err := net.ResolveIPAddr("ip", p.addr)
+	addr, err := net.ResolveIPAddr("ip", p.Addr)
 	if err != nil {
 		p.Log.Error.Println(err)
 		return err
 	}
-	p.ipaddr = addr
+	p.Ipaddr = addr
 	return nil
 }
 
@@ -147,5 +191,99 @@ func NewPingMetadata(host string) (*Metadata, error) {
 }
 
 func (p *Metadata) Run() error {
+	var conn packetConn
+	var err error
+	if p.Size < timeSliceLength+trackerLength {
+		p.Log.Error.Println("数据包小于必须大小 \n")
+		return nil
+	}
+	conn, err = p.listen()
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	conn.SetTTL(p.TTL)
+	return p.run(conn)
+}
+
+func (p *Metadata) listen() (packetConn, error) {
+	var conn packetConn
+	var err error
+	if p.isIpV4 {
+		c := &icmpV4Conn{}
+		c.c, err = icmp.ListenPacket(ipv4Proto[p.Protocol], p.Source)
+		conn = c
+	} else {
+		conn = &icmpV6Conn{}
+		c := &icmpV6Conn{}
+		c.c, err = icmp.ListenPacket(ipv6Proto[p.Protocol], p.Source)
+		conn = c
+	}
+	if err != nil {
+		p.Log.Error.Println("listen: ", err)
+		p.Stop()
+		return nil, err
+	}
+	return conn, nil
+}
+
+func (p *Metadata) run(conn packetConn) error {
+	err := conn.SetFlagTTL()
+	if err != nil {
+		p.Log.Warn.Printf(err.Error())
+		return err
+	}
+	defer p.finish()
+	receive := make(chan *packet, 5)
+	setup := p.OnSetup
+	if setup != nil {
+		setup()
+	}
+	var g errgroup.Group
+	g.Go(func() error {
+		defer p.Stop()
+		return p.receiveICMP(conn, receive)
+	})
+	g.Go(func() error {
+		defer p.Stop()
+		return p.MainLoop(conn, receive)
+	})
+	err = g.Wait()
+	p.Log.Error.Printf("g.Wait: ", err)
+	return err
+}
+
+func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 	return nil
+}
+
+func (p *Metadata) receiveICMP(conn packetConn, re <-chan *packet) error {
+	return nil
+}
+
+func (p *Metadata) finish() {
+	handle := p.OnFinish
+	if handle != nil {
+		handle(p.Statistics())
+	}
+}
+
+func (p *Metadata) Statistics() *Statistics {
+	p.statsMutex.Lock()
+	defer p.statsMutex.Unlock()
+	sent := p.PacketsSent
+	loss := float64(sent-p.PacketsReceive) / float64(sent*100)
+	s := &Statistics{
+		PacketsSent:              sent,
+		PacketsReceive:           p.PacketsReceive,
+		PacketsReceiveDuplicates: p.PacketsReceiveDuplicates,
+		PacketLoss:               loss,
+		IPAddr:                   p.Ipaddr,
+		Addr:                     p.Addr,
+		RTTs:                     p.RTTs,
+		minRoundTripTime:         p.minRoundTripTime,
+		maxRoundTripTime:         p.maxRoundTripTime,
+		averageRoundTripTime:     p.averageRoundTripTime,
+	}
+	return s
 }
