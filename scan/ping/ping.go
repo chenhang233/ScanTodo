@@ -4,8 +4,11 @@ import (
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"errors"
+	"fmt"
 	"github.com/google/uuid"
 	"golang.org/x/net/icmp"
+	"golang.org/x/net/ipv4"
+	"golang.org/x/net/ipv6"
 	"golang.org/x/sync/errgroup"
 	"math"
 	"math/rand"
@@ -161,6 +164,7 @@ func (p *Metadata) Stop() {
 	p.lock.Lock()
 	defer p.lock.Unlock()
 	open := true
+	fmt.Println("等待结束")
 	select {
 	case _, open = <-p.done:
 	}
@@ -231,7 +235,6 @@ func (p *Metadata) run(conn packetConn) error {
 	err := conn.SetFlagTTL()
 	if err != nil {
 		p.Log.Warn.Printf(err.Error())
-		return err
 	}
 	defer p.finish()
 	receive := make(chan *packet, 5)
@@ -249,15 +252,91 @@ func (p *Metadata) run(conn packetConn) error {
 		return p.MainLoop(conn, receive)
 	})
 	err = g.Wait()
-	p.Log.Error.Printf("g.Wait: ", err)
+	p.Log.Error.Printf("等待 错误: ", err)
 	return err
 }
 
 func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
+	timeout := time.NewTicker(p.Timeout)
+	interval := time.NewTicker(p.Interval)
+	defer func() {
+		timeout.Stop()
+		interval.Stop()
+	}()
+	err := p.sendICMP(conn)
+	if err != nil {
+		p.Log.Warn.Printf("第一次发包出现异常: ", err)
+	}
+	for {
+		select {
+		case <-p.done:
+			p.Log.Warn.Printf("收到结束信号")
+			return nil
+		case <-timeout.C:
+			p.Log.Warn.Printf("收到超时信号")
+			return nil
+		case <-interval.C:
+			p.Log.Debug.Printf("收到间隔时间信号")
+			if (p.Count > 0 && p.PacketsSent >= p.Count) || p.Count < 0 {
+				p.Stop()
+				continue
+			}
+			err := p.sendICMP(conn)
+			if err != nil {
+				p.Log.Warn.Printf("发包异常", err)
+			}
+		case r := <-re:
+			err := p.processPacket(r)
+			if err != nil {
+				p.Log.Warn.Printf("处理收到的包异常", err)
+			}
+		}
+		if p.Count > 0 && p.Count <= p.PacketsSent {
+			return nil
+		}
+	}
+}
+
+func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
+	for {
+		select {
+		case <-p.done:
+			return nil
+		default:
+			var n, ttl int
+			var err error
+			bytes := make([]byte, p.getMessageLength())
+			err = conn.SetReadDeadline(time.Now().Add(p.Timeout))
+			if err != nil {
+				p.Log.Warn.Printf(err.Error())
+			}
+			n, ttl, _, err = conn.ReadFrom(bytes)
+			if err != nil {
+				p.Log.Error.Printf(err.Error())
+				return err
+			}
+			select {
+			case <-p.done:
+				return nil
+			case re <- &packet{bytes: bytes, byteLen: n, ttl: ttl}:
+
+			}
+		}
+	}
+}
+
+func (p *Metadata) sendICMP(conn packetConn) error {
+	curUUID := p.trackerUUIDs[len(p.trackerUUIDs)-1]
+	encode, err := curUUID.MarshalBinary()
+	fmt.Println(encode)
+	if err != nil {
+		p.Log.Error.Println(err)
+		return err
+	}
 	return nil
 }
 
-func (p *Metadata) receiveICMP(conn packetConn, re <-chan *packet) error {
+func (p *Metadata) processPacket(receive *packet) error {
 	return nil
 }
 
@@ -286,4 +365,11 @@ func (p *Metadata) Statistics() *Statistics {
 		averageRoundTripTime:     p.averageRoundTripTime,
 	}
 	return s
+}
+
+func (p *Metadata) getMessageLength() int {
+	if p.isIpV4 {
+		return p.Size + 8 + ipv4.HeaderLen
+	}
+	return p.Size + 8 + ipv6.HeaderLen
 }

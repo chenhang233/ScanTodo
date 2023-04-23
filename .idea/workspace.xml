@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6eb86d6-daaf-400b-b6fb-d0f01e68712a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/test_tcp.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test_map.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/go_build_ScanTodo.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/go_build_ScanTodo.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scan/ping/cmd/cmdTodo.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/ping/cmd/cmdTodo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scan/ping/packetConn.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/ping/packetConn.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scan/ping/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/ping/ping.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +46,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/chenhang/Desktop/code/05.go/ScanTodo",
+    "last_opened_file_path": "C:/Users/chenhang/Desktop/code/05.go/ScanTodo/bin",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -96,6 +94,16 @@
       <output_directory value="$PROJECT_DIR$/bin" />
       <method v="2" />
     </configuration>
+    <configuration name="go build ScanTodo/test (3)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ScanTodo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="ScanTodo/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/test_map.go" />
+      <output_directory value="$PROJECT_DIR$/bin" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build ScanTodo/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ScanTodo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -117,6 +125,7 @@
     </configuration>
     <list>
       <item itemvalue="Go Build.go build ScanTodo" />
+      <item itemvalue="Go Build.go build ScanTodo/test (3)" />
       <item itemvalue="Go Build.go build ScanTodo/test" />
       <item itemvalue="Go Build.go build ScanTodo/test (1)" />
       <item itemvalue="Go Build.go build ScanTodo/test (2)" />
@@ -126,10 +135,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build ScanTodo/scan/ping/cmd" />
+        <item itemvalue="Go Build.go build ScanTodo/test (3)" />
         <item itemvalue="Go Build.go build ScanTodo/test (2)" />
         <item itemvalue="Go Build.go build ScanTodo/test" />
         <item itemvalue="Go Build.go build ScanTodo/test (1)" />
-        <item itemvalue="Go Build.go build test_ping.go" />
       </list>
     </recent_temporary>
   </component>
