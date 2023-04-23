@@ -3,6 +3,7 @@ package ping
 import (
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
+	"bytes"
 	"errors"
 	"fmt"
 	"github.com/google/uuid"
@@ -14,6 +15,7 @@ import (
 	"math/rand"
 	"net"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -111,8 +113,9 @@ type Metadata struct {
 	OnFinish func(*Statistics)
 	// 发送数据包uuid列表
 	trackerUUIDs []uuid.UUID
-	id           int
-	sequence     int
+	// Identifier
+	id       int
+	sequence int
 	// 记录序列号
 	awaitingSequences map[uuid.UUID]map[int]struct{}
 	//  是ipv4协议
@@ -328,12 +331,61 @@ func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
 func (p *Metadata) sendICMP(conn packetConn) error {
 	curUUID := p.trackerUUIDs[len(p.trackerUUIDs)-1]
 	encode, err := curUUID.MarshalBinary()
-	fmt.Println(encode)
 	if err != nil {
 		p.Log.Error.Println(err)
 		return err
 	}
-	return nil
+	t := append(utils.TimeToBytes(time.Now()), encode...)
+	remainSize := p.Size - timeSliceLength - trackerLength
+	if remainSize > 0 {
+		t = append(t, bytes.Repeat([]byte{1}, remainSize)...)
+	}
+	body := &icmp.Echo{
+		ID:   p.id,
+		Seq:  p.sequence,
+		Data: t,
+	}
+	msg := &icmp.Message{
+		Type: conn.ICMPRequestType(),
+		Code: 0,
+		Body: body,
+	}
+	byteData, err := msg.Marshal(nil)
+	if err != nil {
+		p.Log.Error.Println(err)
+	}
+	for {
+		_, err := conn.WriteTo(byteData, p.Ipaddr)
+		if err != nil {
+			opError, ok := err.(*net.OpError)
+			if ok && opError.Err == syscall.ENOBUFS {
+				p.Log.Error.Println("发包错误定位: ", err)
+				continue
+			}
+			p.Log.Error.Println("发包错误日志: ", err)
+		}
+		handle := p.OnSend
+		if handle != nil {
+			packet := &Packet{
+				ByteLen:    len(byteData),
+				IPAddr:     p.Ipaddr,
+				Addr:       p.Addr,
+				Sequence:   p.sequence,
+				Identifier: p.id,
+			}
+			handle(packet)
+		}
+		p.awaitingSequences[curUUID][p.sequence] = struct{}{}
+		p.sequence++
+		p.PacketsSent++
+		if p.sequence > 65535 {
+			u := uuid.New()
+			p.trackerUUIDs = append(p.trackerUUIDs, u)
+			p.awaitingSequences[u] = make(map[int]struct{})
+			p.sequence = 0
+		}
+		break
+	}
 }
 
 func (p *Metadata) processPacket(receive *packet) error {
