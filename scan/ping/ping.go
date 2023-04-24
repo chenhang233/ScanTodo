@@ -386,6 +386,7 @@ func (p *Metadata) sendICMP(conn packetConn) error {
 		}
 		break
 	}
+	return nil
 }
 
 func (p *Metadata) processPacket(receive *packet) error {

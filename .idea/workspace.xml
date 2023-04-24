@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6eb86d6-daaf-400b-b6fb-d0f01e68712a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/handle_p.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scan/ping/cmd/cmdTodo.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/ping/cmd/cmdTodo.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scan/ping/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/scan/ping/ping.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scanLog/logs/Ping日志_2023_04_23.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scanLog/logs/Ping日志_2023_04_23.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_map.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

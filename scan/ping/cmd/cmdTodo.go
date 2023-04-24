@@ -44,7 +44,7 @@ func main() {
 	}
 	flag.Parse()
 	if flag.NArg() == 0 {
-		fmt.Println("参数错误-----")
+		fmt.Println("没有目标IP !")
 		flag.Usage()
 		return
 	}
