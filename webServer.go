@@ -32,9 +32,9 @@ func (h *WebHttp) Index(writer http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		log.Println("读文件错误", err)
 	}
-	writer.Header().Set("Content-Type", "text/html")
 	switch request.Method {
 	case "GET":
+		writer.Header().Set("Content-Type", "text/html")
 		writer.Write(file)
 	case "POST":
 		jr := &JsonResponse{Code: NoMessageCode, Message: NoMessageMsg, Data: nil}

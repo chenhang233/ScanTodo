@@ -10,5 +10,5 @@
 [http接口文档地址](https://console-docs.apipost.cn/preview/364a239b7ab40481/8dd34141074dbd5c)
 
 `
-    QQ: 1973433180
+    联系QQ: 1973433180
 `

@@ -73,15 +73,15 @@ func main() {
 	}
 	pingMetadata.OnSend = func(packet *ping.Packet) {
 		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnSend source: %s,destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
-			pingMetadata.Source, packet.IPAddr, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTTs))
+			pingMetadata.Source, packet.IPAddr, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnReceive = func(packet *ping.Packet) {
 		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnReceive  source: %s, destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
-			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTTs))
+			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnDuplicateReceive = func(packet *ping.Packet) {
-		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnDuplicateReceive  source: %s, destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
-			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTTs))
+		pingMetadata.Log.Warn.Printf(fmt.Sprintf("OnDuplicateReceive  source: %s, destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
+			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnFinish = func(statistics *ping.Statistics) {
 		pingMetadata.Log.Info.Println("OnFinish callback")

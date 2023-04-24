@@ -5,6 +5,7 @@ import (
 	"ScanTodo/utils"
 	"bytes"
 	"errors"
+	"fmt"
 	"github.com/google/uuid"
 	"golang.org/x/net/icmp"
 	"golang.org/x/net/ipv4"
@@ -38,7 +39,7 @@ type packet struct {
 
 type Packet struct {
 	// 当前包往返时间统计
-	RTTs time.Duration
+	RTT time.Duration
 	// 目标主机
 	IPAddr *net.IPAddr
 	// 目标主机字符串
@@ -391,6 +392,59 @@ func (p *Metadata) sendICMP(conn packetConn) error {
 }
 
 func (p *Metadata) processPacket(receive *packet) error {
+	receiveTime := time.Now()
+	var proto int
+	if p.isIpV4 {
+		proto = protocolICMP
+	} else {
+		panic("没实现")
+	}
+	var m *icmp.Message
+	var err error
+	m, err = icmp.ParseMessage(proto, receive.bytes)
+	if err != nil {
+		p.Log.Error.Println("解析消息错误: ", err)
+		return err
+	}
+	if m.Type != ipv4.ICMPTypeEchoReply && m.Type != ipv6.ICMPTypeEchoReply {
+		return nil
+	}
+	pkg := &Packet{
+		IPAddr:     p.Ipaddr,
+		Addr:       p.Addr,
+		ByteLen:    receive.byteLen,
+		Identifier: p.id,
+		TTL:        receive.ttl,
+	}
+	switch pkt := m.Body.(type) {
+	case *icmp.Echo:
+		if pkt.ID != p.id {
+			p.Log.Warn.Printf(fmt.Sprintf("ID 错误,收到: %v,需要: %v", pkt.ID, p.id))
+			return err
+		}
+		if len(pkt.Data) < timeSliceLength+trackerLength {
+			p.Log.Warn.Printf("包异常: ", len(pkt.Data))
+		}
+		packetUUID, err := p.getPacketUUID(pkt.Data)
+		if err != nil {
+			p.Log.Error.Println(err)
+		}
+		timestamp := utils.BytesToTime(pkt.Data[:timeSliceLength])
+		pkg.RTT = receiveTime.Sub(timestamp)
+		pkg.Sequence = pkt.Seq
+		_, h := p.awaitingSequences[*packetUUID][pkg.Sequence]
+		if !h {
+			p.PacketsReceiveDuplicates++
+			handle := p.OnDuplicateReceive
+			if handle != nil {
+				handle(pkg)
+			}
+		}
+		delete(p.awaitingSequences[*packetUUID], pkg.Sequence)
+
+	default:
+		p.Log.Warn.Printf(fmt.Sprintf("无效ICMP '%v'", pkt))
+	}
 	return nil
 }
 
@@ -420,10 +474,38 @@ func (p *Metadata) Statistics() *Statistics {
 	}
 	return s
 }
+func (p *Metadata) updateStatistics(pkt *Packet) {
+	p.statsMutex.Lock()
+	defer p.statsMutex.Unlock()
+	p.PacketsSent++
+	p.RTTs = append(p.RTTs, pkt.RTT)
+	if p.PacketsReceive == 1 || pkt.RTT < p.minRoundTripTime {
+		p.minRoundTripTime = pkt.RTT
+	}
+	if pkt.RTT > p.maxRoundTripTime {
+		p.maxRoundTripTime = pkt.RTT
+	}
+	//p.averageRoundTripTime = (pkt.RTT)
+}
 
 func (p *Metadata) getMessageLength() int {
 	if p.isIpV4 {
 		return p.Size + 8 + ipv4.HeaderLen
 	}
 	return p.Size + 8 + ipv6.HeaderLen
+}
+
+func (p *Metadata) getPacketUUID(pkt []byte) (*uuid.UUID, error) {
+	var packetUUID uuid.UUID
+	var err error
+	err = packetUUID.UnmarshalBinary(pkt[timeSliceLength : timeSliceLength+trackerLength])
+	if err != nil {
+		p.Log.Error.Println("UUID解析错误: ", err)
+	}
+	for _, uid := range p.trackerUUIDs {
+		if packetUUID == uid {
+			return &packetUUID, nil
+		}
+	}
+	return nil, errors.New("UUID不在 trackerUUIDs ！")
 }
