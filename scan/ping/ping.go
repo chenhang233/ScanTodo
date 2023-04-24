@@ -38,8 +38,8 @@ type packet struct {
 }
 
 type Packet struct {
-	// 所有往返时间统计
-	RTTs []time.Duration
+	// 当前包往返时间统计
+	RTT time.Duration
 	// 目标主机
 	IPAddr *net.IPAddr
 	// 目标主机字符串
@@ -145,20 +145,21 @@ func New(host string) *Metadata {
 		panic(err)
 	}
 	return &Metadata{
-		Count:        -1,
-		Interval:     time.Second,
-		Size:         timeSliceLength + trackerLength,
-		Timeout:      time.Duration(math.MaxInt64),
-		Log:          loadLog,
-		Addr:         host,
-		done:         make(chan interface{}),
-		id:           r.Intn(math.MaxUint16),
-		trackerUUIDs: []uuid.UUID{firstUUID},
-		Ipaddr:       nil,
-		isIpV4:       true,
-		Protocol:     "icmp",
-		TTL:          64,
-		Source:       "0.0.0.0",
+		Count:             24,
+		Interval:          time.Second,
+		Size:              timeSliceLength + trackerLength,
+		Timeout:           time.Duration(math.MaxInt64),
+		Log:               loadLog,
+		Addr:              host,
+		done:              make(chan interface{}),
+		id:                r.Intn(math.MaxUint16),
+		trackerUUIDs:      []uuid.UUID{firstUUID},
+		awaitingSequences: firstSequence,
+		Ipaddr:            nil,
+		isIpV4:            true,
+		Protocol:          "icmp",
+		TTL:               64,
+		Source:            "0.0.0.0",
 	}
 }
 
@@ -166,15 +167,15 @@ func (p *Metadata) Stop() {
 	p.Log.Info.Printf("Stop 调用: ")
 	p.lock.Lock()
 	defer p.lock.Unlock()
+
 	open := true
-	fmt.Println("等待结束")
 	select {
 	case _, open = <-p.done:
+	default:
 	}
 	if open {
 		close(p.done)
 	}
-	p.Log.Info.Printf("ping 结束")
 }
 
 func (p *Metadata) Resolve() error {
@@ -206,6 +207,7 @@ func (p *Metadata) Run() error {
 	}
 	conn, err = p.listen()
 	if err != nil {
+		p.Log.Error.Println("监听错误: ", err)
 		return err
 	}
 	defer conn.Close()
@@ -255,7 +257,7 @@ func (p *Metadata) run(conn packetConn) error {
 		return p.MainLoop(conn, receive)
 	})
 	err = g.Wait()
-	p.Log.Error.Printf("等待 错误: ", err)
+	p.Log.Error.Printf("结束中:", err)
 	return err
 }
 
@@ -294,7 +296,7 @@ func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 				p.Log.Warn.Printf("处理收到的包异常", err)
 			}
 		}
-		if p.Count > 0 && p.Count <= p.PacketsSent {
+		if (p.Count > 0 && p.Count <= p.PacketsSent) || p.Count < 0 {
 			return nil
 		}
 	}
@@ -308,12 +310,12 @@ func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
 		default:
 			var n, ttl int
 			var err error
-			bytes := make([]byte, p.getMessageLength())
+			b := make([]byte, p.getMessageLength())
 			err = conn.SetReadDeadline(time.Now().Add(p.Timeout))
 			if err != nil {
 				p.Log.Warn.Printf(err.Error())
 			}
-			n, ttl, _, err = conn.ReadFrom(bytes)
+			n, ttl, _, err = conn.ReadFrom(b)
 			if err != nil {
 				p.Log.Error.Printf(err.Error())
 				return err
@@ -321,8 +323,7 @@ func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
 			select {
 			case <-p.done:
 				return nil
-			case re <- &packet{bytes: bytes, byteLen: n, ttl: ttl}:
-
+			case re <- &packet{bytes: b, byteLen: n, ttl: ttl}:
 			}
 		}
 	}
@@ -363,6 +364,7 @@ func (p *Metadata) sendICMP(conn packetConn) error {
 				continue
 			}
 			p.Log.Error.Println("发包错误日志: ", err)
+			return err
 		}
 		handle := p.OnSend
 		if handle != nil {
@@ -390,6 +392,59 @@ func (p *Metadata) sendICMP(conn packetConn) error {
 }
 
 func (p *Metadata) processPacket(receive *packet) error {
+	receiveTime := time.Now()
+	var proto int
+	if p.isIpV4 {
+		proto = protocolICMP
+	} else {
+		panic("没实现")
+	}
+	var m *icmp.Message
+	var err error
+	m, err = icmp.ParseMessage(proto, receive.bytes)
+	if err != nil {
+		p.Log.Error.Println("解析消息错误: ", err)
+		return err
+	}
+	if m.Type != ipv4.ICMPTypeEchoReply && m.Type != ipv6.ICMPTypeEchoReply {
+		return nil
+	}
+	pkg := &Packet{
+		IPAddr:     p.Ipaddr,
+		Addr:       p.Addr,
+		ByteLen:    receive.byteLen,
+		Identifier: p.id,
+		TTL:        receive.ttl,
+	}
+	switch pkt := m.Body.(type) {
+	case *icmp.Echo:
+		if pkt.ID != p.id {
+			p.Log.Warn.Printf(fmt.Sprintf("ID 错误,收到: %v,需要: %v", pkt.ID, p.id))
+			return err
+		}
+		if len(pkt.Data) < timeSliceLength+trackerLength {
+			p.Log.Warn.Printf("包异常: ", len(pkt.Data))
+		}
+		packetUUID, err := p.getPacketUUID(pkt.Data)
+		if err != nil {
+			p.Log.Error.Println(err)
+		}
+		timestamp := utils.BytesToTime(pkt.Data[:timeSliceLength])
+		pkg.RTT = receiveTime.Sub(timestamp)
+		pkg.Sequence = pkt.Seq
+		_, h := p.awaitingSequences[*packetUUID][pkg.Sequence]
+		if !h {
+			p.PacketsReceiveDuplicates++
+			handle := p.OnDuplicateReceive
+			if handle != nil {
+				handle(pkg)
+			}
+		}
+		delete(p.awaitingSequences[*packetUUID], pkg.Sequence)
+
+	default:
+		p.Log.Warn.Printf(fmt.Sprintf("无效ICMP '%v'", pkt))
+	}
 	return nil
 }
 
@@ -419,10 +474,38 @@ func (p *Metadata) Statistics() *Statistics {
 	}
 	return s
 }
+func (p *Metadata) updateStatistics(pkt *Packet) {
+	p.statsMutex.Lock()
+	defer p.statsMutex.Unlock()
+	p.PacketsSent++
+	p.RTTs = append(p.RTTs, pkt.RTT)
+	if p.PacketsReceive == 1 || pkt.RTT < p.minRoundTripTime {
+		p.minRoundTripTime = pkt.RTT
+	}
+	if pkt.RTT > p.maxRoundTripTime {
+		p.maxRoundTripTime = pkt.RTT
+	}
+	//p.averageRoundTripTime = (pkt.RTT)
+}
 
 func (p *Metadata) getMessageLength() int {
 	if p.isIpV4 {
 		return p.Size + 8 + ipv4.HeaderLen
 	}
 	return p.Size + 8 + ipv6.HeaderLen
+}
+
+func (p *Metadata) getPacketUUID(pkt []byte) (*uuid.UUID, error) {
+	var packetUUID uuid.UUID
+	var err error
+	err = packetUUID.UnmarshalBinary(pkt[timeSliceLength : timeSliceLength+trackerLength])
+	if err != nil {
+		p.Log.Error.Println("UUID解析错误: ", err)
+	}
+	for _, uid := range p.trackerUUIDs {
+		if packetUUID == uid {
+			return &packetUUID, nil
+		}
+	}
+	return nil, errors.New("UUID不在 trackerUUIDs ！")
 }

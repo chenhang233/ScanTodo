@@ -1,0 +1,106 @@
+[info]2023/04/24 14:12:12 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:12:12 ping.go:241: not implemented on windows/amd64
+[info]2023/04/24 14:12:12 ping.go:166: Stop 调用: 
+[debug]2023/04/24 14:12:29 cmdTodo.go:62: 接收到中断的信号: interrupt
+[info]2023/04/24 14:12:29 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:13:09 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:13:09 ping.go:241: not implemented on windows/amd64
+[info]2023/04/24 14:13:09 ping.go:166: Stop 调用: 
+[debug]2023/04/24 14:13:26 cmdTodo.go:62: 接收到中断的信号: interrupt
+[info]2023/04/24 14:13:26 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:14:46 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:14:46 ping.go:238: not implemented on windows/amd64
+[info]2023/04/24 14:14:46 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:14:46 ping.go:174: ping 结束 %!(EXTRA bool=false)
+[info]2023/04/24 14:18:46 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:18:46 ping.go:239: not implemented on windows/amd64
+[debug]2023/04/24 14:18:47 ping.go:281: 收到间隔时间信号
+[info]2023/04/24 14:18:47 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:18:47 ping.go:175: ping 结束 %!(EXTRA bool=false)
+[warn]2023/04/24 14:18:47 ping.go:275: 收到结束信号
+[info]2023/04/24 14:18:47 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:44:06 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:44:06 ping.go:241: not implemented on windows/amd64
+[debug]2023/04/24 14:44:07 ping.go:283: 收到间隔时间信号
+[info]2023/04/24 14:44:07 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:44:07 ping.go:177: ping 结束 %!(EXTRA bool=false)
+[warn]2023/04/24 14:44:07 ping.go:277: 收到结束信号
+[info]2023/04/24 14:44:07 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:44:36 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:44:36 ping.go:239: not implemented on windows/amd64
+[debug]2023/04/24 14:44:37 ping.go:281: 收到间隔时间信号
+[info]2023/04/24 14:44:37 ping.go:167: Stop 调用: 
+[debug]2023/04/24 14:45:31 cmdTodo.go:62: 接收到中断的信号: interrupt
+[info]2023/04/24 14:45:31 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:45:34 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:45:34 ping.go:239: not implemented on windows/amd64
+[debug]2023/04/24 14:45:35 ping.go:281: 收到间隔时间信号
+[info]2023/04/24 14:45:35 ping.go:167: Stop 调用: 
+[debug]2023/04/24 14:46:10 cmdTodo.go:62: 接收到中断的信号: interrupt
+[info]2023/04/24 14:46:10 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:46:13 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:46:13 ping.go:241: not implemented on windows/amd64
+[debug]2023/04/24 14:46:14 ping.go:283: 收到间隔时间信号
+[info]2023/04/24 14:46:14 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:46:14 ping.go:177: ping 结束 %!(EXTRA bool=true)
+[warn]2023/04/24 14:46:14 ping.go:277: 收到结束信号
+[info]2023/04/24 14:46:14 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:48:13 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:48:13 ping.go:243: not implemented on windows/amd64
+[debug]2023/04/24 14:48:14 ping.go:285: 收到间隔时间信号
+[info]2023/04/24 14:48:14 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:48:14 ping.go:179: ping 结束 %!(EXTRA bool=true)
+[warn]2023/04/24 14:48:14 ping.go:279: 收到结束信号
+[info]2023/04/24 14:48:14 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:48:14 ping.go:179: ping 结束 %!(EXTRA bool=false)
+[error]2023/04/24 14:49:53 ping.go:323: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/24 14:49:53 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:49:53 ping.go:179: ping 结束 %!(EXTRA bool=false)
+[error]2023/04/24 14:49:53 ping.go:261: 等待结束: %!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[error]2023/04/24 14:49:53 cmdTodo.go:74: 启动错误: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/24 14:52:08 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:52:08 ping.go:242: not implemented on windows/amd64
+[debug]2023/04/24 14:52:09 ping.go:284: 收到间隔时间信号
+[info]2023/04/24 14:52:09 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:52:09 ping.go:178: ping 结束 %!(EXTRA bool=true)
+[warn]2023/04/24 14:52:09 ping.go:278: 收到结束信号
+[info]2023/04/24 14:52:09 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:52:09 ping.go:178: ping 结束 %!(EXTRA bool=false)
+[error]2023/04/24 14:52:09 ping.go:260: 等待结束: %!(EXTRA <nil>)
+[info]2023/04/24 14:53:54 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:53:54 ping.go:243: not implemented on windows/amd64
+[debug]2023/04/24 14:53:55 ping.go:285: 收到间隔时间信号
+[info]2023/04/24 14:53:55 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:53:55 ping.go:179: ping 结束 %!(EXTRA bool=true)
+[warn]2023/04/24 14:53:55 ping.go:279: 收到结束信号
+[info]2023/04/24 14:53:55 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:53:55 ping.go:179: ping 结束 %!(EXTRA bool=false)
+[debug]2023/04/24 14:54:06 cmdTodo.go:62: 接收到中断的信号: interrupt
+[info]2023/04/24 14:54:06 ping.go:167: Stop 调用: 
+[info]2023/04/24 14:54:06 ping.go:179: ping 结束 %!(EXTRA bool=false)
+[info]2023/04/24 14:55:11 cmdTodo.go:71: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 14:55:11 ping.go:242: not implemented on windows/amd64
+[debug]2023/04/24 14:55:12 ping.go:284: 收到间隔时间信号
+[info]2023/04/24 14:55:12 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:55:12 ping.go:178: ping 结束 %!(EXTRA bool=true)
+[warn]2023/04/24 14:55:12 ping.go:278: 收到结束信号
+[info]2023/04/24 14:55:12 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:55:12 ping.go:178: ping 结束 %!(EXTRA bool=false)
+[error]2023/04/24 14:55:16 ping.go:320: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/24 14:55:16 ping.go:166: Stop 调用: 
+[info]2023/04/24 14:55:16 ping.go:178: ping 结束 %!(EXTRA bool=false)
+[error]2023/04/24 14:55:16 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[error]2023/04/24 14:55:16 cmdTodo.go:74: 启动错误: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/24 15:19:16 cmdTodo.go:90: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/24 15:19:16 ping.go:241: not implemented on windows/amd64
+[info]2023/04/24 15:19:16 cmdTodo.go:72: OnSetup callback
+[info]2023/04/24 15:19:16 cmdTodo.go:75: OnSend source: 0.0.0.0,destination: 192.168.0.0,byteLen: 48,Sequence: 0,Identifier: 4114,RTTS: 0s
+[debug]2023/04/24 15:19:17 ping.go:283: 收到间隔时间信号
+[info]2023/04/24 15:19:17 ping.go:166: Stop 调用: 
+[warn]2023/04/24 15:19:17 ping.go:277: 收到结束信号
+[info]2023/04/24 15:19:17 ping.go:166: Stop 调用: 
+[error]2023/04/24 15:19:21 ping.go:319: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/24 15:19:21 ping.go:166: Stop 调用: 
+[error]2023/04/24 15:19:21 ping.go:259: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/24 15:19:21 cmdTodo.go:87: OnFinish callback
+[debug]2023/04/24 15:19:21 cmdTodo.go:93: 结束日志: read ip4 0.0.0.0: i/o timeout
