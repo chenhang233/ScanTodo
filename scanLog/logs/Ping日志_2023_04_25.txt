@@ -1,0 +1,146 @@
+[info]2023/04/25 10:17:25 cmdTodo.go:90: 开始ping 地址 192.168.0.0 (192.168.0.0): 
+[warn]2023/04/25 10:17:25 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 10:17:25 cmdTodo.go:72: OnSetup callback
+[info]2023/04/25 10:17:25 cmdTodo.go:75: OnSend source: 0.0.0.0,destination: 192.168.0.0,byteLen: 48,Sequence: 0,Identifier: 39059,RTTS: 0s
+[debug]2023/04/25 10:17:26 ping.go:284: 收到间隔时间信号
+[info]2023/04/25 10:17:26 ping.go:167: Stop 调用: 
+[warn]2023/04/25 10:17:26 ping.go:278: 收到结束信号
+[info]2023/04/25 10:17:26 ping.go:167: Stop 调用: 
+[error]2023/04/25 10:17:30 ping.go:320: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 10:17:30 ping.go:167: Stop 调用: 
+[error]2023/04/25 10:17:30 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 10:17:30 cmdTodo.go:87: OnFinish callback
+[debug]2023/04/25 10:17:30 cmdTodo.go:93: 结束日志: read ip4 0.0.0.0: i/o timeout
+[error]2023/04/25 13:50:38 ping.go:189: lookup ping: no such host
+[info]2023/04/25 13:51:34 cmdTodo.go:91: 开始ping 地址 192.168.232.0 (192.168.232.0): 
+[warn]2023/04/25 13:51:34 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 13:51:34 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 13:51:34 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 192.168.232.0,byteLen: 32,Sequence: 0,Identifier: 14524,RTTS: 0s
+[debug]2023/04/25 13:51:35 ping.go:284: 收到间隔时间信号
+[info]2023/04/25 13:51:35 ping.go:167: Stop 调用: 
+[warn]2023/04/25 13:51:35 ping.go:278: 收到结束信号
+[info]2023/04/25 13:51:35 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:51:39 ping.go:320: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 13:51:39 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:51:39 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 13:51:39 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 13:51:39 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 13:52:08 cmdTodo.go:91: 开始ping 地址 192.168.232.0 (192.168.232.0): 
+[warn]2023/04/25 13:52:08 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 13:52:08 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 13:52:08 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 192.168.232.0,byteLen: 32,Sequence: 0,Identifier: 1143,RTTS: 0s
+[debug]2023/04/25 13:52:09 ping.go:284: 收到间隔时间信号
+[info]2023/04/25 13:52:09 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 192.168.232.0,byteLen: 32,Sequence: 1,Identifier: 1143,RTTS: 0s
+[debug]2023/04/25 13:52:10 ping.go:284: 收到间隔时间信号
+[info]2023/04/25 13:52:10 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 192.168.232.0,byteLen: 32,Sequence: 2,Identifier: 1143,RTTS: 0s
+[debug]2023/04/25 13:52:11 ping.go:284: 收到间隔时间信号
+[info]2023/04/25 13:52:11 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 192.168.232.0,byteLen: 32,Sequence: 3,Identifier: 1143,RTTS: 0s
+[info]2023/04/25 13:52:11 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:52:13 ping.go:320: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 13:52:13 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:52:13 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 13:52:13 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 13:52:13 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 13:53:18 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 13:53:18 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 13:53:18 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 13:53:18 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 11803,RTTS: 0s
+[info]2023/04/25 13:53:18 ping.go:167: Stop 调用: 
+[info]2023/04/25 13:54:45 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 13:54:45 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 13:54:45 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 13:54:45 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 65477,RTTS: 0s
+[info]2023/04/25 13:54:45 ping.go:167: Stop 调用: 
+[info]2023/04/25 13:59:08 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 13:59:08 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 13:59:08 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 13:59:08 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 33803,RTTS: 0s
+[info]2023/04/25 13:59:08 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 0,Identifier: 33803,RTTS: 1.2043ms
+[info]2023/04/25 13:59:09 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 1,Identifier: 33803,RTTS: 0s
+[info]2023/04/25 13:59:09 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 1,Identifier: 33803,RTTS: 225.5µs
+[info]2023/04/25 13:59:10 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 2,Identifier: 33803,RTTS: 0s
+[info]2023/04/25 13:59:10 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 2,Identifier: 33803,RTTS: 109.4µs
+[info]2023/04/25 13:59:11 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 3,Identifier: 33803,RTTS: 0s
+[info]2023/04/25 13:59:11 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:59:16 ping.go:319: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 13:59:16 ping.go:167: Stop 调用: 
+[error]2023/04/25 13:59:16 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 13:59:16 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 13:59:16 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:01:20 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 14:01:20 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 14:01:20 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 14:01:21 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 9278
+[info]2023/04/25 14:01:21 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 0,Identifier: 9278,RTT: 714.4µs
+[info]2023/04/25 14:01:22 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 1,Identifier: 9278
+[info]2023/04/25 14:01:22 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 1,Identifier: 9278,RTT: 109.2µs
+[info]2023/04/25 14:01:23 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 2,Identifier: 9278
+[info]2023/04/25 14:01:23 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 2,Identifier: 9278,RTT: 0s
+[info]2023/04/25 14:01:24 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 3,Identifier: 9278
+[info]2023/04/25 14:01:24 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:01:29 ping.go:319: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:01:29 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:01:29 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 14:01:29 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 14:01:29 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:01:58 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 14:01:58 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 14:01:58 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 14:01:58 cmdTodo.go:76: 发 source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 12727
+[info]2023/04/25 14:01:58 cmdTodo.go:80: 收  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 0,Identifier: 12727,RTT: 519.3µs
+[info]2023/04/25 14:01:59 cmdTodo.go:76: 发 source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 1,Identifier: 12727
+[info]2023/04/25 14:01:59 cmdTodo.go:80: 收  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 1,Identifier: 12727,RTT: 477.5µs
+[info]2023/04/25 14:02:00 cmdTodo.go:76: 发 source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 2,Identifier: 12727
+[info]2023/04/25 14:02:00 cmdTodo.go:80: 收  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 2,Identifier: 12727,RTT: 198µs
+[info]2023/04/25 14:02:01 cmdTodo.go:76: 发 source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 3,Identifier: 12727
+[info]2023/04/25 14:02:01 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:02:06 ping.go:319: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:02:06 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:02:06 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 14:02:06 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 14:02:06 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:08:20 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 14:08:20 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 14:08:20 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 14:08:20 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 15696
+[info]2023/04/25 14:08:20 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 0,Identifier: 15696,RTT: 1.1212ms
+[info]2023/04/25 14:08:21 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 1,Identifier: 15696
+[info]2023/04/25 14:08:21 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 1,Identifier: 15696,RTT: 0s
+[info]2023/04/25 14:08:22 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 2,Identifier: 15696
+[info]2023/04/25 14:08:22 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 2,Identifier: 15696,RTT: 502.5µs
+[info]2023/04/25 14:08:23 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 3,Identifier: 15696
+[info]2023/04/25 14:08:23 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 3,Identifier: 15696,RTT: 502.6µs
+[info]2023/04/25 14:08:24 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 4,Identifier: 15696
+[info]2023/04/25 14:08:24 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 4,Identifier: 15696,RTT: 501.8µs
+[info]2023/04/25 14:08:25 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 5,Identifier: 15696
+[info]2023/04/25 14:08:25 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 5,Identifier: 15696,RTT: 502µs
+[warn]2023/04/25 14:08:25 ping.go:281: 收到超时信号
+[info]2023/04/25 14:08:25 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:08:30 ping.go:319: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:08:30 ping.go:167: Stop 调用: 
+[error]2023/04/25 14:08:30 ping.go:260: 结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: i/o timeout)
+[info]2023/04/25 14:08:30 cmdTodo.go:88: OnFinish callback
+[debug]2023/04/25 14:08:30 cmdTodo.go:94: 结束日志: read ip4 0.0.0.0: i/o timeout
+[info]2023/04/25 14:15:50 cmdTodo.go:91: 开始ping 地址 10.76.0.79 (10.76.0.79): 
+[warn]2023/04/25 14:15:50 ping.go:242: not implemented on windows/amd64
+[info]2023/04/25 14:15:50 cmdTodo.go:73: OnSetup callback
+[info]2023/04/25 14:15:50 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 0,Identifier: 35590
+[info]2023/04/25 14:15:50 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 0,Identifier: 35590,RTT: 546.6µs
+[info]2023/04/25 14:15:51 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 1,Identifier: 35590
+[info]2023/04/25 14:15:51 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 1,Identifier: 35590,RTT: 123.1µs
+[info]2023/04/25 14:15:52 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 2,Identifier: 35590
+[info]2023/04/25 14:15:52 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 2,Identifier: 35590,RTT: 0s
+[info]2023/04/25 14:15:53 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 3,Identifier: 35590
+[info]2023/04/25 14:15:53 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 3,Identifier: 35590,RTT: 661.8µs
+[info]2023/04/25 14:15:54 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 4,Identifier: 35590
+[info]2023/04/25 14:15:54 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 4,Identifier: 35590,RTT: 0s
+[info]2023/04/25 14:15:55 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 5,Identifier: 35590
+[info]2023/04/25 14:15:55 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 5,Identifier: 35590,RTT: 0s
+[info]2023/04/25 14:15:56 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 6,Identifier: 35590
+[info]2023/04/25 14:15:56 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 6,Identifier: 35590,RTT: 502.6µs
+[info]2023/04/25 14:15:57 cmdTodo.go:76: OnSend source: 0.0.0.0,destination: 10.76.0.79,byteLen: 32,Sequence: 7,Identifier: 35590
+[info]2023/04/25 14:15:57 cmdTodo.go:80: OnReceive  source: 10.76.0.79, destination: 0.0.0.0,byteLen: 32,Sequence: 7,Identifier: 35590,RTT: 501.9µs
+[debug]2023/04/25 14:15:57 cmdTodo.go:63: 接收到中断的信号: interrupt
+[info]2023/04/25 14:15:57 ping.go:167: Stop 调用: 
+[warn]2023/04/25 14:15:57 ping.go:278: 收到通道结束信号
+[info]2023/04/25 14:15:57 ping.go:167: Stop 调用: 

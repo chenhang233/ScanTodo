@@ -186,7 +186,7 @@ func (p *Metadata) Resolve() error {
 	}
 	addr, err := net.ResolveIPAddr("ip", p.Addr)
 	if err != nil {
-		p.Log.Error.Println(err)
+		p.Log.Error.Println("无法解析的ip: ", err)
 		return err
 	}
 	p.Ipaddr = addr
@@ -257,7 +257,7 @@ func (p *Metadata) run(conn packetConn) error {
 		return p.MainLoop(conn, receive)
 	})
 	err = g.Wait()
-	p.Log.Error.Printf("结束中:", err)
+	p.Log.Warn.Printf("异常结束中:", err)
 	return err
 }
 
@@ -275,14 +275,13 @@ func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 	for {
 		select {
 		case <-p.done:
-			p.Log.Warn.Printf("收到结束信号")
+			p.Log.Warn.Printf("收到通道结束信号")
 			return nil
 		case <-timeout.C:
-			p.Log.Warn.Printf("收到超时信号")
+			p.Log.Warn.Printf("时间结束信号")
 			return nil
 		case <-interval.C:
-			p.Log.Debug.Printf("收到间隔时间信号")
-			if (p.Count > 0 && p.PacketsSent >= p.Count) || p.Count < 0 {
+			if p.Count > 0 && p.PacketsSent >= p.Count {
 				p.Stop()
 				continue
 			}
@@ -296,7 +295,7 @@ func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 				p.Log.Warn.Printf("处理收到的包异常", err)
 			}
 		}
-		if (p.Count > 0 && p.Count <= p.PacketsSent) || p.Count < 0 {
+		if p.Count > 0 && p.Count <= p.PacketsSent {
 			return nil
 		}
 	}
@@ -407,6 +406,7 @@ func (p *Metadata) processPacket(receive *packet) error {
 		return err
 	}
 	if m.Type != ipv4.ICMPTypeEchoReply && m.Type != ipv6.ICMPTypeEchoReply {
+		p.Log.Warn.Printf("收到未知包 type:", m.Type)
 		return nil
 	}
 	pkg := &Packet{
@@ -441,9 +441,13 @@ func (p *Metadata) processPacket(receive *packet) error {
 			}
 		}
 		delete(p.awaitingSequences[*packetUUID], pkg.Sequence)
-
+		p.updateStatistics(pkg)
 	default:
 		p.Log.Warn.Printf(fmt.Sprintf("无效ICMP '%v'", pkt))
+	}
+	handle := p.OnReceive
+	if handle != nil {
+		handle(pkg)
 	}
 	return nil
 }
@@ -477,7 +481,7 @@ func (p *Metadata) Statistics() *Statistics {
 func (p *Metadata) updateStatistics(pkt *Packet) {
 	p.statsMutex.Lock()
 	defer p.statsMutex.Unlock()
-	p.PacketsSent++
+	p.PacketsReceive++
 	p.RTTs = append(p.RTTs, pkt.RTT)
 	if p.PacketsReceive == 1 || pkt.RTT < p.minRoundTripTime {
 		p.minRoundTripTime = pkt.RTT
@@ -485,7 +489,7 @@ func (p *Metadata) updateStatistics(pkt *Packet) {
 	if pkt.RTT > p.maxRoundTripTime {
 		p.maxRoundTripTime = pkt.RTT
 	}
-	//p.averageRoundTripTime = (pkt.RTT)
+	p.averageRoundTripTime += (pkt.RTT - p.averageRoundTripTime) / time.Duration(p.PacketsReceive)
 }
 
 func (p *Metadata) getMessageLength() int {

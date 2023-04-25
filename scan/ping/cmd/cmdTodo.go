@@ -25,7 +25,7 @@ Examples:
     # ping 5次 间隔500毫秒
     ping -c 5 -i 500ms  www.baidu.com
 
-    # ping 指定时间 10秒
+    # ping 指定持续时间 10秒
     ping -t 10s www.baidu.com
 
     #  发送 100字节 的包
@@ -33,11 +33,11 @@ Examples:
 `
 
 func main() {
-	timeout := flag.Duration("t", time.Second*5, "持续时间")
+	timeout := flag.Duration("t", time.Second*120, "持续时间")
 	interval := flag.Duration("i", time.Second, "间隔时间")
 	size := flag.Int("s", 24, "数据包内容大小")
 	count := flag.Int("c", -1, "ping次数")
-	ttl := flag.Int("l", 64, "包存活时间")
+	ttl := flag.Int("l", 64, "IPv4 包过路由器次数")
 	flag.Usage = func() {
 		print(usage)
 		flag.PrintDefaults()
@@ -48,6 +48,7 @@ func main() {
 		flag.Usage()
 		return
 	}
+	fmt.Println(flag.Args())
 	host := flag.Arg(0)
 	pingMetadata, err := ping.NewPingMetadata(host)
 	if err != nil {
@@ -72,11 +73,11 @@ func main() {
 		pingMetadata.Log.Info.Println("OnSetup callback")
 	}
 	pingMetadata.OnSend = func(packet *ping.Packet) {
-		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnSend source: %s,destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
-			pingMetadata.Source, packet.IPAddr, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
+		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnSend source: %s,destination: %s,byteLen: %v,Sequence: %v,Identifier: %v",
+			pingMetadata.Source, packet.IPAddr, packet.ByteLen, packet.Sequence, packet.Identifier))
 	}
 	pingMetadata.OnReceive = func(packet *ping.Packet) {
-		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnReceive  source: %s, destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTTS: %v",
+		pingMetadata.Log.Info.Printf(fmt.Sprintf("OnReceive  source: %s, destination: %s,byteLen: %v,Sequence: %v,Identifier: %v,RTT: %v",
 			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnDuplicateReceive = func(packet *ping.Packet) {
@@ -85,11 +86,10 @@ func main() {
 	}
 	pingMetadata.OnFinish = func(statistics *ping.Statistics) {
 		pingMetadata.Log.Info.Println("OnFinish callback")
-
 	}
 	pingMetadata.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", pingMetadata.Addr, pingMetadata.Ipaddr))
 	err = pingMetadata.Run()
 	if err != nil {
-		pingMetadata.Log.Debug.Println("结束日志:", err)
+		pingMetadata.Log.Debug.Println("异常结束日志:", err)
 	}
 }
