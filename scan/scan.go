@@ -28,7 +28,7 @@ type ScanCase struct {
 }
 
 func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
-	loadLog, err := scanLog.LoadLog("扫描日志")
+	loadLog, err := scanLog.LoadLog(scanLog.ScansLogPath)
 	if err != nil {
 		panic(err)
 	}
@@ -55,7 +55,7 @@ func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
 			body: req,
 		}
 	default:
-		loadLog.Error.Println("无法实现 " + scanUseCase + " 这个类型!!!!!!!!!")
+		loadLog.Error.Println("未实现 " + scanUseCase + " 这个类型")
 		os.Exit(-1)
 	}
 	if err != nil {
