@@ -3,7 +3,9 @@ package main
 import (
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
+	"ScanTodo/web"
 	"flag"
+	"fmt"
 	"net/http"
 )
 
@@ -22,14 +24,15 @@ type MainService struct {
 }
 
 func main() {
-	loadLog, err := scanLog.LoadLog("全局日志")
-	loadLog.Debug.Println("全局日志开始启动.............................")
+	loadLog, err := scanLog.LoadLog(scanLog.HTTPLogPath)
 	if err != nil {
+		fmt.Println(err)
 		panic(err)
 	}
+	loadLog.Debug.Println("全局日志开始启动.............................")
 	ms := &MainService{
 		Log: loadLog,
-		w:   &WebHttp{},
+		w:   &web.WebHttp{},
 	}
 	ms.Log.Debug.Println("服务启动中,全局日志加载完成")
 	flag.Parse()
@@ -38,7 +41,6 @@ func main() {
 	ms.Log.Debug.Println("服务启动中,websocket实例初始化完成")
 	go utils.HubInstance.Run()
 	ms.Log.Debug.Println("服务启动中,websocket开启监听完成")
-
 	http.HandleFunc("/", ms.w.Index)
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)

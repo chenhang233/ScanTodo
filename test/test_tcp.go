@@ -12,6 +12,6 @@ func main() {
 	dial, err := dialer.Dial("tcp", "192.168.232.141:8000")
 	fmt.Println(err, "err", dial, "dial")
 	time.Sleep(time.Second * 5)
-	fmt.Println("关闭连接")
+	fmt.Println("关闭连接 测试123")
 	dial.Close()
 }
