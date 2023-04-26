@@ -136,7 +136,7 @@ type Metadata struct {
 }
 
 func New(host string) *Metadata {
-	loadLog, err := scanLog.LoadLog("Ping日志")
+	loadLog, err := scanLog.LoadLog(scanLog.PingLogPath)
 	r := rand.New(rand.NewSource(utils.GetSeed()))
 	firstUUID := uuid.New()
 	var firstSequence = map[uuid.UUID]map[int]struct{}{}
