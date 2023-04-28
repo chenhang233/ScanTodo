@@ -1,17 +1,17 @@
 package scan
 
 import (
+	"ScanTodo/scan/ping"
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
-	"bytes"
 	"context"
-	"encoding/binary"
-	"errors"
 	"fmt"
-	"net"
+	"golang.org/x/sync/errgroup"
+	"time"
 )
 
 const MsgLen = 4000
+const pageSize = 50
 
 type ICMP struct {
 	Type        uint8
@@ -22,10 +22,16 @@ type ICMP struct {
 	msgData     [MsgLen]uint8
 }
 
+type PingMetadata struct {
+	Count    int `json:"count"`
+	Size     int `json:"size"`
+	Interval int `json:"interval"`
+	Timeout  int `json:"timeout"`
+	TTL      int `json:"TTL"`
+}
+
 type IcmpReq struct {
-	SourceIp string `json:"sourceIp"`
-	TargetIp string `json:"targetIp"`
-	Timeout  int    `json:"timeout"`
+	Ip string `json:"ip"`
 }
 
 type IcmpScan struct {
@@ -34,57 +40,65 @@ type IcmpScan struct {
 }
 
 func (t *IcmpScan) Start(ctx context.Context) error {
+	var err error
 	body := t.body
-	if !utils.CheckIpv4(body.SourceIp) {
-		return errors.New(fmt.Sprintf("源ip: %s 格式错误", body.SourceIp))
-	}
-	if !utils.CheckIpv4(body.TargetIp) {
-		return errors.New(fmt.Sprintf("目标ip: %s 格式错误", body.TargetIp))
-	}
-
-	var (
-		icmp  ICMP
-		lAddr = net.IPAddr{IP: net.ParseIP(body.SourceIp)}
-		rAddr = net.IPAddr{IP: net.ParseIP(body.TargetIp)}
-	)
-	conn, err := net.DialIP("ip4:icmp", &lAddr, &rAddr)
+	ips, count, err := utils.ReadIps(body.Ip)
 	if err != nil {
-		t.Log.Error.Println("打开ip4:icmp连接错误", err)
+		t.Log.Error.Println(err)
 		return err
 	}
-
-	icmp.Type = 8 // 8发送 0接收
-	icmp.Code = 0
-	icmp.Checksum = 0
-	icmp.Identifier = 0
-	icmp.SequenceNum = 0
-	for i := 0; i < MsgLen; i++ {
-		icmp.msgData[i] = uint8(127)
-	}
-
-	var buffer bytes.Buffer
-
-	err = binary.Write(&buffer, binary.BigEndian, icmp)
-	icmp.Checksum = t.CheckSum(buffer.Bytes())
-	buffer.Reset()
-	err = binary.Write(&buffer, binary.BigEndian, icmp)
-	if _, err := conn.Write(buffer.Bytes()); err != nil {
-		fmt.Println(err.Error())
+	countS := fmt.Sprintf("准备扫描的ip数量: %d", count)
+	utils.SendToThePrivateClientCustom(countS)
+	err = t.scanIps(ips)
+	if err != nil {
+		t.Log.Error.Println(err)
 		return err
 	}
-	t.Log.Info.Println("send icmp packet success")
-	bys := make([]byte, 0, 1024)
-	read, err := conn.Read(bys)
-	if err != nil {
-		t.Log.Error.Println("读取错误:", err)
-	}
-	t.Log.Info.Println("响应", read)
-	err = conn.Close()
+	//pingMetadata, err := ping.NewPingMetadata(host)
 	return nil
 }
 
 func (t *IcmpScan) End(ctx context.Context) error {
 	return nil
+}
+
+func (t *IcmpScan) scanIps(ips []string) error {
+	var ipPageGroupLen int
+	var g errgroup.Group
+	var start int
+
+	utils.ComputedGroupCount(&ipPageGroupLen, len(ips), pageSize)
+	for i := 0; i < ipPageGroupLen; i++ {
+		ipSlice := make([]string, 0, pageSize)
+		if i == ipPageGroupLen-1 {
+			ipSlice = append(ips, ips[start:]...)
+		} else {
+			ipSlice = append(ips, ipSlice[start:start+pageSize]...)
+			start += pageSize
+		}
+		g.Go(func() error {
+			j := 0
+			//l := len(ipSlice)
+			metadata, err := ping.NewPingMetadata(ipSlice[j])
+			if err != nil {
+				t.Log.Error.Println(err)
+				return err
+			}
+			metadata.Count = 4
+			metadata.Size = 24
+			metadata.Interval = time.Second
+			metadata.Timeout = time.Second * 4
+			metadata.TTL = 64
+			metadata.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", metadata.Addr, metadata.Ipaddr))
+			err = metadata.Run()
+			if err != nil {
+				metadata.Log.Debug.Println("异常结束日志:", err)
+			}
+			return err
+		})
+	}
+
+	return g.Wait()
 }
 
 func (t *IcmpScan) CheckSum(data []byte) uint16 {

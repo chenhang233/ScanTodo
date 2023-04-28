@@ -28,3 +28,11 @@ func BytesToTime(b []byte) time.Time {
 	}
 	return time.Unix(nano/1000000000, nano%1000000000)
 }
+
+func ComputedGroupCount(res *int, count int, pageSize int) {
+	if count < pageSize {
+		*res = 1
+	} else {
+		*res = count/pageSize + 1
+	}
+}
