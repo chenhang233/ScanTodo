@@ -32,7 +32,9 @@ func main() {
 	loadLog.Debug.Println("全局日志开始启动.............................")
 	ms := &MainService{
 		Log: loadLog,
-		w:   &web.WebHttp{},
+		w: &web.WebHttp{
+			Log: loadLog,
+		},
 	}
 	ms.Log.Debug.Println("服务启动中,全局日志加载完成")
 	flag.Parse()

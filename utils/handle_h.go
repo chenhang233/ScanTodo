@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"ScanTodo/scanLog"
 	"errors"
 	"fmt"
 	"io"
@@ -156,4 +157,17 @@ func ComputedGroupCount(res *int, count int, pageSize int) {
 func GetSeed() int64 {
 	seed := time.Now().Unix()
 	return atomic.AddInt64(&seed, 1)
+}
+
+func GetLogName(name string) string {
+	switch name {
+	case "TCP":
+		return scanLog.TCPLogPath
+	case "ICMP":
+		return scanLog.ICMPLogPath
+	case "PING":
+		return scanLog.PingLogPath
+	default:
+		return ""
+	}
 }
