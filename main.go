@@ -32,7 +32,9 @@ func main() {
 	loadLog.Debug.Println("全局日志开始启动.............................")
 	ms := &MainService{
 		Log: loadLog,
-		w:   &web.WebHttp{},
+		w: &web.WebHttp{
+			Log: loadLog,
+		},
 	}
 	ms.Log.Debug.Println("服务启动中,全局日志加载完成")
 	flag.Parse()
@@ -45,7 +47,7 @@ func main() {
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)
 	http.HandleFunc("/ws", ms.w.Ws)
-	ms.Log.Debug.Println("服务启动成功,功能点加载完成")
+	ms.Log.Debug.Println("服务启动成功: ", *addr)
 	err = http.ListenAndServe(*addr, nil)
 	if err != nil {
 		ms.Log.Error.Println("服务启动失败,", err)

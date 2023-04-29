@@ -1,6 +1,8 @@
 package scanLog
 
 import (
+	"errors"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -10,9 +12,12 @@ import (
 const (
 	logsFilePath = "scanLog/logs"
 	HTTPLogPath  = "HTTPLogPath"
-	ScansLogPath = "ScanLogPath"
+	TCPLogPath   = "TCPLogPath"
+	ICMPLogPath  = "ICMPLogPath"
 	PingLogPath  = "PingLogPath"
 )
+
+var LogPathList []string
 
 type LogConf struct {
 	ServiceName string
@@ -23,6 +28,10 @@ type LogConf struct {
 }
 
 func LoadLog(sName string) (*LogConf, error) {
+	LogPathList = append([]string{}, HTTPLogPath, TCPLogPath, PingLogPath, ICMPLogPath)
+	if !LogPathInclude(sName) {
+		return nil, errors.New("LoadLog error")
+	}
 	conf := &LogConf{
 		ServiceName: sName,
 	}
@@ -49,10 +58,10 @@ func handleDir() error {
 	if err != nil {
 		err = os.MkdirAll(logsFilePath, os.ModePerm)
 	}
-	logPathMap := make(map[int]string, 3)
-	logPathMap[0] = logsFilePath + "/" + HTTPLogPath
-	logPathMap[1] = logsFilePath + "/" + ScansLogPath
-	logPathMap[2] = logsFilePath + "/" + PingLogPath
+	logPathMap := make(map[int]string, len(LogPathList))
+	for i, item := range LogPathList {
+		logPathMap[i] = logsFilePath + "/" + item
+	}
 	for _, m := range logPathMap {
 		_, err = os.Stat(m)
 		if err != nil {
@@ -60,4 +69,25 @@ func handleDir() error {
 		}
 	}
 	return err
+}
+
+func LogPathInclude(path string) bool {
+	for _, s := range LogPathList {
+		if s == path {
+			return true
+		}
+	}
+	return false
+}
+
+func ReadLogs(path string, date string) error {
+	if !LogPathInclude(path) {
+		return errors.New("日志路径错误")
+	}
+	file, err := os.ReadFile(logsFilePath + "/" + path + "/" + date)
+	if err != nil {
+		fmt.Println(err, "--")
+	}
+	fmt.Println(file)
+	return nil
 }

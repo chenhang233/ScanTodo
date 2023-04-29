@@ -70,16 +70,16 @@ type Statistics struct {
 	// 所有往返时间统计
 	RTTs []time.Duration
 	// 往返时间统计
-	minRoundTripTime     time.Duration
-	maxRoundTripTime     time.Duration
-	averageRoundTripTime time.Duration
+	MinRoundTripTime     time.Duration
+	MaxRoundTripTime     time.Duration
+	AverageRoundTripTime time.Duration
 }
 
 // Metadata 数据包元数据结构体
 type Metadata struct {
 	// 报文间隔时间
 	Interval time.Duration
-	// 报文超时时间
+	// 持续总时间
 	Timeout time.Duration
 	// 发送次数
 	Count int
@@ -164,7 +164,6 @@ func New(host string) *Metadata {
 }
 
 func (p *Metadata) Stop() {
-	p.Log.Info.Printf("Stop 调用: ")
 	p.lock.Lock()
 	defer p.lock.Unlock()
 
@@ -237,12 +236,16 @@ func (p *Metadata) listen() (packetConn, error) {
 }
 
 func (p *Metadata) run(conn packetConn) error {
-	err := conn.SetFlagTTL()
+	var err error
+	err = conn.SetFlagTTL()
 	if err != nil {
 		p.Log.Warn.Printf(err.Error())
 	}
+
 	defer p.finish()
 	receive := make(chan *packet, 5)
+	defer close(receive)
+
 	setup := p.OnSetup
 	if setup != nil {
 		setup()
@@ -257,7 +260,9 @@ func (p *Metadata) run(conn packetConn) error {
 		return p.MainLoop(conn, receive)
 	})
 	err = g.Wait()
-	p.Log.Warn.Printf("异常结束中:", err)
+	if err != nil {
+		p.Log.Warn.Printf("异常结束中:", err)
+	}
 	return err
 }
 
@@ -282,7 +287,7 @@ func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 			return nil
 		case <-interval.C:
 			if p.Count > 0 && p.PacketsSent >= p.Count {
-				p.Stop()
+				interval.Stop()
 				continue
 			}
 			err := p.sendICMP(conn)
@@ -295,13 +300,33 @@ func (p *Metadata) MainLoop(conn packetConn, re <-chan *packet) error {
 				p.Log.Warn.Printf("处理收到的包异常", err)
 			}
 		}
-		if p.Count > 0 && p.Count <= p.PacketsSent {
+		if p.Count > 0 && p.Count <= p.PacketsReceive {
 			return nil
 		}
 	}
 }
 
+type expBackoff struct {
+	baseDelay time.Duration
+	maxExp    int64
+	c         int64
+}
+
+func (b *expBackoff) Get() time.Duration {
+	if b.c < b.maxExp {
+		b.c++
+	}
+
+	return b.baseDelay * time.Duration(rand.Int63n(1<<b.c))
+}
+
+func newExpBackoff(baseDelay time.Duration, maxExp int64) expBackoff {
+	return expBackoff{baseDelay: baseDelay, maxExp: maxExp}
+}
+
 func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
+	expBackoff := newExpBackoff(50*time.Microsecond, 11)
+	delay := expBackoff.Get()
 	for {
 		select {
 		case <-p.done:
@@ -310,13 +335,20 @@ func (p *Metadata) receiveICMP(conn packetConn, re chan<- *packet) error {
 			var n, ttl int
 			var err error
 			b := make([]byte, p.getMessageLength())
-			err = conn.SetReadDeadline(time.Now().Add(p.Timeout))
+			err = conn.SetReadDeadline(time.Now().Add(delay))
 			if err != nil {
-				p.Log.Warn.Printf(err.Error())
+				p.Log.Warn.Println(err)
+				return err
 			}
 			n, ttl, _, err = conn.ReadFrom(b)
 			if err != nil {
-				p.Log.Error.Printf(err.Error())
+				if neterr, ok := err.(*net.OpError); ok {
+					if neterr.Timeout() {
+						delay = expBackoff.Get()
+						continue
+					}
+				}
+				p.Log.Warn.Println(err)
 				return err
 			}
 			select {
@@ -463,7 +495,7 @@ func (p *Metadata) Statistics() *Statistics {
 	p.statsMutex.Lock()
 	defer p.statsMutex.Unlock()
 	sent := p.PacketsSent
-	loss := float64(sent-p.PacketsReceive) / float64(sent*100)
+	loss := float64(sent-p.PacketsReceive) / float64(sent) * 100
 	s := &Statistics{
 		PacketsSent:              sent,
 		PacketsReceive:           p.PacketsReceive,
@@ -472,9 +504,9 @@ func (p *Metadata) Statistics() *Statistics {
 		IPAddr:                   p.Ipaddr,
 		Addr:                     p.Addr,
 		RTTs:                     p.RTTs,
-		minRoundTripTime:         p.minRoundTripTime,
-		maxRoundTripTime:         p.maxRoundTripTime,
-		averageRoundTripTime:     p.averageRoundTripTime,
+		MinRoundTripTime:         p.minRoundTripTime,
+		MaxRoundTripTime:         p.maxRoundTripTime,
+		AverageRoundTripTime:     p.averageRoundTripTime,
 	}
 	return s
 }

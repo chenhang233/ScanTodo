@@ -2,21 +2,26 @@ package web
 
 import (
 	"ScanTodo/scan"
+	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 	"os"
 )
 
 type WebHttp struct {
+	Log *scanLog.LogConf
 }
 
 func (h *WebHttp) Index(writer http.ResponseWriter, request *http.Request) {
-	file, err := os.ReadFile("./index.html")
+	openUrl := "./frontEnd/index.html"
+	if request.RequestURI != "/" {
+		openUrl = "./frontEnd" + request.RequestURI
+	}
+	file, err := os.ReadFile(openUrl)
 	if err != nil {
-		log.Println("读文件错误", err)
+		h.Log.Error.Println("读文件错误", err)
 	}
 	switch request.Method {
 	case "GET":
@@ -34,7 +39,7 @@ func (h *WebHttp) Tcp(writer http.ResponseWriter, request *http.Request) {
 		body := request.Body
 		all, err := utils.MyReadAll(body)
 		if err != nil {
-			log.Panicln("body Read", err)
+			h.Log.Error.Println("body Read", err)
 		}
 
 		sc, _ := scan.NewScanCase("TCP", all)
@@ -57,7 +62,7 @@ func (h *WebHttp) Icmp(writer http.ResponseWriter, request *http.Request) {
 		body := request.Body
 		all, err := utils.MyReadAll(body)
 		if err != nil {
-			log.Panicln("body Read", err)
+			h.Log.Error.Println("body Read", err)
 		}
 
 		sc, _ := scan.NewScanCase("ICMP", all)

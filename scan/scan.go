@@ -2,6 +2,7 @@ package scan
 
 import (
 	"ScanTodo/scanLog"
+	"ScanTodo/utils"
 	"context"
 	"encoding/json"
 	"os"
@@ -28,7 +29,8 @@ type ScanCase struct {
 }
 
 func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
-	loadLog, err := scanLog.LoadLog(scanLog.ScansLogPath)
+	loadLog, err := scanLog.LoadLog(utils.GetLogName(scanUseCase))
+
 	if err != nil {
 		panic(err)
 	}

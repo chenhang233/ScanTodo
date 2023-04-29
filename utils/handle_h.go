@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"ScanTodo/scanLog"
 	"errors"
 	"fmt"
 	"io"
@@ -13,6 +14,8 @@ import (
 
 const (
 	LoopbackAddress = "127.0.0.1"
+	Address1        = "127.255.255.254"
+	Address2        = "191.255.255.254"
 )
 
 type Methods string
@@ -65,7 +68,7 @@ func ReadIps(ips string) ([]string, int, error) {
 	flag1 := CheckIpv4(start)
 	flag2 := CheckIpv4(end)
 	if !flag1 || !flag2 {
-		return nil, 0, errors.New("开始或结束端口错误")
+		return nil, 0, errors.New("开始或结束IP错误")
 	}
 	starts := strings.Split(start, ".")
 	ends := strings.Split(end, ".")
@@ -145,15 +148,20 @@ func ReadPorts(ports string) ([]uint16, error) {
 	return portList, nil
 }
 
-func ComputedGroupCount(res *int, count int, pageSize int) {
-	if count < pageSize {
-		*res = 1
-	} else {
-		*res = count/pageSize + 1
-	}
-}
-
 func GetSeed() int64 {
 	seed := time.Now().Unix()
 	return atomic.AddInt64(&seed, 1)
+}
+
+func GetLogName(name string) string {
+	switch name {
+	case "TCP":
+		return scanLog.TCPLogPath
+	case "ICMP":
+		return scanLog.ICMPLogPath
+	case "PING":
+		return scanLog.PingLogPath
+	default:
+		return ""
+	}
 }

@@ -17,26 +17,26 @@ Usage:
 Examples:
 
     # ping 命令
-    ping www.baidu.com
+     127.0.0.1
 
     # ping  5次
-    ping -c 5 www.baidu.com
+     -c 5 127.0.0.1
 
     # ping 5次 间隔500毫秒
-    ping -c 5 -i 500ms  www.baidu.com
+     -c 5 -i 500ms  127.0.0.1
 
     # ping 指定持续时间 10秒
-    ping -t 10s www.baidu.com
+     -t 10s 127.0.0.1
 
     #  发送 100字节 的包
-    ping -s 100 www.baidu.com
+     -s 100 127.0.0.1
 `
 
 func main() {
-	timeout := flag.Duration("t", time.Second*120, "持续时间")
+	timeout := flag.Duration("t", time.Second*10, "持续总时间")
 	interval := flag.Duration("i", time.Second, "间隔时间")
 	size := flag.Int("s", 24, "数据包内容大小")
-	count := flag.Int("c", -1, "ping次数")
+	count := flag.Int("c", 4, "ping次数")
 	ttl := flag.Int("l", 64, "IPv4 包过路由器次数")
 	flag.Usage = func() {
 		print(usage)
@@ -85,7 +85,8 @@ func main() {
 			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnFinish = func(statistics *ping.Statistics) {
-		pingMetadata.Log.Info.Println("OnFinish callback")
+		meta := &ping.LogMeta{Log: pingMetadata.Log}
+		ping.OnFinish(statistics, meta)
 	}
 	pingMetadata.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", pingMetadata.Addr, pingMetadata.Ipaddr))
 	err = pingMetadata.Run()
