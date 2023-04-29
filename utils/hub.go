@@ -78,7 +78,7 @@ func SendToThePrivateClientMsgError(ip string, port uint16, protocol string, err
 
 func SendToThePrivateClientCustom(str string) {
 	if HubInstance.PrivateClient == nil {
-		fmt.Println("PrivateClient 不存在")
+		fmt.Println("PrivateClient 不存在,非WebSocket")
 		return
 	}
 	sf := fmt.Sprintf("%s", str)

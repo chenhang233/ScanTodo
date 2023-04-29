@@ -33,7 +33,7 @@ Examples:
 `
 
 func main() {
-	timeout := flag.Duration("t", time.Second*4, "持续总时间")
+	timeout := flag.Duration("t", time.Second*10, "持续总时间")
 	interval := flag.Duration("i", time.Second, "间隔时间")
 	size := flag.Int("s", 24, "数据包内容大小")
 	count := flag.Int("c", 4, "ping次数")
@@ -85,8 +85,8 @@ func main() {
 			packet.IPAddr, pingMetadata.Source, packet.ByteLen, packet.Sequence, packet.Identifier, packet.RTT))
 	}
 	pingMetadata.OnFinish = func(statistics *ping.Statistics) {
-		pingMetadata.Log.Debug.Printf(fmt.Sprintf("OnFinish target: %v, PacketsSent: %v, PacketsReceive: %v, PacketLoss: %v %%,PacketsReceiveDuplicates: %v",
-			statistics.Addr, statistics.PacketsSent, statistics.PacketsReceive, statistics.PacketLoss, statistics.PacketsReceiveDuplicates))
+		meta := &ping.LogMeta{Log: pingMetadata.Log}
+		ping.OnFinish(statistics, meta)
 	}
 	pingMetadata.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", pingMetadata.Addr, pingMetadata.Ipaddr))
 	err = pingMetadata.Run()

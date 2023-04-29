@@ -15,7 +15,11 @@ type WebHttp struct {
 }
 
 func (h *WebHttp) Index(writer http.ResponseWriter, request *http.Request) {
-	file, err := os.ReadFile("./index.html")
+	openUrl := "./frontEnd/index.html"
+	if request.RequestURI != "/" {
+		openUrl = "./frontEnd" + request.RequestURI
+	}
+	file, err := os.ReadFile(openUrl)
 	if err != nil {
 		h.Log.Error.Println("读文件错误", err)
 	}

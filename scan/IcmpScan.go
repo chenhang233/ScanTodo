@@ -6,7 +6,7 @@ import (
 	"ScanTodo/utils"
 	"context"
 	"fmt"
-	"golang.org/x/sync/errgroup"
+	"sync"
 	"time"
 )
 
@@ -48,6 +48,7 @@ func (t *IcmpScan) Start(ctx context.Context) error {
 		return err
 	}
 	countS := fmt.Sprintf("准备扫描的ip数量: %d", count)
+	t.Log.Info.Println(countS)
 	utils.SendToThePrivateClientCustom(countS)
 	err = t.scanIps(ips)
 	if err != nil {
@@ -64,41 +65,54 @@ func (t *IcmpScan) End(ctx context.Context) error {
 
 func (t *IcmpScan) scanIps(ips []string) error {
 	var ipPageGroupLen int
-	var g errgroup.Group
 	var start int
 
 	utils.ComputedGroupCount(&ipPageGroupLen, len(ips), pageSize)
+	g := sync.WaitGroup{}
+
 	for i := 0; i < ipPageGroupLen; i++ {
 		ipSlice := make([]string, 0, pageSize)
 		if i == ipPageGroupLen-1 {
-			ipSlice = append(ips, ips[start:]...)
+			ipSlice = append(ipSlice, ips[start:]...)
 		} else {
-			ipSlice = append(ips, ipSlice[start:start+pageSize]...)
+			ipSlice = append(ipSlice, ips[start:start+pageSize]...)
 			start += pageSize
 		}
-		g.Go(func() error {
-			j := 0
-			//l := len(ipSlice)
-			metadata, err := ping.NewPingMetadata(ipSlice[j])
-			if err != nil {
-				t.Log.Error.Println(err)
-				return err
+		t.Log.Debug.Println("ipSlice: ", ipSlice)
+		g.Add(1)
+		go func(ipSlice []string) {
+			for i := 0; i < len(ipSlice); i++ {
+				metadata, err := ping.NewPingMetadata(ipSlice[i])
+				if err != nil {
+					t.Log.Error.Println("异常NewPingMetadata日志:", err)
+				}
+				metadata.Count = 4
+				metadata.Size = 24
+				metadata.Interval = time.Second
+				metadata.Timeout = time.Second * 5
+				metadata.TTL = 64
+				if err != nil {
+					t.Log.Error.Println("异常Resolve日志:", err)
+				}
+				t.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", metadata.Addr, metadata.Ipaddr))
+				err = metadata.Run()
+				if err != nil {
+					t.Log.Error.Println("异常Run日志:", err)
+				}
+				metadata.OnFinish = func(statistics *ping.Statistics) {
+					meta := &ping.LogMeta{Log: t.Log}
+					ping.OnFinish(statistics, meta)
+					if statistics.PacketLoss < 100 {
+						target := fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ipSlice[i], statistics.PacketLoss)
+						utils.SendToThePrivateClientCustom(target)
+					}
+				}
 			}
-			metadata.Count = 4
-			metadata.Size = 24
-			metadata.Interval = time.Second
-			metadata.Timeout = time.Second * 4
-			metadata.TTL = 64
-			metadata.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", metadata.Addr, metadata.Ipaddr))
-			err = metadata.Run()
-			if err != nil {
-				metadata.Log.Debug.Println("异常结束日志:", err)
-			}
-			return err
-		})
+			g.Done()
+		}(ipSlice)
 	}
-
-	return g.Wait()
+	g.Wait()
+	return nil
 }
 
 func (t *IcmpScan) CheckSum(data []byte) uint16 {

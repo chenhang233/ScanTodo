@@ -70,9 +70,9 @@ type Statistics struct {
 	// 所有往返时间统计
 	RTTs []time.Duration
 	// 往返时间统计
-	minRoundTripTime     time.Duration
-	maxRoundTripTime     time.Duration
-	averageRoundTripTime time.Duration
+	MinRoundTripTime     time.Duration
+	MaxRoundTripTime     time.Duration
+	AverageRoundTripTime time.Duration
 }
 
 // Metadata 数据包元数据结构体
@@ -260,7 +260,9 @@ func (p *Metadata) run(conn packetConn) error {
 		return p.MainLoop(conn, receive)
 	})
 	err = g.Wait()
-	p.Log.Warn.Printf("错误结束中:", err)
+	if err != nil {
+		p.Log.Warn.Printf("异常结束中:", err)
+	}
 	return err
 }
 
@@ -502,9 +504,9 @@ func (p *Metadata) Statistics() *Statistics {
 		IPAddr:                   p.Ipaddr,
 		Addr:                     p.Addr,
 		RTTs:                     p.RTTs,
-		minRoundTripTime:         p.minRoundTripTime,
-		maxRoundTripTime:         p.maxRoundTripTime,
-		averageRoundTripTime:     p.averageRoundTripTime,
+		MinRoundTripTime:         p.minRoundTripTime,
+		MaxRoundTripTime:         p.maxRoundTripTime,
+		AverageRoundTripTime:     p.averageRoundTripTime,
 	}
 	return s
 }
