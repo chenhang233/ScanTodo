@@ -124,6 +124,9 @@ A:
 }
 
 func ReadPorts(ports string) ([]uint16, error) {
+	if ports == "" {
+		return []uint16{}, errors.New("无效端口")
+	}
 	ps := strings.Split(ports, ",")
 	portList := make([]uint16, 0, 65536)
 	for _, p := range ps {
@@ -137,7 +140,7 @@ func ReadPorts(ports string) ([]uint16, error) {
 			for i := start; i <= end; i++ {
 				portList = append(portList, uint16(i))
 			}
-			break
+			continue
 		}
 		port, err := strconv.ParseUint(p, 10, 16)
 		if err != nil {

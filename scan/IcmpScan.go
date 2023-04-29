@@ -11,7 +11,7 @@ import (
 )
 
 const MsgLen = 4000
-const pageSize = 50
+const pageSize = 30
 
 type ICMP struct {
 	Type        uint8
@@ -78,7 +78,6 @@ func (t *IcmpScan) scanIps(ips []string) error {
 			ipSlice = append(ipSlice, ips[start:start+pageSize]...)
 			start += pageSize
 		}
-		t.Log.Debug.Println("ipSlice: ", ipSlice)
 		g.Add(1)
 		go func(ipSlice []string) {
 			for i := 0; i < len(ipSlice); i++ {
@@ -88,24 +87,27 @@ func (t *IcmpScan) scanIps(ips []string) error {
 				}
 				metadata.Count = 4
 				metadata.Size = 24
-				metadata.Interval = time.Second
+				metadata.Interval = time.Microsecond * 100
 				metadata.Timeout = time.Second * 5
 				metadata.TTL = 64
 				if err != nil {
 					t.Log.Error.Println("异常Resolve日志:", err)
 				}
-				t.Log.Info.Println(fmt.Sprintf("开始ping 地址 %s (%s): ", metadata.Addr, metadata.Ipaddr))
-				err = metadata.Run()
-				if err != nil {
-					t.Log.Error.Println("异常Run日志:", err)
-				}
+				sf := fmt.Sprintf("开始ping 地址 %s (%s): ", metadata.Addr, metadata.Ipaddr)
+				t.Log.Info.Println(sf)
+				utils.SendToThePrivateClientCustom(sf)
 				metadata.OnFinish = func(statistics *ping.Statistics) {
 					meta := &ping.LogMeta{Log: t.Log}
 					ping.OnFinish(statistics, meta)
 					if statistics.PacketLoss < 100 {
-						target := fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ipSlice[i], statistics.PacketLoss)
-						utils.SendToThePrivateClientCustom(target)
+						utils.SendToThePrivateClientCustom(fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ipSlice[i], statistics.PacketLoss))
+					} else {
+						utils.SendToThePrivateClientCustom("[失败]: IP:" + ipSlice[i])
 					}
+				}
+				err = metadata.Run()
+				if err != nil {
+					t.Log.Error.Println("异常Run日志:", err)
 				}
 			}
 			g.Done()

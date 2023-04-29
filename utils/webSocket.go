@@ -33,7 +33,6 @@ func ServeWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	}
 	client := &Client{hub: hub, conn: conn, Send: make(chan []byte, 256)}
 	client.hub.register <- client
-
 	go client.writePump()
 	go client.readPump()
 }

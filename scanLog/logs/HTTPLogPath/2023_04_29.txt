@@ -61,3 +61,177 @@
 [error]2023/04/29 11:30:17 webServer.go:24: 读文件错误 open ./frontEnd/axios.min.js.map: The system cannot find the file specified.
 [error]2023/04/29 11:30:17 webServer.go:24: 读文件错误 open ./frontEnd/bootstrap.min.css.map: The system cannot find the file specified.
 [error]2023/04/29 11:30:17 webServer.go:24: 读文件错误 open ./frontEnd/favicon.ico: The system cannot find the file specified.
+[debug]2023/04/29 12:47:14 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 12:47:14 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 12:47:14 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 12:47:14 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 12:47:14 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 12:47:20 webServer.go:24: 读文件错误 open ./index.html: The system cannot find the file specified.
+[error]2023/04/29 12:47:21 webServer.go:24: 读文件错误 open ./index.html: The system cannot find the file specified.
+[error]2023/04/29 12:47:26 webServer.go:24: 读文件错误 open ./index.html: The system cannot find the file specified.
+[error]2023/04/29 12:47:26 webServer.go:24: 读文件错误 open ./index.html: The system cannot find the file specified.
+[debug]2023/04/29 12:48:24 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 12:48:24 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 12:48:24 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 12:48:24 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 12:48:24 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 12:48:26 webServer.go:24: 读文件错误 open /web/index.html: The system cannot find the path specified.
+[error]2023/04/29 12:48:26 webServer.go:24: 读文件错误 open /web/index.html: The system cannot find the path specified.
+[debug]2023/04/29 12:48:40 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 12:48:40 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 12:48:40 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 12:48:40 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 12:48:40 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 12:58:37 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 12:58:37 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 12:58:37 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 12:58:37 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 12:58:37 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 12:58:39 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:02:18 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:03:13 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:03:43 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:04:11 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[debug]2023/04/29 13:05:03 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:05:03 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:05:03 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:05:03 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:05:03 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 13:05:07 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:05:13 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:06:21 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:06:53 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:07:37 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:08:01 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:08:57 webServer.go:24: 读文件错误 open web//bootstrap.min.css.map: The system cannot find the file specified.
+[error]2023/04/29 13:08:57 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:09:17 webServer.go:24: 读文件错误 open web//bootstrap.min.css.map: The system cannot find the file specified.
+[error]2023/04/29 13:09:17 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:10:41 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:10:48 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:13:58 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:15:25 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:17:29 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:17:48 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:18:06 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:20:57 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:21:14 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:21:21 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:21:32 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:21:38 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:22:04 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:22:25 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:22:27 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:22:40 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:22:55 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:23:35 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:24:14 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:24:30 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:25:58 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:10 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:17 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:27 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:46 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:50 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:27:58 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:28:11 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:28:31 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:28:37 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:28:42 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:28:59 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:29:07 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:29:16 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:29:19 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:29:22 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:29:29 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:31:17 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:31:26 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:32:06 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:33:20 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:35:06 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:35:34 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[error]2023/04/29 13:35:48 webServer.go:24: 读文件错误 open web//favicon.ico: The system cannot find the file specified.
+[debug]2023/04/29 13:47:35 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:47:35 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:47:35 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:47:35 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:47:35 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 13:47:42 webServer.go:27: 读文件错误 open web//axios.min.js.map: The system cannot find the file specified.
+[debug]2023/04/29 13:48:31 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:48:31 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:48:31 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:48:31 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:48:31 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 13:48:33 webServer.go:27: 读文件错误 open web//axios.min.js.map: The system cannot find the file specified.
+[debug]2023/04/29 13:48:58 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:48:58 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:48:58 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:48:58 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:48:58 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 13:49:00 webServer.go:27: 读文件错误 open web/axios.min.js.map: The system cannot find the file specified.
+[debug]2023/04/29 13:49:38 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:49:38 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:49:38 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:49:38 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:49:38 main.go:50: 服务启动成功:  127.0.0.1:8000
+[error]2023/04/29 13:49:39 webServer.go:27: 读文件错误 open web/axios.min.js.map: The system cannot find the file specified.
+[debug]2023/04/29 13:51:21 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:51:21 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:51:21 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:51:21 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:51:21 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 13:59:45 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 13:59:45 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 13:59:45 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 13:59:45 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 13:59:45 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:07:25 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:07:25 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:07:25 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:07:25 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:07:25 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:16:52 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:16:52 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:16:52 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:16:52 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:16:52 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:17:42 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:17:42 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:17:42 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:17:42 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:17:42 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:21:11 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:21:11 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:21:11 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:21:11 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:21:11 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:22:57 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:22:57 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:22:57 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:22:57 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:22:57 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:31:46 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:31:46 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:31:46 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:31:46 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:31:46 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:34:49 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:34:49 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:34:49 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:34:49 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:34:49 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:37:25 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:37:25 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:37:25 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:37:25 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:37:25 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:39:43 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:39:43 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:39:43 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:39:43 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:39:43 main.go:50: 服务启动成功:  127.0.0.1:8000
+[debug]2023/04/29 14:40:24 main.go:32: 全局日志开始启动.............................
+[debug]2023/04/29 14:40:24 main.go:39: 服务启动中,全局日志加载完成
+[debug]2023/04/29 14:40:24 main.go:43: 服务启动中,websocket实例初始化完成
+[debug]2023/04/29 14:40:24 main.go:45: 服务启动中,websocket开启监听完成
+[debug]2023/04/29 14:40:24 main.go:50: 服务启动成功:  127.0.0.1:8000

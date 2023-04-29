@@ -239,7 +239,7 @@ func (p *Metadata) run(conn packetConn) error {
 	var err error
 	err = conn.SetFlagTTL()
 	if err != nil {
-		p.Log.Warn.Printf(err.Error())
+		//p.Log.Warn.Printf(err.Error())
 	}
 
 	defer p.finish()
@@ -460,6 +460,7 @@ func (p *Metadata) processPacket(receive *packet) error {
 		packetUUID, err := p.getPacketUUID(pkt.Data)
 		if err != nil {
 			p.Log.Error.Println(err)
+			return err
 		}
 		timestamp := utils.BytesToTime(pkt.Data[:timeSliceLength])
 		pkg.RTT = receiveTime.Sub(timestamp)

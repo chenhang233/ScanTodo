@@ -77,3 +77,925 @@
 [debug]2023/04/29 10:24:26 cmdTodo.go:88: OnFinish target: 192.168.0.111, PacketsSent: 3, PacketsReceive: 0, PacketLoss: 100 %!,(MISSING)PacketsReceiveDuplicates: 0
 [debug]2023/04/29 10:24:26 cmdTodo.go:90: OnFinish RTTs: [], AverageRoundTripTime: 0s, MaxRoundTripTime: 0s,MinRoundTripTime: 0s 
 [debug]2023/04/29 10:24:26 cmdTodo.go:96: 异常结束日志: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:25:59 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:26:02 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:26:05 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:26:08 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:26:11 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:26:14 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:31:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:32:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:34:42 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:34:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:37:30 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:37:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:39:57 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:21 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:21 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:44:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:44:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:44:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:44:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:45:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:45:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:45:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:45:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:45:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:45:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:45:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:45:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:45:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:45:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:45:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:45:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:45:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:45:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:45:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:45:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:45:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:45:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:45:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:48:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:48:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:48:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:48:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:48:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:48:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:48:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:48:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:48:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:48:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:48:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:48:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:48:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:48:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:48:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 14:48:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 14:48:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 14:49:14 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:49:14 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:49:19 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:49:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:49:24 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:49:24 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:49:29 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:49:29 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:49:34 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:50:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:50:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:50:15 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:50:15 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:50:20 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:50:20 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:50:25 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:50:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:50:30 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:51:08 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:51:08 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:51:13 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:51:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:51:18 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:51:18 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:51:23 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:51:23 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:51:28 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:52:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:52:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:52:15 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:52:15 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:52:20 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:52:20 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:52:26 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:52:26 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:52:31 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:53:05 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:53:05 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:53:10 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:53:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:53:15 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:53:15 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:53:20 ping.go:286: 时间结束信号
+[warn]2023/04/29 14:53:20 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 14:53:25 ping.go:286: 时间结束信号
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:52 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:52 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:52 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:55 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:55 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:55 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:13:58 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:13:58 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:01 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:01 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:04 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:04 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:04 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:07 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:07 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:10 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:10 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:10 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:13 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:13 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:16 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:19 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:19 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:22 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:22 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:25 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:25 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:25 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:28 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:28 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:31 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:34 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:34 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:34 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:37 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:37 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:40 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:40 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:40 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:43 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:44 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:44 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:44 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:46 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:47 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:47 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:47 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:351: read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:283: 收到通道结束信号
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:264: 异常结束中:%!(EXTRA *net.OpError=read ip4 0.0.0.0: wsarecvfrom: A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.)
+[warn]2023/04/29 15:14:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:49 ping.go:242: not implemented on windows/amd64
+[warn]2023/04/29 15:14:49 ping.go:242: not implemented on windows/amd64
+[error]2023/04/29 15:14:49 ping.go:462: UUID不在 trackerUUIDs ！
+[error]2023/04/29 15:14:49 ping.go:462: UUID不在 trackerUUIDs ！
