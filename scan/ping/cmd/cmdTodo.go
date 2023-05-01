@@ -12,7 +12,7 @@ import (
 var usage = `
 Usage:
 
-    ping [-c] [-i] [-t] host
+	[-c] [-i] [-t] host
 
 Examples:
 
@@ -48,7 +48,6 @@ func main() {
 		flag.Usage()
 		return
 	}
-	fmt.Println(flag.Args())
 	host := flag.Arg(0)
 	pingMetadata, err := ping.NewPingMetadata(host)
 	if err != nil {

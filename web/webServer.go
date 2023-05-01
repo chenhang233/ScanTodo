@@ -95,7 +95,7 @@ func (h *WebHttp) Arp(writer http.ResponseWriter, request *http.Request) {
 		err = sc.Repo.Start(ctx)
 		jr := JsonResponse{Code: NormalCode, Message: "结束"}
 		if err != nil {
-			sc.Log.Error.Println("icmp start error", err)
+			sc.Log.Error.Println("arp start error", err)
 			jr.Message = err.Error()
 			jr.Code = ParamsErrorCode
 		}
