@@ -15,6 +15,7 @@ const (
 	TCPLogPath   = "TCPLogPath"
 	ICMPLogPath  = "ICMPLogPath"
 	PingLogPath  = "PingLogPath"
+	ARPLogPath   = "ARPLogPath"
 )
 
 var LogPathList []string
@@ -28,7 +29,7 @@ type LogConf struct {
 }
 
 func LoadLog(sName string) (*LogConf, error) {
-	LogPathList = append([]string{}, HTTPLogPath, TCPLogPath, PingLogPath, ICMPLogPath)
+	LogPathList = append([]string{}, HTTPLogPath, TCPLogPath, PingLogPath, ICMPLogPath, ARPLogPath)
 	if !LogPathInclude(sName) {
 		return nil, errors.New("LoadLog error")
 	}

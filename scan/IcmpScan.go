@@ -81,7 +81,8 @@ func (t *IcmpScan) scanIps(ips []string) error {
 		g.Add(1)
 		go func(ipSlice []string) {
 			for i := 0; i < len(ipSlice); i++ {
-				metadata, err := ping.NewPingMetadata(ipSlice[i])
+				ip := ipSlice[i]
+				metadata, err := ping.NewPingMetadata(ip)
 				if err != nil {
 					t.Log.Error.Println("异常NewPingMetadata日志:", err)
 				}
@@ -100,9 +101,9 @@ func (t *IcmpScan) scanIps(ips []string) error {
 					meta := &ping.LogMeta{Log: t.Log}
 					ping.OnFinish(statistics, meta)
 					if statistics.PacketLoss < 100 {
-						utils.SendToThePrivateClientCustom(fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ipSlice[i], statistics.PacketLoss))
+						utils.SendToThePrivateClientCustom(fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ip, statistics.PacketLoss))
 					} else {
-						utils.SendToThePrivateClientCustom("[失败]: IP:" + ipSlice[i])
+						utils.SendToThePrivateClientCustom("[失败]: IP:" + ip)
 					}
 				}
 				err = metadata.Run()

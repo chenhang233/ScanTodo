@@ -57,7 +57,7 @@ func ReadIps(ips string) ([]string, int, error) {
 	if !strings.Contains(ips, "-") {
 		flag := CheckIpv4(ips)
 		if !flag {
-			return nil, 0, fmt.Errorf("ip错误")
+			return nil, 0, errors.New("ip错误")
 		}
 		ipsArr = append(ipsArr, ips)
 		return ipsArr, 1, nil
@@ -164,6 +164,8 @@ func GetLogName(name string) string {
 		return scanLog.ICMPLogPath
 	case "PING":
 		return scanLog.PingLogPath
+	case "ARP":
+		return scanLog.ARPLogPath
 	default:
 		return ""
 	}

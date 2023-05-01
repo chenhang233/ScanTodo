@@ -15,6 +15,7 @@ type WebService interface {
 	Index(http.ResponseWriter, *http.Request)
 	Tcp(http.ResponseWriter, *http.Request)
 	Icmp(http.ResponseWriter, *http.Request)
+	Arp(http.ResponseWriter, *http.Request)
 	Ws(w http.ResponseWriter, r *http.Request)
 }
 
@@ -46,6 +47,7 @@ func main() {
 	http.HandleFunc("/", ms.w.Index)
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)
+	http.HandleFunc("/arp/proxy", ms.w.Arp)
 	http.HandleFunc("/ws", ms.w.Ws)
 	ms.Log.Debug.Println("服务启动成功: ", *addr)
 	err = http.ListenAndServe(*addr, nil)

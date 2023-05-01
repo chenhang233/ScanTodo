@@ -82,6 +82,29 @@ func (h *WebHttp) Icmp(writer http.ResponseWriter, request *http.Request) {
 	}
 }
 
+func (h *WebHttp) Arp(writer http.ResponseWriter, request *http.Request) {
+	if request.Method == "POST" {
+		body := request.Body
+		all, err := utils.MyReadAll(body)
+		if err != nil {
+			h.Log.Error.Println("body Read", err)
+		}
+
+		sc, _ := scan.NewScanCase("ARP", all)
+		ctx := context.WithValue(context.Background(), "icmp", "1")
+		err = sc.Repo.Start(ctx)
+		jr := JsonResponse{Code: NormalCode, Message: "结束"}
+		if err != nil {
+			sc.Log.Error.Println("icmp start error", err)
+			jr.Message = err.Error()
+			jr.Code = ParamsErrorCode
+		}
+		js, _ := json.Marshal(jr)
+		writer.Write(js)
+		sc.Repo.End(ctx)
+	}
+}
+
 func (h *WebHttp) Ws(writer http.ResponseWriter, request *http.Request) {
 	utils.ServeWs(utils.HubInstance, writer, request)
 }
