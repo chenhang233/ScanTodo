@@ -87,7 +87,7 @@ func (t *IcmpScan) scanIps(ips []string) error {
 				}
 				metadata.Count = 4
 				metadata.Size = 24
-				metadata.Interval = time.Microsecond * 100
+				metadata.Interval = time.Second
 				metadata.Timeout = time.Second * 5
 				metadata.TTL = 64
 				if err != nil {
