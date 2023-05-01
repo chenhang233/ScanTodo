@@ -56,6 +56,13 @@ func NewScanCase(scanUseCase string, body []byte) (*ScanCase, error) {
 			Log:  loadLog,
 			body: req,
 		}
+	case "ARP":
+		req := &ARPProxyReq{}
+		err = json.Unmarshal(body, req)
+		tc = &ARPProxyScan{
+			Log:  loadLog,
+			body: req,
+		}
 	default:
 		loadLog.Error.Println("未实现 " + scanUseCase + " 这个类型")
 		os.Exit(-1)

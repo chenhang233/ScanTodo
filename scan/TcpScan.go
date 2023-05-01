@@ -40,7 +40,7 @@ func (t *TcpScan) Start(ctx context.Context) error {
 		err = fmt.Errorf("port参数错误")
 	}
 	t.Log.Warn.Println("------------------启动----------------------")
-	countS := fmt.Sprintf("准备扫描的ip数量: %d", count)
+	countS := fmt.Sprintf("准备扫描的ip数量: %d,端口数量: %d", count, len(ports))
 	t.Log.Info.Println(countS)
 	utils.SendToThePrivateClientCustom(countS)
 	t.scanIps(ips, ports)

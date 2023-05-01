@@ -57,7 +57,7 @@ func ReadIps(ips string) ([]string, int, error) {
 	if !strings.Contains(ips, "-") {
 		flag := CheckIpv4(ips)
 		if !flag {
-			return nil, 0, fmt.Errorf("ip错误")
+			return nil, 0, errors.New("ip错误")
 		}
 		ipsArr = append(ipsArr, ips)
 		return ipsArr, 1, nil
@@ -124,6 +124,9 @@ A:
 }
 
 func ReadPorts(ports string) ([]uint16, error) {
+	if ports == "" {
+		return []uint16{}, errors.New("无效端口")
+	}
 	ps := strings.Split(ports, ",")
 	portList := make([]uint16, 0, 65536)
 	for _, p := range ps {
@@ -137,7 +140,7 @@ func ReadPorts(ports string) ([]uint16, error) {
 			for i := start; i <= end; i++ {
 				portList = append(portList, uint16(i))
 			}
-			break
+			continue
 		}
 		port, err := strconv.ParseUint(p, 10, 16)
 		if err != nil {
@@ -161,6 +164,8 @@ func GetLogName(name string) string {
 		return scanLog.ICMPLogPath
 	case "PING":
 		return scanLog.PingLogPath
+	case "ARP":
+		return scanLog.ARPLogPath
 	default:
 		return ""
 	}
