@@ -60,7 +60,7 @@ func (t *ARPProxyScan) Start(ctx context.Context) error {
 	//	t.Log.Error.Println("发送网关失败: ", err)
 	//	return err
 	//}
-	//return nil
+	return nil
 }
 
 func (t *ARPProxyScan) End(ctx context.Context) error {

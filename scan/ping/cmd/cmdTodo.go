@@ -33,7 +33,7 @@ Examples:
 `
 
 func main() {
-	timeout := flag.Duration("t", time.Second*10, "持续总时间")
+	timeout := flag.Duration("t", time.Second*2, "持续总时间")
 	interval := flag.Duration("i", time.Second, "间隔时间")
 	size := flag.Int("s", 24, "数据包内容大小")
 	count := flag.Int("c", 4, "ping次数")

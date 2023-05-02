@@ -7,12 +7,13 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"time"
 )
 
 var usage = `
 Usage:
 
-	-sIp -sMAC -tIp -tMAC -op ip
+	-sIp -sMAC -tIp -tMAC -op -t -i ip
 
 Examples:
 
@@ -21,11 +22,13 @@ Examples:
 `
 
 func main() {
-	op := flag.Int("op", 1, "操作 1请求2回复")
+	op := flag.Uint("op", 1, "操作 1请求2回复")
 	sIp := flag.String("sIp", "", "发送方ip")
 	sMAC := flag.String("sMAC", "", "发送方MAC")
 	tIp := flag.String("tIp", "", "接收方ip")
 	tMAC := flag.String("tMAC", "", "接收方MAC")
+	timeout := flag.Duration("t", time.Second*5, "最大超时时间")
+	interval := flag.Duration("i", time.Second, "间隔时间")
 	flag.Usage = func() {
 		print(usage)
 		flag.PrintDefaults()
@@ -33,14 +36,13 @@ func main() {
 	flag.Parse()
 
 	if flag.NArg() == 0 {
-		fmt.Println("没有本机IP !")
+		fmt.Println("最后一个参数本机指定网卡IP")
 		flag.Usage()
 		return
 	}
 	host := flag.Arg(0)
-	metadata, err := arp.New(host)
+	m, err := arp.New(host)
 	if err != nil {
-		fmt.Println(err)
 		return
 	}
 
@@ -48,29 +50,34 @@ func main() {
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		for i := range c {
-			metadata.Log.Debug.Println("接收到中断的信号:", i)
-			metadata.Stop()
+			m.Log.Debug.Println("接收到中断的信号:", i)
+			m.Stop()
 		}
 	}()
 
-	metadata.Operation = *op
-	metadata.SourceDevice.Ip = net.ParseIP(*sIp)
+	m.Operation = uint16(*op)
+	m.Timeout = *timeout
+	m.Interval = *interval
+	m.SourceDevice.Ip = net.ParseIP(*sIp)
 	hw1, err := net.ParseMAC(*sMAC)
 	if err != nil {
-		metadata.Log.Warn.Println(err)
+		m.Log.Warn.Println(err)
 		return
 	}
-	metadata.SourceDevice.Mac = hw1
-	metadata.TargetDevice.Ip = net.ParseIP(*tIp)
+	m.SourceDevice.Mac = hw1
+	m.TargetDevice.Ip = net.ParseIP(*tIp)
 	hw2, err := net.ParseMAC(*tMAC)
 	if err != nil {
-		metadata.Log.Warn.Println(err)
+		m.Log.Warn.Println(err)
 		return
 	}
-	metadata.TargetDevice.Mac = hw2
-
-	err = metadata.Run()
+	m.TargetDevice.Mac = hw2
+	s1 := fmt.Sprintf("\n本机信息(ip: %v,mac: %v,Description: %s)", m.SelfDevice.Ip, m.SelfDevice.Mac, m.SelfDevice.Description)
+	s2 := fmt.Sprintf("\n发送信息(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
+	s3 := fmt.Sprintf("\n接收信息(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)
+	m.Log.Info.Println(s1 + s2 + s3)
+	err = m.Run()
 	if err != nil {
-		metadata.Log.Debug.Println("异常结束日志:", err)
+		m.Log.Debug.Println("异常结束日志:", err)
 	}
 }
