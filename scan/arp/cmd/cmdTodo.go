@@ -13,7 +13,7 @@ import (
 var usage = `
 Usage:
 
-	-sIp -sMAC -tIp -tMAC -op -t -i ip
+	-sIp -sMAC -tIp -tMAC -op [-t] [-i] ip
 
 Examples:
 
@@ -27,8 +27,8 @@ func main() {
 	sMAC := flag.String("sMAC", "", "发送方MAC")
 	tIp := flag.String("tIp", "", "接收方ip")
 	tMAC := flag.String("tMAC", "", "接收方MAC")
-	timeout := flag.Duration("t", time.Second*5, "最大超时时间")
-	interval := flag.Duration("i", time.Second, "间隔时间")
+	timeout := flag.Duration("t", time.Hour, "最大超时时间")
+	interval := flag.Duration("i", time.Minute, "间隔时间")
 	flag.Usage = func() {
 		print(usage)
 		flag.PrintDefaults()

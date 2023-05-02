@@ -47,6 +47,8 @@ type Metadata struct {
 	done chan bool
 }
 
+var arpEnMap map[uint16]string
+
 func New(ip string) (*Metadata, error) {
 	m := &Metadata{
 		CurrentIndex: -1,
@@ -71,6 +73,8 @@ func (m *Metadata) Resolve() error {
 	if err != nil {
 		return err
 	}
+	arpEnMap[1] = "ARP请求"
+	arpEnMap[2] = "ARP响应"
 	return nil
 }
 
@@ -169,20 +173,33 @@ func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 			arpLayer := p.Layer(layers.LayerTypeARP)
 			if arpLayer != nil {
 				arp, _ := arpLayer.(*layers.ARP)
-				if bytes.Equal(m.SelfDevice.Mac, arp.SourceHwAddress) {
-					continue
-				}
-				if arp.Operation == layers.ARPReply {
-					mac := net.HardwareAddr(arp.SourceHwAddress)
-					m.Log.Info.Println(fmt.Sprintf("收到arp回复 (目标MAC: %v,目标IP: %v)", mac, m.TargetDevice.Ip))
-					receive := m.OnReceive
-					if receive != nil {
-						receive(m)
-					}
-				}
+				m.processARP(arp)
+			}
+			ipv4Layer := p.Layer(layers.LayerTypeIPv4)
+			if ipv4Layer != nil {
+				ipv4, _ := ipv4Layer.(*layers.IPv4)
+				m.processIPv4(ipv4)
 			}
 		}
 	}
+}
+
+func (m *Metadata) processARP(arp *layers.ARP) {
+	if bytes.Equal(m.SelfDevice.Mac, arp.SourceHwAddress) {
+		return
+	}
+	mac1 := net.HardwareAddr(arp.SourceHwAddress)
+	mac2 := net.HardwareAddr(arp.DstProtAddress)
+	reply := fmt.Sprintf("收到%s (源MAC: %v,目标MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
+	m.Log.Info.Printf(reply)
+	receive := m.OnReceive
+	if receive != nil {
+		receive(m)
+	}
+}
+
+func (m *Metadata) processIPv4(ipv4 *layers.IPv4) {
+	//ipv4.
 }
 
 /*
