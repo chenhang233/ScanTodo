@@ -2,7 +2,6 @@ package arp
 
 import (
 	"ScanTodo/scanLog"
-	"bytes"
 	"errors"
 	"fmt"
 	"github.com/google/gopacket"
@@ -73,6 +72,7 @@ func (m *Metadata) Resolve() error {
 	if err != nil {
 		return err
 	}
+	arpEnMap = map[uint16]string{}
 	arpEnMap[1] = "ARP请求"
 	arpEnMap[2] = "ARP响应"
 	return nil
@@ -144,6 +144,10 @@ func (m *Metadata) mainLoop(conn *pcap.Handle) error {
 		t1.Stop()
 		t2.Stop()
 	}()
+	err := m.sendArp(conn, m.Operation, m.SourceDevice.Mac, m.TargetDevice.Mac, m.SourceDevice.Ip, m.TargetDevice.Ip)
+	if err != nil {
+		m.Log.Warn.Println("sendArp: ", err)
+	}
 	for {
 		select {
 		case <-m.done:
@@ -172,25 +176,27 @@ func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 		case p := <-ps.Packets():
 			arpLayer := p.Layer(layers.LayerTypeARP)
 			if arpLayer != nil {
-				arp, _ := arpLayer.(*layers.ARP)
+				arp := arpLayer.(*layers.ARP)
 				m.processARP(arp)
 			}
 			ipv4Layer := p.Layer(layers.LayerTypeIPv4)
 			if ipv4Layer != nil {
-				ipv4, _ := ipv4Layer.(*layers.IPv4)
+				ipv4 := ipv4Layer.(*layers.IPv4)
 				m.processIPv4(ipv4)
+			}
+			tcpLayer := p.Layer(layers.LayerTypeTCP)
+			if tcpLayer != nil {
+				tcp := tcpLayer.(*layers.TCP)
+				m.processTCP(tcp)
 			}
 		}
 	}
 }
 
 func (m *Metadata) processARP(arp *layers.ARP) {
-	if bytes.Equal(m.SelfDevice.Mac, arp.SourceHwAddress) {
-		return
-	}
 	mac1 := net.HardwareAddr(arp.SourceHwAddress)
-	mac2 := net.HardwareAddr(arp.DstProtAddress)
-	reply := fmt.Sprintf("收到%s (源MAC: %v,目标MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
+	mac2 := net.HardwareAddr(arp.DstHwAddress)
+	reply := fmt.Sprintf("监听 %s (源MAC: %v,目标MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
 	m.Log.Info.Printf(reply)
 	receive := m.OnReceive
 	if receive != nil {
@@ -199,7 +205,11 @@ func (m *Metadata) processARP(arp *layers.ARP) {
 }
 
 func (m *Metadata) processIPv4(ipv4 *layers.IPv4) {
-	//ipv4.
+	fmt.Println(ipv4.DstIP, "ipv4.DstIP", ipv4.SrcIP, "ipv4.SrcIP")
+}
+
+func (m *Metadata) processTCP(tcp *layers.TCP) {
+	fmt.Println(tcp.Seq, "tcp.Seq")
 }
 
 /*

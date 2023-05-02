@@ -30,3 +30,227 @@
 [info]2023/05/02 14:33:16 arp.go:177: 收到arp回复 (目标MAC: 00:0c:29:8a:8c:ef,目标IP: 192.168.232.144)
 [info]2023/05/02 14:33:17 arp.go:177: 收到arp回复 (目标MAC: 00:0c:29:8a:8c:ef,目标IP: 192.168.232.144)
 [info]2023/05/02 14:33:18 arp.go:177: 收到arp回复 (目标MAC: 00:0c:29:8a:8c:ef,目标IP: 192.168.232.144)
+[info]2023/05/02 18:14:26 cmdTodo.go:78: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+发送信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+接收信息(ip: 192.168.232.144,mac: 00:0c:29:8a:8c:ef,Description: )
+[debug]2023/05/02 18:14:35 cmdTodo.go:53: 接收到中断的信号: interrupt
+[info]2023/05/02 18:46:00 cmdTodo.go:113: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+发送信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+接收信息(ip: 192.168.232.144,mac: 00:0c:29:8a:8c:ef,Description: )
+[debug]2023/05/02 18:46:01 cmdTodo.go:88: 接收到中断的信号: interrupt
+[info]2023/05/02 18:49:10 cmdTodo.go:119: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+发送信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+接收信息(ip: 192.168.232.144,mac: 00:0c:29:8a:8c:ef,Description: )
+[debug]2023/05/02 18:49:11 cmdTodo.go:94: 接收到中断的信号: interrupt
+[info]2023/05/02 18:51:43 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+发送信息(ip: 192.168.232.144,mac: 00:50:56:c0:00:08,Description: )
+接收信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[debug]2023/05/02 18:51:46 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:52:52 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[debug]2023/05/02 18:54:15 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:55:51 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[debug]2023/05/02 18:55:54 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:56:36 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[debug]2023/05/02 18:56:38 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:57:08 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[debug]2023/05/02 18:57:10 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:58:04 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 18:58:04 arp.go:204: 收到ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: c0:a8:e8:02)
+[debug]2023/05/02 18:58:08 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 18:59:44 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 18:59:44 arp.go:204: 收到ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: c0:a8:e8:02)
+[debug]2023/05/02 18:59:49 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:00:29 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 19:00:29 arp.go:204: 收到ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: c0:a8:e8:02)
+[debug]2023/05/02 19:00:31 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:01:30 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 19:01:30 arp.go:203: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: c0:a8:e8:02)
+[debug]2023/05/02 19:01:32 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:02:15 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 19:02:15 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:50:56:e3:5e:65)
+[debug]2023/05/02 19:02:22 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:03:19 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:50:56:e3:5e:65,Description: )
+[info]2023/05/02 19:03:19 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:50:56:e3:5e:65)
+[debug]2023/05/02 19:03:22 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:04:02 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.144,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:04:02 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:04:02 arp.go:200: 监听 ARP响应 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:c0:00:08)
+[debug]2023/05/02 19:04:07 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:05:51 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:05:51 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:05:54 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:09:40 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:09:40 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:09:48 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:10:03 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.155,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:10:03 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:10:08 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:10:48 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.155,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:10:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:11:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:12:05 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:12:06 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:12:07 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:12:25 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:12:25 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:12:30 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:12:31 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:12:32 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:12:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:13:36 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:13:37 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:13:38 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:13:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:14:39 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:14:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:15:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:16:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:17:25 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:17:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:18:26 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:18:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:19:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:20:16 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:20:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:21:17 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:21:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:22:18 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:35 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:36 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:37 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:38 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:39 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:39 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:22:40 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:22:40 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:22:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:23:19 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:23:47 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:23:47 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:23:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:23:52 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:23:52 arp.go:200: 监听 ARP响应 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:c0:00:08)
+[info]2023/05/02 19:24:20 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:24:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:25:21 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:25:22 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:25:23 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:25:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:26:24 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:26:25 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:26:26 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:26:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:27:03 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:27:04 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:27:05 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:27:06 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:27:44 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:27:44 arp.go:200: 监听 ARP响应 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:27:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:28:07 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:28:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:29:08 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:09 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:10 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:45 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:46 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:47 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:29:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:30:04 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:c0:00:08)
+[info]2023/05/02 19:30:04 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:30:05 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:30:05 arp.go:200: 监听 ARP响应 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:c0:00:08)
+[info]2023/05/02 19:30:35 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:30:35 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:30:35 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:36 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:37 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:38 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:39 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:40 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:30:48 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:31:02 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:32:07 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:32:07 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:32:08 arp.go:200: 监听 ARP请求 (源MAC: 00:0c:29:8a:8c:ef,目标MAC: 00:50:56:e3:5e:65)
+[info]2023/05/02 19:32:08 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:e3:5e:65,目标MAC: 00:0c:29:8a:8c:ef)
+[info]2023/05/02 19:32:08 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[info]2023/05/02 19:32:09 arp.go:200: 监听 ARP请求 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:00:00:00:00:00)
+[debug]2023/05/02 19:32:09 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:35:10 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:35:10 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:35:16 cmdTodo.go:93: 接收到中断的信号: interrupt
+[info]2023/05/02 19:36:21 cmdTodo.go:119: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:36:21 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:36:22 cmdTodo.go:94: 接收到中断的信号: interrupt
+[info]2023/05/02 19:36:37 cmdTodo.go:119: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:36:37 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:36:39 cmdTodo.go:94: 接收到中断的信号: interrupt
+[info]2023/05/02 19:40:07 cmdTodo.go:118: 
+本机信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: VMware Network Adapter VMnet8)
+源信息(ip: 192.168.232.1,mac: 00:50:56:c0:00:08,Description: )
+目标信息(ip: 192.168.232.2,mac: 00:0c:29:8a:8c:ef,Description: )
+[info]2023/05/02 19:40:07 arp.go:200: 监听 ARP响应 (源MAC: 00:50:56:c0:00:08,目标MAC: 00:0c:29:8a:8c:ef)
+[debug]2023/05/02 19:40:43 cmdTodo.go:93: 接收到中断的信号: interrupt
