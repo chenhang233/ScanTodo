@@ -46,6 +46,12 @@ type Metadata struct {
 	done chan bool
 }
 
+// packet 接收到的数据包
+type packet struct {
+	bytes   []byte
+	byteLen int
+}
+
 var arpEnMap map[uint16]string
 
 func New(ip string) (*Metadata, error) {
@@ -178,6 +184,8 @@ func (m *Metadata) mainLoop(conn *pcap.Handle) error {
 
 func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 	ps := gopacket.NewPacketSource(handle, handle.LinkType())
+	re := make(chan *packet, 5)
+	defer close(re)
 	for {
 		select {
 		case <-m.done:
@@ -195,10 +203,13 @@ func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 			}
 			tcpLayer := p.Layer(layers.LayerTypeTCP)
 			if tcpLayer != nil {
-				fmt.Println(string(tcpLayer.LayerPayload()))
 				tcp := tcpLayer.(*layers.TCP)
-				m.processTCP(tcp)
+				m.processTCP(tcp, re)
 			}
+		case r := <-re:
+			m.Log.Info.Println("数据长度:", r.byteLen)
+			m.Log.Info.Println("源数据:", r.bytes)
+			m.Log.Info.Println(string(r.bytes))
 		}
 	}
 }
@@ -218,10 +229,14 @@ func (m *Metadata) processIPv4(ipv4 *layers.IPv4) {
 	m.Log.Debug.Println(fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP))
 }
 
-func (m *Metadata) processTCP(tcp *layers.TCP) {
-	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v", tcp.SrcPort, tcp.DstPort))
-	m.Log.Info.Print(tcp.Payload)
-	//fmt.Println(app)
+func (m *Metadata) processTCP(tcp *layers.TCP, re chan<- *packet) {
+	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
+		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack))
+	p := tcp.Payload
+	pl := len(p)
+	if pl > 0 {
+		re <- &packet{bytes: p, byteLen: pl}
+	}
 }
 
 /*

@@ -4,12 +4,13 @@ import (
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"ScanTodo/web"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"net/http"
 )
 
-var addr = flag.String("addr", "127.0.0.1:8000", "http service address")
+var addr = flag.String("addr", "0.0.0.0:8000", "http service address")
 
 type WebService interface {
 	Index(http.ResponseWriter, *http.Request)
@@ -44,15 +45,22 @@ func main() {
 	ms.Log.Debug.Println("服务启动中,websocket实例初始化完成")
 	go utils.HubInstance.Run()
 	ms.Log.Debug.Println("服务启动中,websocket开启监听完成")
-	http.HandleFunc("/", ms.w.Index)
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)
 	http.HandleFunc("/arp/proxy", ms.w.Arp)
 	http.HandleFunc("/ws", ms.w.Ws)
+	http.HandleFunc("/test", Test)
+	http.HandleFunc("/index", ms.w.Index)
 	ms.Log.Debug.Println("服务启动成功: ", *addr)
 	err = http.ListenAndServe(*addr, nil)
 	if err != nil {
 		ms.Log.Error.Println("服务启动失败,", err)
 		panic(err)
 	}
+}
+
+func Test(writer http.ResponseWriter, request *http.Request) {
+	jr := &web.JsonResponse{Code: web.NoMessageCode, Message: web.NoMessageMsg, Data: nil}
+	js, _ := json.Marshal(jr)
+	writer.Write(js)
 }
