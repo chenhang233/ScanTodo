@@ -139,14 +139,23 @@ func (m *Metadata) run(conn *pcap.Handle) error {
 
 func (m *Metadata) mainLoop(conn *pcap.Handle) error {
 	t1 := time.NewTicker(m.Timeout)
+	t2F := true
+	if m.Interval < 0 {
+		t2F = false
+		m.Interval = time.Second
+	}
 	t2 := time.NewTicker(m.Interval)
 	defer func() {
 		t1.Stop()
 		t2.Stop()
 	}()
-	err := m.sendArp(conn, m.Operation, m.SourceDevice.Mac, m.TargetDevice.Mac, m.SourceDevice.Ip, m.TargetDevice.Ip)
-	if err != nil {
-		m.Log.Warn.Println("sendArp: ", err)
+	if t2F {
+		err := m.sendArp(conn, m.Operation, m.SourceDevice.Mac, m.TargetDevice.Mac, m.SourceDevice.Ip, m.TargetDevice.Ip)
+		if err != nil {
+			m.Log.Warn.Println("sendArp: ", err)
+		}
+	} else {
+		t2.Stop()
 	}
 	for {
 		select {
@@ -186,6 +195,7 @@ func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 			}
 			tcpLayer := p.Layer(layers.LayerTypeTCP)
 			if tcpLayer != nil {
+				fmt.Println(string(tcpLayer.LayerPayload()))
 				tcp := tcpLayer.(*layers.TCP)
 				m.processTCP(tcp)
 			}
@@ -205,11 +215,13 @@ func (m *Metadata) processARP(arp *layers.ARP) {
 }
 
 func (m *Metadata) processIPv4(ipv4 *layers.IPv4) {
-	fmt.Println(ipv4.DstIP, "ipv4.DstIP", ipv4.SrcIP, "ipv4.SrcIP")
+	m.Log.Debug.Println(fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP))
 }
 
 func (m *Metadata) processTCP(tcp *layers.TCP) {
-	fmt.Println(tcp.Seq, "tcp.Seq")
+	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v", tcp.SrcPort, tcp.DstPort))
+	m.Log.Info.Print(tcp.Payload)
+	//fmt.Println(app)
 }
 
 /*

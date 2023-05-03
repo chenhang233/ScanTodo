@@ -3,6 +3,7 @@ package main
 import (
 	"ScanTodo/scan/arp"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net"
 	"os"
@@ -32,16 +33,10 @@ import (
 // }
 var usage = `
 Usage:
-
-	-sIp -sMAC -tIp -tMAC -op [-t] [-i] ip
-
-Examples:
-
-    # 发送arp报文 
-     -sIp 192.168.232.144 -sMAC 00-50-56-C0-00-08 -tIp 192.168.232.2 -tMAC 00-50-56-e3-5e-65 192.168.232.1
+	-load arp.json
 `
 
-const ConfigPath = "configs/arp.json"
+const ConfigPath = "configs"
 
 type Config struct {
 	configInfo []ConfigInfo
@@ -61,18 +56,25 @@ type ConfigInfo struct {
 var config ConfigInfo
 
 func init() {
-	_, err := os.OpenFile(ConfigPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
-	if err != nil {
-		panic(err)
+	load := flag.String("load", "arp.json", "读取配置文件")
+	flag.Usage = func() {
+		print(usage)
+		flag.PrintDefaults()
 	}
-	file, err := os.ReadFile(ConfigPath)
+	flag.Parse()
+	var err error
+	p := os.O_RDWR | os.O_CREATE | os.O_APPEND
+	_, err = os.Stat(ConfigPath)
 	if err != nil {
-		panic(err)
+		err = os.MkdirAll(ConfigPath, os.ModePerm)
 	}
+	goOut(err)
+	_, err = os.OpenFile(ConfigPath+"/"+*load, p, os.ModePerm)
+	goOut(err)
+	file, err := os.ReadFile(ConfigPath + "/" + *load)
+	goOut(err)
 	err = json.Unmarshal(file, &config)
-	if err != nil {
-		panic(err)
-	}
+	goOut(err)
 	if config.I == time.Duration(0) {
 		config.I = time.Minute
 	}
@@ -80,6 +82,14 @@ func init() {
 		config.T = time.Hour
 	}
 }
+
+func goOut(err error) {
+	if err != nil {
+		flag.Usage()
+		panic(err)
+	}
+}
+
 func main() {
 	host := config.HostIp
 	m, err := arp.New(host)
@@ -116,6 +126,12 @@ func main() {
 	s2 := fmt.Sprintf("\n源信息(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
 	s3 := fmt.Sprintf("\n目标信息(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)
 	m.Log.Info.Println(s1 + s2 + s3)
+	m.OnSend = func(m *arp.Metadata) {
+		fmt.Println("发送ARP报文")
+	}
+	m.OnFinish = func(m *arp.Metadata) {
+		fmt.Println("结束")
+	}
 	err = m.Run()
 	if err != nil {
 		m.Log.Debug.Println("异常结束日志:", err)
