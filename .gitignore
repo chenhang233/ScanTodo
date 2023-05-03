@@ -1,4 +1,7 @@
 # 取消上传bin下面的文件
-bin/
+bin
 
 .idea
+
+
+scanLog/logs
