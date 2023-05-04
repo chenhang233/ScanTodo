@@ -91,13 +91,16 @@ func goOut(err error) {
 }
 
 func main() {
+
 	host := config.HostIp
 	m, err := arp.New(host)
 	if err != nil {
+		m.Log.Error.Println(err)
 		return
 	}
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
+
 	go func() {
 		for i := range c {
 			m.Log.Debug.Println("接收到中断的信号:", i)

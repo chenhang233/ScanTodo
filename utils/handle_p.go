@@ -52,6 +52,15 @@ func decimalConversion(n uint8, base uint8) []uint8 {
 	return b
 }
 
+func Includes(arr []string, content string) bool {
+	for i := range arr {
+		if content == arr[i] {
+			return true
+		}
+	}
+	return false
+}
+
 func ByteArrayToBinary(bys []byte) {
 	//var b []uint
 	str := ""

@@ -2,6 +2,7 @@ package arp
 
 import (
 	"ScanTodo/scanLog"
+	"ScanTodo/utils"
 	"errors"
 	"fmt"
 	"github.com/google/gopacket"
@@ -48,10 +49,12 @@ type Metadata struct {
 
 // packet 接收到的数据包
 type packet struct {
-	bytes   []byte
-	byteLen int
+	payloadType string
+	bytes       []byte
+	byteLen     int
 }
 
+var HTTPMethodsMap []string
 var arpEnMap map[uint16]string
 
 func New(ip string) (*Metadata, error) {
@@ -81,6 +84,7 @@ func (m *Metadata) Resolve() error {
 	arpEnMap = map[uint16]string{}
 	arpEnMap[1] = "ARP请求"
 	arpEnMap[2] = "ARP响应"
+	HTTPMethodsMap = []string{"GET", "POST", "DELETE", "HEAD", "OPTIONS", "PUT", "TRACE"}
 	return nil
 }
 
@@ -126,15 +130,16 @@ func (m *Metadata) run(conn *pcap.Handle) error {
 	if setup != nil {
 		setup()
 	}
-
+	pks := make(chan *packet, 5)
+	defer close(pks)
 	var g errgroup.Group
 	g.Go(func() error {
 		defer m.Stop()
-		return m.mainLoop(conn)
+		return m.mainLoop(conn, pks)
 	})
 	g.Go(func() error {
 		defer m.Stop()
-		return m.listenPacket(conn)
+		return m.listenPacket(conn, pks)
 	})
 	err := g.Wait()
 	if err != nil {
@@ -143,7 +148,7 @@ func (m *Metadata) run(conn *pcap.Handle) error {
 	return err
 }
 
-func (m *Metadata) mainLoop(conn *pcap.Handle) error {
+func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 	t1 := time.NewTicker(m.Timeout)
 	t2F := true
 	if m.Interval < 0 {
@@ -178,14 +183,32 @@ func (m *Metadata) mainLoop(conn *pcap.Handle) error {
 			if send != nil {
 				send(m)
 			}
+		case p := <-pks:
+			err := m.processPacketPayload(p)
+			if err != nil {
+				m.Log.Warn.Printf("处理收到的包异常", err)
+			}
 		}
 	}
 }
 
-func (m *Metadata) listenPacket(handle *pcap.Handle) error {
+func (m *Metadata) processPacketPayload(receive *packet) error {
+	switch receive.payloadType {
+	case "TCP":
+		bys := receive.bytes[:4]
+		if utils.Includes(HTTPMethodsMap, string(bys)) {
+			_ = m.processHTTP(receive)
+		}
+	}
+	return nil
+}
+
+func (m *Metadata) processHTTP(receive *packet) error {
+	return nil
+}
+
+func (m *Metadata) listenPacket(handle *pcap.Handle, pks chan<- *packet) error {
 	ps := gopacket.NewPacketSource(handle, handle.LinkType())
-	re := make(chan *packet, 5)
-	defer close(re)
 	for {
 		select {
 		case <-m.done:
@@ -194,27 +217,23 @@ func (m *Metadata) listenPacket(handle *pcap.Handle) error {
 			arpLayer := p.Layer(layers.LayerTypeARP)
 			if arpLayer != nil {
 				arp := arpLayer.(*layers.ARP)
-				m.processARP(arp)
+				m.listenARP(arp)
 			}
 			ipv4Layer := p.Layer(layers.LayerTypeIPv4)
 			if ipv4Layer != nil {
 				ipv4 := ipv4Layer.(*layers.IPv4)
-				m.processIPv4(ipv4)
+				m.listenIPv4(ipv4)
 			}
 			tcpLayer := p.Layer(layers.LayerTypeTCP)
 			if tcpLayer != nil {
 				tcp := tcpLayer.(*layers.TCP)
-				m.processTCP(tcp, re)
+				m.listenTCP(tcp, pks)
 			}
-		case r := <-re:
-			m.Log.Info.Println("数据长度:", r.byteLen)
-			m.Log.Info.Println("源数据:", r.bytes)
-			m.Log.Info.Println(string(r.bytes))
 		}
 	}
 }
 
-func (m *Metadata) processARP(arp *layers.ARP) {
+func (m *Metadata) listenARP(arp *layers.ARP) {
 	mac1 := net.HardwareAddr(arp.SourceHwAddress)
 	mac2 := net.HardwareAddr(arp.DstHwAddress)
 	reply := fmt.Sprintf("监听 %s (源MAC: %v,目标MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
@@ -225,17 +244,17 @@ func (m *Metadata) processARP(arp *layers.ARP) {
 	}
 }
 
-func (m *Metadata) processIPv4(ipv4 *layers.IPv4) {
+func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) {
 	m.Log.Debug.Println(fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP))
 }
 
-func (m *Metadata) processTCP(tcp *layers.TCP, re chan<- *packet) {
+func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
 	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
 		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack))
 	p := tcp.Payload
 	pl := len(p)
 	if pl > 0 {
-		re <- &packet{bytes: p, byteLen: pl}
+		re <- &packet{bytes: p, byteLen: pl, payloadType: "TCP"}
 	}
 }
 
