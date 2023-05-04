@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"net"
 	"os"
 	"os/signal"
 	"time"
@@ -38,22 +37,7 @@ Usage:
 
 const ConfigPath = "configs"
 
-type Config struct {
-	configInfo []ConfigInfo
-}
-
-type ConfigInfo struct {
-	Op     uint16        `json:"op"`
-	T      time.Duration `json:"t"`
-	I      time.Duration `json:"i"`
-	SIP    string        `json:"sIP"`
-	SMAC   string        `json:"sMAC"`
-	TIP    string        `json:"tIP"`
-	TMAC   string        `json:"tMAC"`
-	HostIp string        `json:"hostIp"`
-}
-
-var config ConfigInfo
+var config arp.ConfigInfo
 
 func init() {
 	load := flag.String("load", "arp.json", "读取配置文件")
@@ -91,16 +75,13 @@ func goOut(err error) {
 }
 
 func main() {
-
-	host := config.HostIp
-	m, err := arp.New(host)
+	m, err := arp.New(&config)
 	if err != nil {
 		m.Log.Error.Println(err)
 		return
 	}
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
-
 	go func() {
 		for i := range c {
 			m.Log.Debug.Println("接收到中断的信号:", i)
@@ -108,23 +89,6 @@ func main() {
 		}
 	}()
 
-	m.Operation = config.Op
-	m.Timeout = config.T
-	m.Interval = config.I
-	m.SourceDevice.Ip = net.ParseIP(config.SIP)
-	hw1, err := net.ParseMAC(config.SMAC)
-	if err != nil {
-		m.Log.Warn.Println(err)
-		return
-	}
-	m.SourceDevice.Mac = hw1
-	m.TargetDevice.Ip = net.ParseIP(config.TIP)
-	hw2, err := net.ParseMAC(config.TMAC)
-	if err != nil {
-		m.Log.Warn.Println(err)
-		return
-	}
-	m.TargetDevice.Mac = hw2
 	s1 := fmt.Sprintf("\n本机信息(ip: %v,mac: %v,Description: %s)", m.SelfDevice.Ip, m.SelfDevice.Mac, m.SelfDevice.Description)
 	s2 := fmt.Sprintf("\n源信息(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
 	s3 := fmt.Sprintf("\n目标信息(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)

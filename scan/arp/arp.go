@@ -22,6 +22,34 @@ type NetworkDevice struct {
 	Mac         net.HardwareAddr
 }
 
+type IpTcpRulesStr struct {
+	SourceIps        string `json:"sourceIps"`
+	DestinationIps   string `json:"destinationIps"`
+	SourcePorts      string `json:"sourcePorts"`
+	DestinationPorts string `json:"destinationPorts"`
+}
+
+type ipTcpRules struct {
+	SourceIps        []string
+	DestinationIps   []string
+	SourcePorts      []string
+	DestinationPorts []string
+}
+
+// ConfigInfo 使用者配置信息
+type ConfigInfo struct {
+	Op              uint16        `json:"op"`
+	T               time.Duration `json:"t"`
+	I               time.Duration `json:"i"`
+	SIP             string        `json:"sIP"`
+	SMAC            string        `json:"sMAC"`
+	TIP             string        `json:"tIP"`
+	TMAC            string        `json:"tMAC"`
+	HostIp          string        `json:"hostIp"`
+	EnableRuleIpTcp bool          `json:"enableRuleIpTcp"`
+	IpTcpRules      IpTcpRulesStr `json:"ipTcpRules"`
+}
+
 // Metadata 数据包元数据结构体
 type Metadata struct {
 	// 源
@@ -44,6 +72,10 @@ type Metadata struct {
 	OnSetup   func()
 	OnSend    func(*Metadata)
 	OnReceive func(*Metadata)
+	// 配置IP/TCP监听规则
+	EnableRuleIpTcp bool
+	*IpTcpRulesStr
+	*ipTcpRules
 	// 结束信号
 	done chan bool
 }
@@ -59,17 +91,47 @@ var HTTPMethodsMap []string
 var HTTPResponseRow string
 var arpEnMap map[uint16]string
 
-func New(ip string) (*Metadata, error) {
+func New(c *ConfigInfo) (*Metadata, error) {
 	m := &Metadata{
-		CurrentIndex: -1,
-		Timeout:      0,
-		Interval:     1,
-		SelfDevice:   &NetworkDevice{Ip: net.ParseIP(ip)},
-		TargetDevice: &NetworkDevice{},
-		SourceDevice: &NetworkDevice{},
-		done:         make(chan bool, 1),
+		CurrentIndex:    -1,
+		Timeout:         c.T,
+		Interval:        c.I,
+		Operation:       c.Op,
+		SelfDevice:      &NetworkDevice{Ip: net.ParseIP(c.HostIp)},
+		TargetDevice:    &NetworkDevice{Ip: net.ParseIP(c.TIP)},
+		SourceDevice:    &NetworkDevice{Ip: net.ParseIP(c.SIP)},
+		done:            make(chan bool, 1),
+		EnableRuleIpTcp: false,
+		IpTcpRulesStr:   &IpTcpRulesStr{},
+		ipTcpRules:      &ipTcpRules{},
+	}
+	err := m.new(c)
+	if err != nil {
+		return nil, err
 	}
 	return m, m.Resolve()
+}
+
+func (m *Metadata) new(c *ConfigInfo) error {
+	arpEnMap = map[uint16]string{}
+	arpEnMap[1] = "ARP请求"
+	arpEnMap[2] = "ARP响应"
+	HTTPMethodsMap = []string{"GET", "POST", "DELETE", "HEAD", "OPTIONS", "PUT", "TRACE"}
+	HTTPResponseRow = "HTTP"
+	hw1, err := net.ParseMAC(c.SMAC)
+	if err != nil {
+		return err
+	}
+	m.SourceDevice.Mac = hw1
+	hw2, err := net.ParseMAC(c.TMAC)
+	if err != nil {
+		return err
+	}
+	m.TargetDevice.Mac = hw2
+	if c.EnableRuleIpTcp {
+		// 过滤规则...
+	}
+	return nil
 }
 
 func (m *Metadata) Resolve() error {
@@ -83,11 +145,6 @@ func (m *Metadata) Resolve() error {
 	if err != nil {
 		return err
 	}
-	arpEnMap = map[uint16]string{}
-	arpEnMap[1] = "ARP请求"
-	arpEnMap[2] = "ARP响应"
-	HTTPMethodsMap = []string{"GET", "POST", "DELETE", "HEAD", "OPTIONS", "PUT", "TRACE"}
-	HTTPResponseRow = "HTTP"
 	return nil
 }
 
@@ -196,13 +253,17 @@ func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 }
 
 func (m *Metadata) readPacketPayload(receive *packet) error {
+	var err error
 	switch receive.payloadType {
 	case "TCP":
 		if receive.byteLen > 10 {
 			flag := string(receive.bytes[:10])
 			if utils.Includes(HTTPMethodsMap, flag) || strings.Contains(flag, HTTPResponseRow) {
 				h := &handle_http.Metadata{}
-				h.ReadHTTP(receive.bytes)
+				err = h.ReadHTTP(receive.bytes, m.Log)
+				if err != nil {
+					m.Log.Error.Println("ReadHTTP: ", err)
+				}
 			}
 		}
 	}
@@ -247,8 +308,10 @@ func (m *Metadata) listenARP(arp *layers.ARP) {
 	}
 }
 
-func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) {
-	m.Log.Debug.Println(fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP))
+func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) int {
+	v4Info := fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP)
+	m.Log.Debug.Println(v4Info)
+	return 1
 }
 
 func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
