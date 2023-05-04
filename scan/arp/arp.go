@@ -1,6 +1,7 @@
 package arp
 
 import (
+	"ScanTodo/scan/handle_http"
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"errors"
@@ -55,6 +56,7 @@ type packet struct {
 }
 
 var HTTPMethodsMap []string
+var HTTPResponseRow string
 var arpEnMap map[uint16]string
 
 func New(ip string) (*Metadata, error) {
@@ -85,6 +87,7 @@ func (m *Metadata) Resolve() error {
 	arpEnMap[1] = "ARP请求"
 	arpEnMap[2] = "ARP响应"
 	HTTPMethodsMap = []string{"GET", "POST", "DELETE", "HEAD", "OPTIONS", "PUT", "TRACE"}
+	HTTPResponseRow = "HTTP"
 	return nil
 }
 
@@ -184,7 +187,7 @@ func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 				send(m)
 			}
 		case p := <-pks:
-			err := m.processPacketPayload(p)
+			err := m.readPacketPayload(p)
 			if err != nil {
 				m.Log.Warn.Printf("处理收到的包异常", err)
 			}
@@ -192,18 +195,17 @@ func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 	}
 }
 
-func (m *Metadata) processPacketPayload(receive *packet) error {
+func (m *Metadata) readPacketPayload(receive *packet) error {
 	switch receive.payloadType {
 	case "TCP":
-		bys := receive.bytes[:4]
-		if utils.Includes(HTTPMethodsMap, string(bys)) {
-			_ = m.processHTTP(receive)
+		if receive.byteLen > 10 {
+			flag := string(receive.bytes[:10])
+			if utils.Includes(HTTPMethodsMap, flag) || strings.Contains(flag, HTTPResponseRow) {
+				h := &handle_http.Metadata{}
+				h.ReadHTTP(receive.bytes)
+			}
 		}
 	}
-	return nil
-}
-
-func (m *Metadata) processHTTP(receive *packet) error {
 	return nil
 }
 
@@ -223,6 +225,7 @@ func (m *Metadata) listenPacket(handle *pcap.Handle, pks chan<- *packet) error {
 			if ipv4Layer != nil {
 				ipv4 := ipv4Layer.(*layers.IPv4)
 				m.listenIPv4(ipv4)
+				m.defaultForwardData()
 			}
 			tcpLayer := p.Layer(layers.LayerTypeTCP)
 			if tcpLayer != nil {
@@ -249,13 +252,17 @@ func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) {
 }
 
 func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
-	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
-		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack))
 	p := tcp.Payload
 	pl := len(p)
+	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
+		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack))
 	if pl > 0 {
 		re <- &packet{bytes: p, byteLen: pl, payloadType: "TCP"}
 	}
+}
+
+func (m *Metadata) defaultForwardData() {
+
 }
 
 /*
