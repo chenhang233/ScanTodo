@@ -4,10 +4,11 @@
 - ip探测 Ping命令 ICMP协议实现
 - ICMP多地址扫描
 - arp代理,ARP协议模拟
+- http报文解析
 - 
 
 ### 待办
-- http报文解析
+- ip报文转发
 - syn-泛洪
 - NAT
 

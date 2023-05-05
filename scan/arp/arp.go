@@ -382,21 +382,33 @@ func (m *Metadata) listenPacket(handle *pcap.Handle, pks chan<- *packet) error {
 		case <-m.done:
 			return nil
 		case p := <-ps.Packets():
-			arpLayer := p.Layer(layers.LayerTypeARP)
-			if arpLayer != nil {
-				arp := arpLayer.(*layers.ARP)
-				m.listenARP(arp)
-			}
-			ipv4Layer := p.Layer(layers.LayerTypeIPv4)
-			if ipv4Layer != nil {
-				ipv4 := ipv4Layer.(*layers.IPv4)
-				m.listenIPv4(ipv4)
-				m.defaultForwardData()
-			}
-			tcpLayer := p.Layer(layers.LayerTypeTCP)
-			if tcpLayer != nil {
-				tcp := tcpLayer.(*layers.TCP)
-				m.listenTCP(tcp, pks)
+			// 链路层
+			ethLayer := p.Layer(layers.LayerTypeEthernet)
+			if ethLayer != nil {
+				eth := ethLayer.(*layers.Ethernet)
+				// IP层
+				ipv4Layer := p.Layer(layers.LayerTypeIPv4)
+				if ipv4Layer != nil {
+					ipv4 := ipv4Layer.(*layers.IPv4)
+					if eth.DstMAC.String() == m.SelfDevice.Mac.String() {
+						if ipv4.DstIP.Equal(m.SourceDevice.Ip) && ipv4.SrcIP.Equal(m.TargetDevice.Ip) {
+							m.PacketHandler(p)
+						}
+					}
+					m.listenIPv4(ipv4)
+					// TCP 层
+					tcpLayer := p.Layer(layers.LayerTypeTCP)
+					if tcpLayer != nil {
+						tcp := tcpLayer.(*layers.TCP)
+						m.listenTCP(tcp, pks)
+					}
+				}
+				// ARP层
+				arpLayer := p.Layer(layers.LayerTypeARP)
+				if arpLayer != nil {
+					arp := arpLayer.(*layers.ARP)
+					m.listenARP(arp)
+				}
 			}
 		}
 	}
@@ -501,8 +513,34 @@ func (m *Metadata) CompareByte(by, min, max byte) bool {
 	return false
 }
 
-func (m *Metadata) defaultForwardData() {
+// PacketHandler 代理包转发,修改成真正的MAC地址
+func (m *Metadata) PacketHandler(packet gopacket.Packet) []byte {
+	data := packet.Data()
+	layer := packet.Layer(layers.LayerTypeIPv4)
+	//ipLayer := layer.(*layers.IPv4)
+	layer = packet.Layer(layers.LayerTypeEthernet)
+	//ethLayer := layer.(*layers.Ethernet)
+	dstMac := net.HardwareAddr{}
 
+	for i := 0; i < len(dstMac); i++ {
+		data[i] = dstMac[i]
+	}
+
+	return data
+
+	//var err error
+	//a := &layers.IPv4{}
+	//buffer := gopacket.NewSerializeBuffer()
+	//var opt gopacket.SerializeOptions
+	//err = gopacket.SerializeLayers(buffer, opt, eth, a)
+	//if err != nil {
+	//	return err
+	//}
+	//outgoingPacket := buffer.Bytes()
+	//err = conn.WritePacketData(outgoingPacket)
+	//if err != nil {
+	//	return err
+	//}
 }
 
 /*
