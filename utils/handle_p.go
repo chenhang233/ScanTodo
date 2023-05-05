@@ -1,6 +1,11 @@
 package utils
 
 import (
+	"bytes"
+	"fmt"
+	"golang.org/x/text/encoding/simplifiedchinese"
+	"golang.org/x/text/transform"
+	"io/ioutil"
 	"time"
 )
 
@@ -35,4 +40,45 @@ func ComputedGroupCount(res *int, count int, pageSize int) {
 	} else {
 		*res = count/pageSize + 1
 	}
+}
+
+func decimalConversion(n uint8, base uint8) []uint8 {
+	i := n
+	var b []uint8
+	for i > 0 {
+		b = append(b, i%base)
+		i /= base
+	}
+	return b
+}
+
+func Includes(arr []string, content string) bool {
+	for i := range arr {
+		if content == arr[i] {
+			return true
+		}
+	}
+	return false
+}
+
+func ByteArrayToBinary(bys []byte) {
+	//var b []uint
+	str := ""
+	//for _, v := range bys {
+	//fmt.Println(v, "vvv")
+	//fmt.Println(decimalConversion(v, 2))
+	//s := string(v)
+	//str += s
+	//}
+	fmt.Println(str, "sss")
+	fmt.Println("------------------------")
+}
+
+func GbToUtf8(s []byte) ([]byte, error) {
+	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
+	d, e := ioutil.ReadAll(reader)
+	if e != nil {
+		return nil, e
+	}
+	return d, nil
 }
