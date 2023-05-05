@@ -8,7 +8,7 @@
   "i": -1,
   "enableRuleIpTcp": true,
   "ipTcpRules": {
-    "destinationPorts": "8000",
-    "ipTcpRules": "8000"
+    "sourcePorts": "8000",
+    "destinationPorts": "8000"
   }
 }

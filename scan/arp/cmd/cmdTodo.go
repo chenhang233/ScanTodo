@@ -93,6 +93,17 @@ func main() {
 	s2 := fmt.Sprintf("\n源信息(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
 	s3 := fmt.Sprintf("\n目标信息(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)
 	m.Log.Info.Println(s1 + s2 + s3)
+
+	f := m.EnableRuleIpTcp
+	if f {
+		rules := m.IpTcpRules
+		s4 := fmt.Sprintf("\nSourceIps: %v,SourcePorts: %v", rules.SourceIps, rules.SourcePorts)
+		s5 := fmt.Sprintf("\nDestinationIps: %v,DestinationPorts: %v", rules.DestinationIps, rules.DestinationPorts)
+		m.Log.Info.Println(s4 + s5)
+	}
+	m.OnSetup = func() {
+
+	}
 	m.OnSend = func(m *arp.Metadata) {
 		fmt.Println("发送ARP报文")
 	}

@@ -11,6 +11,7 @@ import (
 	"github.com/google/gopacket/pcap"
 	"golang.org/x/sync/errgroup"
 	"net"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -30,10 +31,10 @@ type IpTcpRulesStr struct {
 }
 
 type ipTcpRules struct {
-	SourceIps        []string
-	DestinationIps   []string
-	SourcePorts      []string
-	DestinationPorts []string
+	SourceIps        [2][4]uint8
+	DestinationIps   [2][4]uint8
+	SourcePorts      [][2]uint16
+	DestinationPorts [][2]uint16
 }
 
 // ConfigInfo 使用者配置信息
@@ -75,7 +76,7 @@ type Metadata struct {
 	// 配置IP/TCP监听规则
 	EnableRuleIpTcp bool
 	*IpTcpRulesStr
-	*ipTcpRules
+	IpTcpRules *ipTcpRules
 	// 结束信号
 	done chan bool
 }
@@ -87,11 +88,18 @@ type packet struct {
 	byteLen     int
 }
 
+const (
+	Sep1 = "-"
+	Sep2 = "."
+	Sep3 = ","
+)
+
 var HTTPMethodsMap []string
 var HTTPResponseRow string
 var arpEnMap map[uint16]string
 
 func New(c *ConfigInfo) (*Metadata, error) {
+	var err error
 	m := &Metadata{
 		CurrentIndex:    -1,
 		Timeout:         c.T,
@@ -101,11 +109,11 @@ func New(c *ConfigInfo) (*Metadata, error) {
 		TargetDevice:    &NetworkDevice{Ip: net.ParseIP(c.TIP)},
 		SourceDevice:    &NetworkDevice{Ip: net.ParseIP(c.SIP)},
 		done:            make(chan bool, 1),
-		EnableRuleIpTcp: false,
+		EnableRuleIpTcp: c.EnableRuleIpTcp,
 		IpTcpRulesStr:   &IpTcpRulesStr{},
-		ipTcpRules:      &ipTcpRules{},
+		IpTcpRules:      &ipTcpRules{},
 	}
-	err := m.new(c)
+	err = m.new(c)
 	if err != nil {
 		return nil, err
 	}
@@ -128,8 +136,100 @@ func (m *Metadata) new(c *ConfigInfo) error {
 		return err
 	}
 	m.TargetDevice.Mac = hw2
-	if c.EnableRuleIpTcp {
-		// 过滤规则...
+	if m.EnableRuleIpTcp {
+		r := c.IpTcpRules
+		m.SourceIps = r.SourceIps
+		m.SourcePorts = r.SourcePorts
+		m.DestinationIps = r.DestinationIps
+		m.DestinationPorts = r.DestinationPorts
+		err := m.ResolveIpTcpRule()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (m *Metadata) ResolveIpTcpRule() error {
+	var err error
+	str := m.IpTcpRulesStr
+	rules := m.IpTcpRules
+	if str.SourceIps != "" {
+		rules.SourceIps = [2][4]uint8{}
+		err = m.resolveRuleIp(&rules.SourceIps, &str.SourceIps)
+		if err != nil {
+			return err
+		}
+	}
+	if str.DestinationIps != "" {
+		rules.DestinationIps = [2][4]uint8{}
+		err = m.resolveRuleIp(&rules.DestinationIps, &str.DestinationIps)
+		if err != nil {
+			return err
+		}
+	}
+	if str.SourcePorts != "" {
+		rules.SourcePorts, err = m.resolveRulePorts(&str.SourcePorts)
+		if err != nil {
+			return err
+		}
+	}
+	if str.DestinationPorts != "" {
+		rules.DestinationPorts, err = m.resolveRulePorts(&str.DestinationPorts)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (m *Metadata) resolveRulePorts(portsStr *string) ([][2]uint16, error) {
+	var portsArr [][2]uint16
+	ports := strings.Split(*portsStr, Sep3)
+	for _, port := range ports {
+		p := strings.Split(port, Sep1)
+		if len(p) > 2 {
+			return nil, errors.New("端口范围 a-b,c-d,f")
+		}
+		if len(p) == 1 {
+			p = append(p, p[0])
+		}
+		arr := [2]uint16{}
+		for index, s := range p {
+			cur, err := strconv.Atoi(s)
+			if err != nil {
+				return nil, err
+			}
+			arr[index] = uint16(cur)
+		}
+		portsArr = append(portsArr, arr)
+	}
+	return portsArr, nil
+}
+
+func (m *Metadata) resolveRuleIp(ipsRule *[2][4]uint8, ipsStr *string) error {
+	ips := strings.Split(*ipsStr, Sep1)
+	fmt.Println(ips, "ips")
+	if len(ips) > 2 {
+		return errors.New("ip范围 a-b")
+	}
+	if len(ips) == 1 {
+		ips = append(ips, ips[0])
+	}
+	for index, ip := range ips {
+		ip4Arr := strings.Split(ip, Sep2)
+		if len(ip4Arr) != 4 {
+			return errors.New("非ipv4协议")
+		}
+		arr := [4]uint8{}
+		for i, v := range ip4Arr {
+			a, err := strconv.Atoi(v)
+			if err != nil {
+				return err
+			}
+			arr[i] = uint8(a)
+		}
+		ipsRule[index] = arr
 	}
 	return nil
 }
@@ -141,10 +241,10 @@ func (m *Metadata) Resolve() error {
 		return err
 	}
 	dev, err := m.getPcapDev(m.SelfDevice.Ip)
-	m.SelfDevice = dev
 	if err != nil {
 		return err
 	}
+	m.SelfDevice = dev
 	return nil
 }
 
@@ -310,18 +410,89 @@ func (m *Metadata) listenARP(arp *layers.ARP) {
 
 func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) int {
 	v4Info := fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP)
+	if m.EnableRuleIpTcp {
+		m.listenIPv4Filter(ipv4, &v4Info)
+		return 2
+	}
 	m.Log.Debug.Println(v4Info)
 	return 1
 }
 
 func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
-	p := tcp.Payload
-	pl := len(p)
-	m.Log.Debug.Println(fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
-		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack))
-	if pl > 0 {
-		re <- &packet{bytes: p, byteLen: pl, payloadType: "TCP"}
+
+	info := fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
+		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack)
+	if m.EnableRuleIpTcp {
+		m.listenTCPFilter(tcp, re, &info)
+		return
 	}
+	m.Log.Debug.Println(info)
+	m.tcpPacketPayloadSendChannel(tcp, re)
+}
+
+func (m *Metadata) tcpPacketPayloadSendChannel(tcp *layers.TCP, re chan<- *packet) {
+	pl := len(tcp.Payload)
+	if pl > 0 {
+		re <- &packet{bytes: tcp.Payload, byteLen: pl, payloadType: "TCP"}
+	}
+}
+
+func (m *Metadata) listenTCPFilter(tcp *layers.TCP, re chan<- *packet, info *string) {
+	sArr := m.IpTcpRules.SourcePorts
+	f1 := true
+	f2 := true
+	for _, arr := range sArr {
+		min := arr[0]
+		max := arr[1]
+		if uint16(tcp.SrcPort) < min || uint16(tcp.SrcPort) > max {
+			f1 = false
+		}
+	}
+	dArr := m.IpTcpRules.DestinationPorts
+	for _, arr := range dArr {
+		min := arr[0]
+		max := arr[1]
+		if uint16(tcp.DstPort) < min || uint16(tcp.DstPort) > max {
+			f2 = false
+		}
+	}
+	if f1 || f2 {
+		m.Log.Debug.Println(*info)
+		m.tcpPacketPayloadSendChannel(tcp, re)
+	}
+}
+
+func (m *Metadata) listenIPv4Filter(ipv4 *layers.IPv4, v4Info *string) {
+	s1 := m.IpTcpRules.SourceIps[0]
+	s2 := m.IpTcpRules.SourceIps[1]
+	curS := ipv4.SrcIP.To4()
+	f1 := true
+	f2 := true
+	for i, cur := range curS {
+		if !m.CompareByte(cur, s1[i], s2[i]) {
+			f1 = false
+			break
+		}
+	}
+	d1 := m.IpTcpRules.DestinationIps[0]
+	d2 := m.IpTcpRules.DestinationIps[1]
+	curD := ipv4.DstIP.To4()
+	for i, cur := range curD {
+		if !m.CompareByte(cur, d1[i], d2[i]) {
+			f2 = false
+			break
+		}
+	}
+	if f1 || f2 {
+		m.Log.Debug.Println(*v4Info)
+	}
+}
+
+func (m *Metadata) CompareByte(by, min, max byte) bool {
+	if by >= min && by <= max {
+		return true
+	}
+	return false
 }
 
 func (m *Metadata) defaultForwardData() {

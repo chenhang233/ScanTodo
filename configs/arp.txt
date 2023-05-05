@@ -18,3 +18,12 @@
   "tMAC": "00-50-56-e3-5e-65",
   "hostIp": "192.168.232.1"
 }
+
+// 指定监听ip/tcp数据
+ "enableRuleIpTcp": true,
+  "ipTcpRules": {
+    "sourceIps": "127.0.0.1",
+    "destinationIps": "127.0.0.1-127.0.0.8",
+    "sourcePorts": "80,888,1000-2000",
+    "destinationPorts": "8000-8100"
+  }
