@@ -2,13 +2,9 @@
   "op": 1,
   "sIP":"192.168.0.115",
   "sMAC": "00-50-56-C0-00-08",
+  "Smac": "00-0C-29-8A-8C-EF",
   "tIP": "192.168.232.2",
   "tMAC": "00-50-56-e3-5e-65",
-  "hostIp": "127.0.0.1",
-  "i": -1,
-  "enableRuleIpTcp": true,
-  "ipTcpRules": {
-    "sourcePorts": "8000",
-    "destinationPorts": "8000"
-  }
+  "hostIp": "127.0.0.1"
+
 }

@@ -60,7 +60,7 @@ func init() {
 	err = json.Unmarshal(file, &config)
 	goOut(err)
 	if config.I == time.Duration(0) {
-		config.I = time.Minute
+		config.I = time.Second * 10
 	}
 	if config.T == time.Duration(0) {
 		config.T = time.Hour
