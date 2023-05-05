@@ -23,7 +23,7 @@ func (m *Metadata) ReadHTTP(bys []byte, log *scanLog.LogConf) error {
 		}
 		sb := strings.Builder{}
 		for i, b := range bys {
-			if b == '\r' && b+1 == '\n' {
+			if b == '\r' && bys[i+1] == '\n' {
 				bys = bys[i+2:]
 				return sb.String(), nil
 			}
@@ -37,22 +37,39 @@ func (m *Metadata) ReadHTTP(bys []byte, log *scanLog.LogConf) error {
 		return err
 	}
 	var line string
+	keyM := map[string]string{}
 	for {
 		line, err = readHTTPNewLine()
 		if err != nil {
 			log.Warn.Println(err)
 		}
 		if line == "" {
+			m.Head = keyM
 			break
 		}
-		sp := strings.Split(line, ":")
-		if len(sp) > 2 {
-			e := fmt.Sprintf("请求行或响应行切割错误: %v", line)
-			log.Warn.Println(e)
-			err = errors.New(e)
+		sp, err := m.Split(line, ':')
+		if err != nil {
+			log.Warn.Println(err)
 		}
-		m.Head[sp[0]] = sp[1]
+		keyM[sp[0]] = sp[1]
 	}
 	m.Body = string(bys)
 	return err
+}
+
+func (m *Metadata) Split(line string, separator byte) (sp [2]string, e error) {
+	for i, v := range line {
+		if v > 255 {
+			e = errors.New(fmt.Sprintf("请求行或响应行切割错误: %v", line))
+			return
+		}
+		b := byte(v)
+		if b == separator {
+			sp = [2]string{}
+			sp[0] = line[:i]
+			sp[1] = line[i+1:]
+			break
+		}
+	}
+	return
 }

@@ -6,6 +6,7 @@ import (
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 	"io/ioutil"
+	"strings"
 	"time"
 )
 
@@ -53,8 +54,8 @@ func decimalConversion(n uint8, base uint8) []uint8 {
 }
 
 func Includes(arr []string, content string) bool {
-	for i := range arr {
-		if content == arr[i] {
+	for _, v := range arr {
+		if strings.Contains(content, v) {
 			return true
 		}
 	}

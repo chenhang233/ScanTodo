@@ -362,8 +362,13 @@ func (m *Metadata) readPacketPayload(receive *packet) error {
 				h := &handle_http.Metadata{}
 				err = h.ReadHTTP(receive.bytes, m.Log)
 				if err != nil {
-					m.Log.Error.Println("ReadHTTP: ", err)
+					m.Log.Error.Println("ReadHTTP error: ", err)
 				}
+				m.Log.Info.Println(h.Row)
+				for k, v := range h.Head {
+					m.Log.Info.Println(fmt.Sprintf("%s:%s", k, v))
+				}
+				m.Log.Info.Print(fmt.Sprintf("body:\n %s", h.Body))
 			}
 		}
 	}
@@ -419,7 +424,6 @@ func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) int {
 }
 
 func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
-
 	info := fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
 		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack)
 	if m.EnableRuleIpTcp {
@@ -439,12 +443,14 @@ func (m *Metadata) tcpPacketPayloadSendChannel(tcp *layers.TCP, re chan<- *packe
 
 func (m *Metadata) listenTCPFilter(tcp *layers.TCP, re chan<- *packet, info *string) {
 	sArr := m.IpTcpRules.SourcePorts
+	srcP := tcp.SrcPort
+	dstP := tcp.DstPort
 	f1 := true
 	f2 := true
 	for _, arr := range sArr {
 		min := arr[0]
 		max := arr[1]
-		if uint16(tcp.SrcPort) < min || uint16(tcp.SrcPort) > max {
+		if uint16(srcP) < min || uint16(srcP) > max {
 			f1 = false
 		}
 	}
@@ -452,7 +458,7 @@ func (m *Metadata) listenTCPFilter(tcp *layers.TCP, re chan<- *packet, info *str
 	for _, arr := range dArr {
 		min := arr[0]
 		max := arr[1]
-		if uint16(tcp.DstPort) < min || uint16(tcp.DstPort) > max {
+		if uint16(dstP) < min || uint16(dstP) > max {
 			f2 = false
 		}
 	}
