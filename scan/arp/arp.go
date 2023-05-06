@@ -2,6 +2,7 @@ package arp
 
 import (
 	"ScanTodo/scan/handle_http"
+	"ScanTodo/scan/handle_http/handle_tls"
 	"ScanTodo/scanLog"
 	"ScanTodo/utils"
 	"errors"
@@ -20,8 +21,8 @@ type NetworkDevice struct {
 	Name        string
 	Ip          net.IP
 	Description string
-	Mac         net.HardwareAddr
-	MAC         net.HardwareAddr // ip对应真实mac地址
+	Mac         net.HardwareAddr // 自定义mac地址
+	MAC         net.HardwareAddr // ip对应真实mac地址(SourceDevice)
 }
 
 type IpTcpRulesStr struct {
@@ -74,7 +75,7 @@ type Metadata struct {
 	OnFinish  func(*Metadata)
 	OnSetup   func()
 	OnSend    func(*Metadata)
-	OnReceive func(*Metadata)
+	OnReceive func(*Metadata, string)
 	// 配置IP/TCP监听规则
 	EnableRuleIpTcp bool
 	*IpTcpRulesStr
@@ -98,6 +99,7 @@ const (
 
 var HTTPMethodsMap []string
 var HTTPResponseRow string
+var TLS string
 var arpEnMap map[uint16]string
 
 func New(c *ConfigInfo) (*Metadata, error) {
@@ -128,19 +130,20 @@ func (m *Metadata) new(c *ConfigInfo) error {
 	arpEnMap[2] = "ARP响应"
 	HTTPMethodsMap = []string{"GET", "POST", "DELETE", "HEAD", "OPTIONS", "PUT", "TRACE"}
 	HTTPResponseRow = "HTTP"
+	TLS = "Version: TLS"
 	hw1, err := net.ParseMAC(c.SMAC)
 	if err != nil {
-		return err
+		return errors.New("c.SMAC, " + err.Error())
 	}
 	m.SourceDevice.Mac = hw1
 	hw12, err := net.ParseMAC(c.Smac)
 	if err != nil {
-		return err
+		return errors.New("c.Smac, " + err.Error())
 	}
 	m.SourceDevice.MAC = hw12
 	hw2, err := net.ParseMAC(c.TMAC)
 	if err != nil {
-		return err
+		return errors.New("c.TMAC, " + err.Error())
 	}
 	m.TargetDevice.Mac = hw2
 	if m.EnableRuleIpTcp {
@@ -310,7 +313,7 @@ func (m *Metadata) run(conn *pcap.Handle) error {
 	})
 	err := g.Wait()
 	if err != nil {
-		m.Log.Warn.Printf("异常结束中:", err)
+		m.Log.Warn.Printf("End of exception:", err)
 	}
 	return err
 }
@@ -331,6 +334,7 @@ func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 		err := m.sendArp(conn, m.Operation, m.SourceDevice.Mac, m.TargetDevice.Mac, m.SourceDevice.Ip, m.TargetDevice.Ip)
 		if err != nil {
 			m.Log.Warn.Println("sendArp: ", err)
+			return err
 		}
 	} else {
 		t2.Stop()
@@ -353,7 +357,7 @@ func (m *Metadata) mainLoop(conn *pcap.Handle, pks <-chan *packet) error {
 		case p := <-pks:
 			err := m.readPacketPayload(p)
 			if err != nil {
-				m.Log.Warn.Printf("处理收到的包异常", err)
+				m.Log.Warn.Printf("readPacketPayload err:", err)
 			}
 		}
 	}
@@ -371,11 +375,18 @@ func (m *Metadata) readPacketPayload(receive *packet) error {
 				if err != nil {
 					m.Log.Error.Println("ReadHTTP error: ", err)
 				}
-				m.Log.Info.Println(h.Row)
-				for k, v := range h.Head {
-					m.Log.Info.Println(fmt.Sprintf("%s:%s", k, v))
-				}
+				m.Log.Info.Println("http Row: \n", h.Row)
+				m.Log.Info.Println("http Head: \n", h.Head)
+				//for k, v := range h.Head {
+				//	m.Log.Info.Println(fmt.Sprintf("%s:%s", k, v))
+				//}
 				m.Log.Info.Print(fmt.Sprintf("body:\n %s", h.Body))
+			} else {
+				f, tls := handle_tls.IsTlsProtocol(receive.bytes)
+				if f {
+					m.Log.Info.Print(fmt.Sprintf("record layer: (ContentType: %v) (Version: %v) (Length: %v)",
+						tls.ContentType, tls.Version, tls.Length))
+				}
 			}
 		}
 	}
@@ -398,7 +409,7 @@ func (m *Metadata) listenPacket(handle *pcap.Handle, pks chan<- *packet) error {
 				if ipv4Layer != nil {
 					ipv4 := ipv4Layer.(*layers.IPv4)
 					if eth.DstMAC.String() == m.SelfDevice.Mac.String() {
-						if ipv4.DstIP.Equal(m.SourceDevice.Ip) && ipv4.SrcIP.Equal(m.TargetDevice.Ip) {
+						if ipv4.SrcIP.Equal(m.TargetDevice.Ip) {
 							data := m.PacketHandler(p)
 							err := handle.WritePacketData(data)
 							if err != nil {
@@ -428,16 +439,16 @@ func (m *Metadata) listenPacket(handle *pcap.Handle, pks chan<- *packet) error {
 func (m *Metadata) listenARP(arp *layers.ARP) {
 	mac1 := net.HardwareAddr(arp.SourceHwAddress)
 	mac2 := net.HardwareAddr(arp.DstHwAddress)
-	reply := fmt.Sprintf("监听 %s (源MAC: %v,目标MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
-	m.Log.Info.Printf(reply)
+	reply := fmt.Sprintf("listen %s (source MAC: %v,target MAC: %v)", arpEnMap[arp.Operation], mac1, mac2)
+	//m.Log.Info.Printf(reply)
 	receive := m.OnReceive
 	if receive != nil {
-		receive(m)
+		receive(m, reply)
 	}
 }
 
 func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) int {
-	v4Info := fmt.Sprintf("源IP: %v,目标IP: %v", ipv4.SrcIP, ipv4.DstIP)
+	v4Info := fmt.Sprintf("source IP: %v,target IP: %v", ipv4.SrcIP, ipv4.DstIP)
 	if m.EnableRuleIpTcp {
 		m.listenIPv4Filter(ipv4, &v4Info)
 		return 2
@@ -447,7 +458,7 @@ func (m *Metadata) listenIPv4(ipv4 *layers.IPv4) int {
 }
 
 func (m *Metadata) listenTCP(tcp *layers.TCP, re chan<- *packet) {
-	info := fmt.Sprintf("源端口: %v,目标端口: %v, seq: %v,ack: %v",
+	info := fmt.Sprintf("source port: %v,target port: %v, seq: %v,ack: %v",
 		tcp.SrcPort, tcp.DstPort, tcp.Seq, tcp.Ack)
 	if m.EnableRuleIpTcp {
 		m.listenTCPFilter(tcp, re, &info)
@@ -531,10 +542,13 @@ func (m *Metadata) PacketHandler(packet gopacket.Packet) []byte {
 	//ipLayer := layer.(*layers.IPv4)
 	//layer = packet.Layer(layers.LayerTypeEthernet)
 	//ethLayer := layer.(*layers.Ethernet)
+	m.Log.Info.Println("替换之前:\n", data[:6], string(data[:6]))
 	dstMac := m.SourceDevice.MAC
+	m.Log.Warn.Println("真mac:", dstMac, dstMac[:])
 	for i := 0; i < len(dstMac); i++ {
 		data[i] = dstMac[i]
 	}
+	m.Log.Info.Println(data)
 	return data
 }
 

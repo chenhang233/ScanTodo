@@ -60,7 +60,7 @@ func init() {
 	err = json.Unmarshal(file, &config)
 	goOut(err)
 	if config.I == time.Duration(0) {
-		config.I = time.Second * 10
+		config.I = time.Second * 5
 	}
 	if config.T == time.Duration(0) {
 		config.T = time.Hour
@@ -77,21 +77,20 @@ func goOut(err error) {
 func main() {
 	m, err := arp.New(&config)
 	if err != nil {
-		m.Log.Error.Println(err)
-		return
+		panic(err)
 	}
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		for i := range c {
-			m.Log.Debug.Println("接收到中断的信号:", i)
+			m.Log.Debug.Println("An interrupt signal was received:", i)
 			m.Stop()
 		}
 	}()
 
-	s1 := fmt.Sprintf("\n本机信息(ip: %v,mac: %v,Description: %s)", m.SelfDevice.Ip, m.SelfDevice.Mac, m.SelfDevice.Description)
-	s2 := fmt.Sprintf("\n源信息(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
-	s3 := fmt.Sprintf("\n目标信息(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)
+	s1 := fmt.Sprintf("\nSelfDevice(ip: %v,mac: %v,Description: %s)", m.SelfDevice.Ip, m.SelfDevice.Mac, m.SelfDevice.Description)
+	s2 := fmt.Sprintf("\nSourceDevice(ip: %v,mac: %v,Description: %s)", m.SourceDevice.Ip, m.SourceDevice.Mac, m.SourceDevice.Description)
+	s3 := fmt.Sprintf("\nTargetDevice(ip: %v,mac: %v,Description: %s)", m.TargetDevice.Ip, m.TargetDevice.Mac, m.TargetDevice.Description)
 	m.Log.Info.Println(s1 + s2 + s3)
 
 	f := m.EnableRuleIpTcp
@@ -105,13 +104,13 @@ func main() {
 
 	}
 	m.OnSend = func(m *arp.Metadata) {
-		fmt.Println("发送ARP报文")
+		fmt.Println(fmt.Sprintf("arp OnSend: %v ---> %v", m.SourceDevice.Mac, m.TargetDevice.Mac))
 	}
 	m.OnFinish = func(m *arp.Metadata) {
-		fmt.Println("结束")
+		fmt.Println("OnFinish")
 	}
 	err = m.Run()
 	if err != nil {
-		m.Log.Debug.Println("异常结束日志:", err)
+		m.Log.Debug.Println("Abnormal end log:", err)
 	}
 }

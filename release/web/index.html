@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫描工具</title>
+    <style>
+        .a .span1  {
+                padding-right: 670px;
+        }
+        .b {
+            width: 800px;
+            height: 50px;
+        }
+        #cmd,#cmd2 {
+            background-color: black;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<header>
+    <button type="button" id="tcp">TCP扫描</button>
+    <button type="button" id="icmp">ICMP扫描</button>
+    <span id="recv"></span>
+</header>
+<hr>
+
+<div>
+    <div id="ipDiv">
+        <div class="a">ip: </div> <input type="text" name="" id="ip"
+         value="127.0.0.1"  autocomplete="off" placeholder="127.0.0.1 或者 192.168.0.1-192.168.0.10" class="b">
+    </div>
+    <br>
+    <div id="portDiv">
+        <div class="a">port: </div> <input
+          value="80"  type="text" name="" id="port" placeholder="80 或者 80-88,99-101" class="b">
+    </div>
+    <div>
+        <button type="submit" id="submit">发送</button>
+    </div>
+</div>
+
+<div>
+    <div class="a">
+        <span class="span1">输出:</span><span>成功输出:</span>
+    </div>
+    <textarea name="" id="cmd" cols="75" rows="25"></textarea>
+    <textarea name="" id="cmd2" cols="75" rows="25"></textarea>
+</div>
+<script>
+    let type = "tcp"
+    let b1 = document.getElementById("tcp");
+    let b2 = document.getElementById("portDiv");
+    let b3 = document.getElementById("icmp");
+    let b4 = document.getElementById("submit")
+    let b_ip = document.getElementById("ip")
+    let b_port = document.getElementById("port")
+
+    b1.style.backgroundColor = "red"
+    b1.addEventListener("click",() => {
+        b2.hidden = false
+        b1.style.backgroundColor = "red"
+        type = "tcp"
+        b3.style.backgroundColor = null
+    })
+    b3.addEventListener("click",() => {
+        b2.hidden = true
+        b3.style.backgroundColor = "red"
+        type = "icmp"
+        b1.style.backgroundColor = null
+    })
+    const websocket = new WebSocket("ws://192.168.0.119:8000/ws");
+    websocket.onopen = function () {
+        console.log('websocket open');
+        document.getElementById("recv").innerText = "websocket连接成功";
+    }
+    websocket.onerror = function (ev) {
+        console.log(ev)
+        document.getElementById("recv").innerText = "websocket连接错误";
+    }
+
+    websocket.onclose = function () {
+        console.log('websocket close');
+        document.getElementById("recv").innerText = "websocket连接关闭"
+    }
+
+    websocket.onmessage = function (ev) {
+        let b_cmd = document.getElementById("cmd")
+        b_cmd.innerHTML += "\n"
+        b_cmd.innerHTML += ev.data
+        console.log(ev.data,"ev.data.")
+        if (ev.data.includes("[成功]")) {
+            let b_cmd2 = document.getElementById("cmd2")
+            b_cmd2.innerHTML += "\n"
+            b_cmd2.innerHTML += ev.data
+        }
+    }
+    b4.addEventListener("click",() => {
+        axios.post('/' + type, {
+            ip: b_ip.value,
+            port: b_port.value,
+            Timeout: 1000
+        }).then(function (response) {
+            let b_cmd = document.getElementById("cmd")
+            b_cmd.innerHTML += "\nhttp response\n"
+            b_cmd.innerHTML += response.data.Message
+            })
+    })
+
+</script>
+</body>
+</html>

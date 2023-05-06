@@ -1,10 +1,16 @@
 {
-  "op": 1,
-  "sIP":"192.168.0.115",
-  "sMAC": "00-50-56-C0-00-08",
-  "Smac": "00-0C-29-8A-8C-EF",
-  "tIP": "192.168.232.2",
-  "tMAC": "00-50-56-e3-5e-65",
-  "hostIp": "127.0.0.1"
-
+  "op": 2,
+  "sIP": "192.168.0.1",
+  "sMAC": "bc-6e-e2-b9-ad-8e",
+  "Smac": "18-f2-2c-a7-97-44",
+  "tIP": "192.168.0.108",
+  "tMAC": "32-cd-6c-0f-5f-d2",
+  "hostIp": "192.168.0.119",
+  "I": 1000,
+  "enableRuleIpTcp": true,
+  "ipTcpRules": {
+    "sourceIps": "192.168.0.108",
+    "sourcePorts": "8000",
+    "destinationPorts": "8000"
+  }
 }
