@@ -19,7 +19,7 @@ func (h *WebHttp) Index(writer http.ResponseWriter, request *http.Request) {
 	if request.RequestURI == "/favicon.ico" {
 		return
 	}
-	if request.RequestURI != "/" {
+	if request.RequestURI != "/index" {
 		openUrl = "web" + request.RequestURI
 	}
 	file, err := os.ReadFile(openUrl)

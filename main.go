@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-var addr = flag.String("addr", "0.0.0.0:8000", "http service address")
+var addr = flag.String("addr", "127.0.0.1:8000", "http service address")
 
 type WebService interface {
 	Index(http.ResponseWriter, *http.Request)
