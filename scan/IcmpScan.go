@@ -101,7 +101,8 @@ func (t *IcmpScan) scanIps(ips []string) error {
 					meta := &ping.LogMeta{Log: t.Log}
 					ping.OnFinish(statistics, meta)
 					if statistics.PacketLoss < 100 {
-						utils.SendToThePrivateClientCustom(fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ip, statistics.PacketLoss))
+						//utils.SendToThePrivateClientCustom(fmt.Sprintf("[成功]: 目标IP: %s, 丢包率: %v", ip, statistics.PacketLoss))
+						utils.SendSaveIps(t.Log, ip)
 					} else {
 						utils.SendToThePrivateClientCustom("[失败]: IP:" + ip)
 					}

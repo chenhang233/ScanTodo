@@ -1,9 +1,9 @@
 package utils
 
 import (
-	"encoding/json"
-	"fmt"
+	"ScanTodo/scanLog"
 	"github.com/gorilla/websocket"
+	"os"
 )
 
 var HubInstance *Hub
@@ -56,32 +56,43 @@ func (h *Hub) Run() {
 }
 
 func SendToThePrivateClientMsgSuccess(ip string, port uint16, protocol string) string {
-	sf := fmt.Sprintf("[成功]:, ip: %s , 端口: %d, 协议: %s, ", ip, port, protocol)
-	if HubInstance.PrivateClient == nil {
-		fmt.Println("PrivateClient 不存在")
-		return sf
-	}
-	js, _ := json.Marshal(sf)
-	HubInstance.PrivateClient.Send <- js
-	return sf
+	//sf := fmt.Sprintf("[成功]:, ip: %s , 端口: %d, 协议: %s, ", ip, port, protocol)
+	//if HubInstance.PrivateClient == nil {
+	//	fmt.Println("PrivateClient 不存在")
+	//	return sf
+	//}
+	//js, _ := json.Marshal(sf)
+	//HubInstance.PrivateClient.Send <- js
+	//return sf
+	return ""
 }
 
 func SendToThePrivateClientMsgError(ip string, port uint16, protocol string, error string) {
-	if HubInstance.PrivateClient == nil {
-		fmt.Println("PrivateClient 不存在")
-		return
-	}
-	sf := fmt.Sprintf("[失败]:, ip: %s , 端口: %d, 协议: %s, 失败原因: %s", ip, port, protocol, error)
-	js, _ := json.Marshal(sf)
-	HubInstance.PrivateClient.Send <- js
+	//if HubInstance.PrivateClient == nil {
+	//	fmt.Println("PrivateClient 不存在")
+	//	return
+	//}
+	//sf := fmt.Sprintf("[失败]:, ip: %s , 端口: %d, 协议: %s, 失败原因: %s", ip, port, protocol, error)
+	//js, _ := json.Marshal(sf)
+	//HubInstance.PrivateClient.Send <- js
 }
 
 func SendToThePrivateClientCustom(str string) {
-	if HubInstance.PrivateClient == nil {
-		fmt.Println("PrivateClient 不存在,非WebSocket")
+	//if HubInstance.PrivateClient == nil {
+	//	fmt.Println("PrivateClient 不存在,非WebSocket")
+	//	return
+	//}
+	//sf := fmt.Sprintf("%s", str)
+	//js, _ := json.Marshal(sf)
+	//HubInstance.PrivateClient.Send <- js
+}
+
+func SendSaveIps(l *scanLog.LogConf, str string) {
+	logFile, err := os.OpenFile("online_ips.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
+	if err != nil {
+		l.Error.Println(str)
 		return
 	}
-	sf := fmt.Sprintf("%s", str)
-	js, _ := json.Marshal(sf)
-	HubInstance.PrivateClient.Send <- js
+	logFile.WriteString(str)
+	logFile.WriteString("\r\n")
 }

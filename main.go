@@ -2,7 +2,6 @@ package main
 
 import (
 	"ScanTodo/scanLog"
-	"ScanTodo/utils"
 	"ScanTodo/web"
 	"encoding/json"
 	"flag"
@@ -41,9 +40,9 @@ func main() {
 	ms.Log.Debug.Println("服务启动中,全局日志加载完成")
 	flag.Parse()
 
-	utils.HubInstance = utils.NewHub()
+	//utils.HubInstance = utils.NewHub()
 	ms.Log.Debug.Println("服务启动中,websocket实例初始化完成")
-	go utils.HubInstance.Run()
+	//go utils.HubInstance.Run()
 	ms.Log.Debug.Println("服务启动中,websocket开启监听完成")
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)
