@@ -25,6 +25,11 @@ type MainService struct {
 }
 
 func main() {
+	m := map[int]int{
+		1: 1,
+	}
+	Test2(m)
+	println(m[1])
 	loadLog, err := scanLog.LoadLog(scanLog.HTTPLogPath)
 	if err != nil {
 		fmt.Println(err)
@@ -62,4 +67,8 @@ func Test(writer http.ResponseWriter, request *http.Request) {
 	jr := &web.JsonResponse{Code: web.NoMessageCode, Message: web.NoMessageMsg, Data: nil}
 	js, _ := json.Marshal(jr)
 	writer.Write(js)
+}
+
+func Test2(m map[int]int) {
+	m[1] = 10
 }

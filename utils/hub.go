@@ -2,6 +2,7 @@ package utils
 
 import (
 	"ScanTodo/scanLog"
+	"fmt"
 	"github.com/gorilla/websocket"
 	"os"
 )
@@ -56,15 +57,15 @@ func (h *Hub) Run() {
 }
 
 func SendToThePrivateClientMsgSuccess(ip string, port uint16, protocol string) string {
-	//sf := fmt.Sprintf("[成功]:, ip: %s , 端口: %d, 协议: %s, ", ip, port, protocol)
+	sf := fmt.Sprintf("[成功]:, ip: %s , 端口: %d, 协议: %s, ", ip, port, protocol)
 	//if HubInstance.PrivateClient == nil {
 	//	fmt.Println("PrivateClient 不存在")
 	//	return sf
 	//}
 	//js, _ := json.Marshal(sf)
 	//HubInstance.PrivateClient.Send <- js
-	//return sf
-	return ""
+	return sf
+	//return ""
 }
 
 func SendToThePrivateClientMsgError(ip string, port uint16, protocol string, error string) {
