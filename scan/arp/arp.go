@@ -542,9 +542,8 @@ func (m *Metadata) PacketHandler(packet gopacket.Packet) []byte {
 	//ipLayer := layer.(*layers.IPv4)
 	//layer = packet.Layer(layers.LayerTypeEthernet)
 	//ethLayer := layer.(*layers.Ethernet)
-	m.Log.Info.Println("替换之前:\n", data[:6], string(data[:6]))
+	//m.Log.Info.Println("替换之前:\n", data[:6], string(data[:6]))
 	dstMac := m.SourceDevice.MAC
-	m.Log.Warn.Println("真mac:", dstMac, dstMac[:])
 	for i := 0; i < len(dstMac); i++ {
 		data[i] = dstMac[i]
 	}

@@ -2,7 +2,6 @@ package main
 
 import (
 	"ScanTodo/scanLog"
-	"ScanTodo/utils"
 	"ScanTodo/web"
 	"encoding/json"
 	"flag"
@@ -26,6 +25,11 @@ type MainService struct {
 }
 
 func main() {
+	m := map[int]int{
+		1: 1,
+	}
+	Test2(m)
+	println(m[1])
 	loadLog, err := scanLog.LoadLog(scanLog.HTTPLogPath)
 	if err != nil {
 		fmt.Println(err)
@@ -41,9 +45,9 @@ func main() {
 	ms.Log.Debug.Println("服务启动中,全局日志加载完成")
 	flag.Parse()
 
-	utils.HubInstance = utils.NewHub()
+	//utils.HubInstance = utils.NewHub()
 	ms.Log.Debug.Println("服务启动中,websocket实例初始化完成")
-	go utils.HubInstance.Run()
+	//go utils.HubInstance.Run()
 	ms.Log.Debug.Println("服务启动中,websocket开启监听完成")
 	http.HandleFunc("/tcp", ms.w.Tcp)
 	http.HandleFunc("/icmp", ms.w.Icmp)
@@ -63,4 +67,8 @@ func Test(writer http.ResponseWriter, request *http.Request) {
 	jr := &web.JsonResponse{Code: web.NoMessageCode, Message: web.NoMessageMsg, Data: nil}
 	js, _ := json.Marshal(jr)
 	writer.Write(js)
+}
+
+func Test2(m map[int]int) {
+	m[1] = 10
 }
