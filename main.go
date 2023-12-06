@@ -70,5 +70,5 @@ func Test(writer http.ResponseWriter, request *http.Request) {
 }
 
 func Test2(m map[int]int) {
-	m[1] = 10
+	m[1] = 11
 }
